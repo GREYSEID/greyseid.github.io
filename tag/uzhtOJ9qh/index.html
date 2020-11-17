@@ -5,9 +5,9 @@
 <meta name="description" content="" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>
-    ES6 | GREYSEID
+    ES6 | 正义大厅
 </title>
-<link rel="shortcut icon" href="https://greyseid.github.io//favicon.ico?v=1605600026721">
+<link rel="shortcut icon" href="https://greyseid.github.io//favicon.ico?v=1605623648980">
 <!-- <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous"> -->
 <link href="https://cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
@@ -27,11 +27,11 @@
     <div class="nav">
         <div class="logo">
             <a href="https://greyseid.github.io/">
-                <img class="avatar" src="https://greyseid.github.io//images/avatar.png?v=1605600026721" alt="">
+                <img class="avatar" src="https://greyseid.github.io//images/avatar.png?v=1605623648980" alt="">
             </a>
             <div class="site-title">
                 <h1>
-                    GREYSEID
+                    正义大厅
                 </h1>
             </div>
         </div>
@@ -111,18 +111,56 @@
                 <div class="post-info">
                     <time class="post-time">2020-11-16</time>
                     
+                        <a href="https://greyseid.github.io/tag/AjqKAL42P/" class="post-tag i-tag
+                            i-tag-other_3">
+            #前端
+        </a>
+                        
                         <a href="https://greyseid.github.io/tag/uzhtOJ9qh/" class="post-tag i-tag
-                            i-tag-other_1">
+                            i-tag-info">
             #ES6
         </a>
                         
                 </div>
                 <div class="post-article">
                     
+                        <a href="https://greyseid.github.io/post/zheng-ze-de-tuo-zhan/" class="post-feature-image" style="background-image:url(https://greyseid.github.io//post-images/zheng-ze-de-tuo-zhan.jpg) ">
+                        </a>
+                        
                             <div class="post-content">
                                 
                                         <div class="post-content-content">
-                                            #RegExp构造函数#
+                                            
+RegExp构造函数
+字符串的正则方法
+u修饰符
+
+点字符
+Unicode字符表示法
+量词
+预定义模式
+i修饰符
+
+
+y修饰符
+
+sticky属性
+
+
+flags属性
+s修饰符：dotAll模式（提案）
+后行断言（提案） ——V8引擎4.9版本已支持
+Unicode属性类（提案）
+具名组匹配（提案）
+
+简介
+结构赋值与替换
+引用
+
+
+
+
+RegExp构造函数
 在ES5中，使用RegExp构造函数时
 var regex=new RegExp(&#39;xyz&#39;,&#39;i&#39;);
 //或
@@ -138,35 +176,35 @@ var regex=new RegExp(/xyz/,&#39;i&#39;);
 new RegExp(/xyz/ig,&#39;i&#39;).flags;
 //&amp;quot;i&amp;quot;
 
-#字符串的正则方法#
+字符串的正则方法
 字符串对象new String()有四种方法使用正则表达式：match()、replace()、search()、split()
 ES6使四个方法在内部全部调用RegExp的实例方法
-#u修饰符#
+u修饰符
 ES6新增了u修饰符用于正确处理大于\uFFFF的Unicode字符，也就是可以处理4个字节的UTF-16编码
-##点字符##
+点字符
 点(.)字符在正则表达式中的含义是除换行符以外的任意单个字符，而大于\uFFFF的Unicode字符，点字符不能识别
-##Unicode字符表示法##
+Unicode字符表示法
 ES6新增了用大括号{}表示Unicode字符的方法，但是在正则表达式中，必须要加上u修饰符才能识别当中的大括号，否则会被解读为量词
 /\u{61}/.test(&#39;a&#39;)                          //false
 /\u{61}/u.test(&#39;a&#39;)                         //true
 /\u{20BB7}/u.test(&#39;𠮷&#39;)                     //true
 
-##量词##
+量词
 使用u修饰符后，所有两次都会正确识别码点大于0xFFFF的Unicode字符
 /a{a}/.test(&#39;aa&#39;)               //true
 /a{2}/u.test(&#39;aa&#39;)              //true
 /𠮷{2}/.test(&#39;𠮷𠮷&#39;)            //false
 /𠮷{2}/u.test(&#39;𠮷𠮷&#39;)           //true
 
-##预定义模式##
+预定义模式
 u修饰符页影响到预定义模式能否正确识别码点大于0xFFFF的Unicode字符
-##i修饰符##
+i修饰符
 有些Unicode字符的编码不同，但是字型相近，比如，\u004B和\u212A都是大写的K
 /[a-z]/i.test(&#39;\u212A&#39;)             //false
 /[a-z]/iu.test(&#39;\u212A&#39;)            //true
 
 不加修饰符无法识别非规范的K字符
-#y修饰符#
+y修饰符
 ES6添加了y修饰符（粘连sticky修饰符）
 y修饰符与g修饰符类似，也是全局匹配，后一次匹配都从上一次匹配成功的下一个位置开始。不同之处在于，g修饰符只要剩余位置中存在匹配就行，而y修饰符会确保匹配必须从剩余的第一个位置开始
 var s=&amp;quot;aaa_aa_a&amp;quot;;
@@ -178,6 +216,83 @@ r1.exec(s)          //[&amp;quot;aa&amp;quot;]
 r2.exec(s)          //null
 
 aaa之后，剩余字符串为&amp;quot;aa_a&amp;quot;，由于第一个位置为&amp;quot;&amp;quot;,所以y修饰符是不会匹配到的，返回null结果
+sticky属性
+为了配合y修饰符的使用，添加了sticky属性，表示是否设置了y修饰符
+var r=/hello\d/y;
+r.sticky            //true
+
+flags属性
+ES6新增了一个flags属性来返回正则表达式的修饰符
+/abc/ig.flags
+//&#39;gi&#39;
+
+s修饰符：dotAll模式（提案）
+点(.)是一个特殊字符，代表任意的单个字符，但是行终止符除外
+
+U+000A 换行符(\n)
+U+000D 回车符(\r)
+U+2028 行分隔符
+U+2029 段分隔符
+
+/foo.bar/.test(&#39;foo\nbar) //false因为(.)不匹配\n，所以正则表达式返回false
+可以使用/foo[^]bar/.test(&#39;foo\nbar&#39;) //true
+或者引入s修饰符也就是dotAll模式，可以匹配任意单个字符
+后行断言（提案） ——V8引擎4.9版本已支持
+JavaScript语言的正则表达式只支持先行断言和先行否定断言，不支持后行断言和后行否定断言
+先行断言指的是，x只有在y的前面才匹配，例如/x(?=y)/的形式，只匹配百分号之前的数字：/\d+(?=%)/。先行否定断言指的是x只有不在y的后面才匹配，写成/x(?!y)/的形式，只匹配不在百分号前的数字，写成/\d+(?!%)/
+/\d+(?=%)/.exec(&#39;100% of US presidents have been male&#39;)         //[&amp;quot;100&amp;quot;]
+/\d+(?!%)/.exec(&#39;that’s all 44 of them&#39;)                        //[&amp;quot;44&amp;quot;]
+
+后行断言与先行断言相反，x只有在y后面才能匹配，必须写成/(?&amp;lt;=y)x/的形式，只匹配美元符号之后的数字，要写成/(?&amp;lt;=\$)\d+/的形式，后行否定断言也是与先行否定断言相反，只有x不在y后面才匹配，写成/(?&amp;lt;!y)x/的形式，只匹配不在美元符号后面的数字，写成(?&amp;lt;!\$)\d+/
+/(?&amp;lt;=\$)\d+/.exec(&#39;Benjamin Franklin is on the $100 bill&#39;)      //[&amp;quot;100&amp;quot;]
+/(?&amp;lt;!\$)\d+/.exec(&#39;it‘s is worth about €90&#39;)                    //[&amp;quot;90&amp;quot;]
+
+后行断言需要先匹配x，再回到左边匹配y的部分。这种先右后左的执行顺序与其他正则操作相反，导致了一些不符合预期的结果
+/(?&amp;lt;=(\d+)(\d+))$/.exec(&#39;1053&#39;)     //[&amp;quot;&amp;quot;,&amp;quot;1&amp;quot;,&amp;quot;053&amp;quot;]
+/^(\d+)(\d+)$/.exec(&#39;1053&#39;)         //[&amp;quot;1053,&amp;quot;105&amp;quot;,&amp;quot;3&amp;quot;]
+
+/(?&amp;lt;=(o)d\l)r/.exec(&#39;hodor&#39;)        //null
+/(?&amp;lt;=\ld(o))r/.exec(&#39;hodor&#39;)        //[&amp;quot;r&amp;quot;,&amp;quot;o&amp;quot;]
+
+Unicode属性类（提案）
+使用\P{...}和\p{...}，允许正则表达式匹配符合Unicode某种属性的所有字符
+const regexGreekSymbol=/\p{Script=Greek}/u;
+regexGreeKSymbol.test(&#39;Π&#39;)      //true
+
+具名组匹配（提案）
+简介
+正则表达式使用圆括号进行组匹配const RE_DATE=/(\d{4})-(\d{2})-(\d{2})/;
+组匹配的一个问题是，每一组的匹配含义不容易看出来，只能用数字去引用，要是组的顺序变了，数字引用的时候必须修改序号
+具名组匹配的用法就是再模式的头部添加”问号+尖括号+组名“(?)，然后就可以再exec方法返回结果的groups属性上引用该组名。
+结构赋值与替换
+使用解构赋值直接从匹配结果上为变量赋值
+let {groups:{one,two}}=/^(?&amp;lt;one&amp;gt;.*):(?&amp;lt;two&amp;gt;.*)$/u.exec(&#39;foo:bar&#39;);
+字符串替换时，使用$&amp;lt;组名&amp;gt;引用具名组
+let re=/(?&amp;lt;year&amp;gt;\d{4})-(?&amp;lt;month&amp;gt;\d{2})-(?&amp;lt;day&amp;gt;\d{2})/u;
+&#39;2015-01-02&#39;.replace(re,&#39;$&amp;lt;day&amp;gt;/$&amp;lt;month&amp;gt;/$&amp;lt;year&amp;gt;&#39;)
+//  &#39;02/01/2015&#39;
+
+replace方法的第二个参数是一个字符串，表示格式，而不是正则表达式，第一个才是。replace的第二个参数也可以是函数，接受源字符串、匹配项、开始位置等，返回一个新的字符串
+&#39;2015-01-02&#39;.replace(re,(
+    matched,    //整个匹配结果2015-01-02
+    capturel1,  //第一个组匹配2015
+    capturel2,  //第二个组匹配01
+    capturel3,  //第三个组匹配02
+    position,   //匹配开始的位置0
+    S,          //源字符串2015-01-05
+    groups      //具名组构成的一个对象{year,month,day}
+)=&amp;gt;{
+    let {day,month,year}=args[args.length-1];
+    return `${day}/${month}/${year}`;
+});
+
+具名组匹配在原来的基础上新增了最后一个函数参数：具名组构成的一个对象。函数内部可以直接对这个对象进行解构赋值
+引用
+如果要在正则表达式内部引用某个“具名组匹配”，可以使用\k&amp;lt;组名&amp;gt;的写法，数字引用（\1）依然有效，而且可以混用
+const RE_TWICE=/^(?&amp;lt;word&amp;gt;[a-z]+)!\k&amp;lt;word&amp;gt;!\1$;
+RE_TWICE.test(&#39;abc!abc!abc&#39;)    //true
+RE_TWICE.test(&#39;abc!abc!ab&#39;)     //false
+
 
                                         </div>
                                         
@@ -197,10 +312,10 @@ aaa之后，剩余字符串为&amp;quot;aa_a&amp;quot;，由于第一个位置�
                     <!-- 个人信息 -->
                     
     <div class="id_card i-card">
-        <div class="id_card-avatar" style="background-image: url(https://greyseid.github.io//images/avatar.png?v=1605600026721)">
+        <div class="id_card-avatar" style="background-image: url(https://greyseid.github.io//images/avatar.png?v=1605623648980)">
         </div>
         <h1 class="id_card-title">
-            GREYSEID
+            正义大厅
         </h1>
         <h2 class="id_card-description">
             欢迎来到GREYSEID的自留地
@@ -209,6 +324,9 @@ aaa之后，剩余字符串为&amp;quot;aa_a&amp;quot;，由于第一个位置�
         <div class="id_card-sns">
             <!-- github -->
             
+                <a href="https://github.com/GREYSEID" target="_blank" rel="noopener noreferrer"><i
+                class="fa fa-github"></i></a>
+                
                     <!-- twitter -->
                     
                             <!-- weibo -->

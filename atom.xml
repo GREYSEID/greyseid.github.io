@@ -1,23 +1,53 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://greyseid.github.io/</id>
-    <title>GREYSEID</title>
-    <updated>2020-11-17T08:00:32.429Z</updated>
+    <title>正义大厅</title>
+    <updated>2020-11-17T15:28:02.745Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://greyseid.github.io/"/>
     <link rel="self" href="https://greyseid.github.io/atom.xml"/>
     <subtitle>欢迎来到GREYSEID的自留地</subtitle>
     <logo>https://greyseid.github.io/images/avatar.png</logo>
     <icon>https://greyseid.github.io/favicon.ico</icon>
-    <rights>All rights reserved 2020, GREYSEID</rights>
+    <rights>All rights reserved 2020, 正义大厅</rights>
     <entry>
         <title type="html"><![CDATA[正则的拓展]]></title>
         <id>https://greyseid.github.io/post/zheng-ze-de-tuo-zhan/</id>
         <link href="https://greyseid.github.io/post/zheng-ze-de-tuo-zhan/">
         </link>
         <updated>2020-11-16T07:22:32.000Z</updated>
-        <content type="html"><![CDATA[<p>#RegExp构造函数#<br>
-在<em>ES5</em>中，使用<strong>RegExp构造函数</strong>时</p>
+        <content type="html"><![CDATA[<p><ul class="markdownIt-TOC">
+<li><a href="#regexp%E6%9E%84%E9%80%A0%E5%87%BD%E6%95%B0">RegExp构造函数</a></li>
+<li><a href="#%E5%AD%97%E7%AC%A6%E4%B8%B2%E7%9A%84%E6%AD%A3%E5%88%99%E6%96%B9%E6%B3%95">字符串的正则方法</a></li>
+<li><a href="#u%E4%BF%AE%E9%A5%B0%E7%AC%A6">u修饰符</a>
+<ul>
+<li><a href="#%E7%82%B9%E5%AD%97%E7%AC%A6">点字符</a></li>
+<li><a href="#unicode%E5%AD%97%E7%AC%A6%E8%A1%A8%E7%A4%BA%E6%B3%95">Unicode字符表示法</a></li>
+<li><a href="#%E9%87%8F%E8%AF%8D">量词</a></li>
+<li><a href="#%E9%A2%84%E5%AE%9A%E4%B9%89%E6%A8%A1%E5%BC%8F">预定义模式</a></li>
+<li><a href="#i%E4%BF%AE%E9%A5%B0%E7%AC%A6">i修饰符</a></li>
+</ul>
+</li>
+<li><a href="#y%E4%BF%AE%E9%A5%B0%E7%AC%A6">y修饰符</a>
+<ul>
+<li><a href="#sticky%E5%B1%9E%E6%80%A7">sticky属性</a></li>
+</ul>
+</li>
+<li><a href="#flags%E5%B1%9E%E6%80%A7">flags属性</a></li>
+<li><a href="#s%E4%BF%AE%E9%A5%B0%E7%AC%A6dotall%E6%A8%A1%E5%BC%8F%E6%8F%90%E6%A1%88">s修饰符：dotAll模式（提案）</a></li>
+<li><a href="#%E5%90%8E%E8%A1%8C%E6%96%AD%E8%A8%80%E6%8F%90%E6%A1%88-v8%E5%BC%95%E6%93%8E49%E7%89%88%E6%9C%AC%E5%B7%B2%E6%94%AF%E6%8C%81">后行断言（提案） ——V8引擎4.9版本已支持</a></li>
+<li><a href="#unicode%E5%B1%9E%E6%80%A7%E7%B1%BB%E6%8F%90%E6%A1%88">Unicode属性类（提案）</a></li>
+<li><a href="#%E5%85%B7%E5%90%8D%E7%BB%84%E5%8C%B9%E9%85%8D%E6%8F%90%E6%A1%88">具名组匹配（提案）</a>
+<ul>
+<li><a href="#%E7%AE%80%E4%BB%8B">简介</a></li>
+<li><a href="#%E7%BB%93%E6%9E%84%E8%B5%8B%E5%80%BC%E4%B8%8E%E6%9B%BF%E6%8D%A2">结构赋值与替换</a></li>
+<li><a href="#%E5%BC%95%E7%94%A8">引用</a></li>
+</ul>
+</li>
+</ul>
+</p>
+<h1 id="regexp构造函数">RegExp构造函数</h1>
+<p>在<em>ES5</em>中，使用<strong>RegExp构造函数</strong>时</p>
 <pre><code class="language-javascript">var regex=new RegExp('xyz','i');
 //或
 var regex=new RegExp(/xyz/i);
@@ -32,35 +62,35 @@ var regex=/xyz/i;
 <pre><code class="language-javascript">new RegExp(/xyz/ig,'i').flags;
 //&quot;i&quot;
 </code></pre>
-<p>#字符串的正则方法#<br>
-字符串对象<code>new String()</code>有四种方法使用正则表达式：<code>match()</code>、<code>replace()</code>、<code>search()</code>、<code>split()</code><br>
+<h1 id="字符串的正则方法">字符串的正则方法</h1>
+<p>字符串对象<code>new String()</code>有四种方法使用正则表达式：<code>match()</code>、<code>replace()</code>、<code>search()</code>、<code>split()</code><br>
 <em>ES6</em>使四个方法在内部全部调用<strong>RegExp</strong>的实例方法</p>
-<p>#u修饰符#<br>
-<em>ES6</em>新增了u修饰符用于正确处理大于\uFFFF的Unicode字符，也就是可以处理4个字节的UTF-16编码<br>
-##点字符##<br>
-点(.)字符在正则表达式中的含义是除换行符以外的任意单个字符，而大于\uFFFF的Unicode字符，点字符不能识别<br>
-##Unicode字符表示法##<br>
-<em>ES6</em>新增了用大括号{}表示Unicode字符的方法，但是在正则表达式中，必须要加上u修饰符才能识别当中的大括号，否则会被解读为量词</p>
+<h1 id="u修饰符">u修饰符</h1>
+<p><em>ES6</em>新增了u修饰符用于正确处理大于\uFFFF的Unicode字符，也就是可以处理4个字节的UTF-16编码</p>
+<h2 id="点字符">点字符</h2>
+<p>点(.)字符在正则表达式中的含义是除换行符以外的任意单个字符，而大于\uFFFF的Unicode字符，点字符不能识别</p>
+<h2 id="unicode字符表示法">Unicode字符表示法</h2>
+<p><em>ES6</em>新增了用大括号{}表示Unicode字符的方法，但是在正则表达式中，必须要加上u修饰符才能识别当中的大括号，否则会被解读为量词</p>
 <pre><code class="language-javascript">/\u{61}/.test('a')                          //false
 /\u{61}/u.test('a')                         //true
 /\u{20BB7}/u.test('𠮷')                     //true
 </code></pre>
-<p>##量词##<br>
-使用u修饰符后，所有两次都会正确识别码点大于0xFFFF的Unicode字符</p>
+<h2 id="量词">量词</h2>
+<p>使用u修饰符后，所有两次都会正确识别码点大于0xFFFF的Unicode字符</p>
 <pre><code class="language-javascript">/a{a}/.test('aa')               //true
 /a{2}/u.test('aa')              //true
 /𠮷{2}/.test('𠮷𠮷')            //false
 /𠮷{2}/u.test('𠮷𠮷')           //true
 </code></pre>
-<p>##预定义模式##<br>
-u修饰符页影响到预定义模式能否正确识别码点大于0xFFFF的Unicode字符<br>
-##i修饰符##<br>
-有些Unicode字符的编码不同，但是字型相近，比如，\u004B和\u212A都是大写的K</p>
+<h2 id="预定义模式">预定义模式</h2>
+<p>u修饰符页影响到预定义模式能否正确识别码点大于0xFFFF的Unicode字符</p>
+<h2 id="i修饰符">i修饰符</h2>
+<p>有些Unicode字符的编码不同，但是字型相近，比如，\u004B和\u212A都是大写的K</p>
 <pre><code class="language-javascript">/[a-z]/i.test('\u212A')             //false
 /[a-z]/iu.test('\u212A')            //true
 </code></pre>
 <p>不加修饰符无法识别非规范的K字符</p>
-<p>#y修饰符#</p>
+<h1 id="y修饰符">y修饰符</h1>
 <p><em>ES6</em>添加了y修饰符（粘连<em>sticky</em>修饰符）<br>
 y修饰符与g修饰符类似，也是全局匹配，后一次匹配都从上一次匹配成功的下一个位置开始。不同之处在于，g修饰符只要剩余位置中存在匹配就行，而y修饰符会确保匹配必须从剩余的第一个位置开始</p>
 <pre><code class="language-javascript">var s=&quot;aaa_aa_a&quot;;
@@ -72,6 +102,83 @@ r1.exec(s)          //[&quot;aa&quot;]
 r2.exec(s)          //null
 </code></pre>
 <p>aaa之后，剩余字符串为&quot;<em>aa_a&quot;，由于第一个位置为&quot;</em>&quot;,所以y修饰符是不会匹配到的，返回null结果</p>
+<h2 id="sticky属性">sticky属性</h2>
+<p>为了配合y修饰符的使用，添加了sticky属性，表示是否设置了y修饰符</p>
+<pre><code class="language-javascript">var r=/hello\d/y;
+r.sticky            //true
+</code></pre>
+<h1 id="flags属性">flags属性</h1>
+<p><em>ES6</em>新增了一个flags属性来返回正则表达式的修饰符</p>
+<pre><code class="language-javascript">/abc/ig.flags
+//'gi'
+</code></pre>
+<h1 id="s修饰符dotall模式提案">s修饰符：dotAll模式（提案）</h1>
+<p>点(.)是一个特殊字符，代表任意的单个字符，但是<strong>行终止符</strong>除外</p>
+<ul>
+<li>U+000A 换行符(<strong>\n</strong>)</li>
+<li>U+000D 回车符(<strong>\r</strong>)</li>
+<li>U+2028 行分隔符</li>
+<li>U+2029 段分隔符</li>
+</ul>
+<p><code>/foo.bar/.test('foo\nbar) //false</code>因为(.)不匹配\n，所以正则表达式返回false<br>
+可以使用<code>/foo[^]bar/.test('foo\nbar') //true</code><br>
+或者引入s修饰符也就是<strong>dotAll模式</strong>，可以匹配任意单个字符</p>
+<h1 id="后行断言提案-v8引擎49版本已支持">后行断言（提案） ——V8引擎4.9版本已支持</h1>
+<p><em>JavaScript</em>语言的正则表达式只支持先行断言和先行否定断言，不支持后行断言和后行否定断言<br>
+<em>先行断言</em>指的是，x只有在y的前面才匹配，例如<code>/x(?=y)/</code>的形式，只匹配百分号之前的数字：<code>/\d+(?=%)/</code>。<em>先行否定断言</em>指的是x只有不在y的后面才匹配，写成<code>/x(?!y)/</code>的形式，只匹配不在百分号前的数字，写成<code>/\d+(?!%)/</code></p>
+<pre><code class="language-javascript">/\d+(?=%)/.exec('100% of US presidents have been male')         //[&quot;100&quot;]
+/\d+(?!%)/.exec('that’s all 44 of them')                        //[&quot;44&quot;]
+</code></pre>
+<p><em>后行断言</em>与先行断言相反，x只有在y后面才能匹配，必须写成<code>/(?&lt;=y)x/</code>的形式，只匹配美元符号之后的数字，要写成<code>/(?&lt;=\$)\d+/</code>的形式，<em>后行否定断言</em>也是与先行否定断言相反，只有x不在y后面才匹配，写成<code>/(?&lt;!y)x/</code>的形式，只匹配不在美元符号后面的数字，写成<code>(?&lt;!\$)\d+/</code></p>
+<pre><code class="language-javascript">/(?&lt;=\$)\d+/.exec('Benjamin Franklin is on the $100 bill')      //[&quot;100&quot;]
+/(?&lt;!\$)\d+/.exec('it‘s is worth about €90')                    //[&quot;90&quot;]
+</code></pre>
+<p><em>后行断言</em>需要先匹配x，再回到左边匹配y的部分。这种<strong>先右后左</strong>的执行顺序与其他正则操作相反，导致了一些不符合预期的结果</p>
+<pre><code class="language-javascript">/(?&lt;=(\d+)(\d+))$/.exec('1053')     //[&quot;&quot;,&quot;1&quot;,&quot;053&quot;]
+/^(\d+)(\d+)$/.exec('1053')         //[&quot;1053,&quot;105&quot;,&quot;3&quot;]
+
+/(?&lt;=(o)d\l)r/.exec('hodor')        //null
+/(?&lt;=\ld(o))r/.exec('hodor')        //[&quot;r&quot;,&quot;o&quot;]
+</code></pre>
+<h1 id="unicode属性类提案">Unicode属性类（提案）</h1>
+<p>使用<code>\P{...}</code>和<code>\p{...}</code>，允许正则表达式匹配符合Unicode某种属性的所有字符</p>
+<pre><code class="language-javascript">const regexGreekSymbol=/\p{Script=Greek}/u;
+regexGreeKSymbol.test('Π')      //true
+</code></pre>
+<h1 id="具名组匹配提案">具名组匹配（提案）</h1>
+<h2 id="简介">简介</h2>
+<p>正则表达式使用圆括号进行组匹配<code>const RE_DATE=/(\d{4})-(\d{2})-(\d{2})/;</code><br>
+组匹配的一个问题是，每一组的匹配含义不容易看出来，只能用数字去引用，要是组的顺序变了，数字引用的时候必须修改序号<br>
+具名组匹配的用法就是再模式的头部添加”问号+尖括号+组名“(?<year>)，然后就可以再exec方法返回结果的groups属性上引用该组名。</p>
+<h2 id="结构赋值与替换">结构赋值与替换</h2>
+<p>使用解构赋值直接从匹配结果上为变量赋值<br>
+<code>let {groups:{one,two}}=/^(?&lt;one&gt;.*):(?&lt;two&gt;.*)$/u.exec('foo:bar');</code><br>
+字符串替换时，使用$&lt;组名&gt;引用具名组</p>
+<pre><code class="language-javascript">let re=/(?&lt;year&gt;\d{4})-(?&lt;month&gt;\d{2})-(?&lt;day&gt;\d{2})/u;
+'2015-01-02'.replace(re,'$&lt;day&gt;/$&lt;month&gt;/$&lt;year&gt;')
+//  '02/01/2015'
+</code></pre>
+<p><em>replace</em>方法的第二个参数是一个字符串，表示格式，而不是正则表达式，第一个才是。<em>replace</em>的第二个参数也可以是函数，接受源字符串、匹配项、开始位置等，返回一个新的字符串</p>
+<pre><code class="language-javascript">'2015-01-02'.replace(re,(
+    matched,    //整个匹配结果2015-01-02
+    capturel1,  //第一个组匹配2015
+    capturel2,  //第二个组匹配01
+    capturel3,  //第三个组匹配02
+    position,   //匹配开始的位置0
+    S,          //源字符串2015-01-05
+    groups      //具名组构成的一个对象{year,month,day}
+)=&gt;{
+    let {day,month,year}=args[args.length-1];
+    return `${day}/${month}/${year}`;
+});
+</code></pre>
+<p>具名组匹配在原来的基础上新增了最后一个函数参数：具名组构成的一个对象。函数内部可以直接对这个对象进行解构赋值</p>
+<h2 id="引用">引用</h2>
+<p>如果要在正则表达式内部引用某个“具名组匹配”，可以使用\k&lt;组名&gt;的写法，数字引用（\1）依然有效，而且可以混用</p>
+<pre><code class="language-javascript">const RE_TWICE=/^(?&lt;word&gt;[a-z]+)!\k&lt;word&gt;!\1$;
+RE_TWICE.test('abc!abc!abc')    //true
+RE_TWICE.test('abc!abc!ab')     //false
+</code></pre>
 ]]></content>
     </entry>
     <entry>
