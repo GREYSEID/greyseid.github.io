@@ -7,7 +7,7 @@
 <title>
     GREYSEID
 </title>
-<link rel="shortcut icon" href="https://greyseid.github.io//favicon.ico?v=1605599918934">
+<link rel="shortcut icon" href="https://greyseid.github.io//favicon.ico?v=1605600026721">
 <!-- <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous"> -->
 <link href="https://cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
@@ -27,7 +27,7 @@
     <div class="nav">
         <div class="logo">
             <a href="https://greyseid.github.io/">
-                <img class="avatar" src="https://greyseid.github.io//images/avatar.png?v=1605599918934" alt="">
+                <img class="avatar" src="https://greyseid.github.io//images/avatar.png?v=1605600026721" alt="">
             </a>
             <div class="site-title">
                 <h1>
@@ -99,6 +99,90 @@
         
             <article class="post i-card">
                 <h2 class="post-title">
+                    <a href="https://greyseid.github.io/post/zheng-ze-de-tuo-zhan/">
+                        正则的拓展
+                    </a>
+                </h2>
+                <div class="post-info">
+                    <time class="post-time">2020-11-16</time>
+                    
+                        <a href="https://greyseid.github.io/tag/uzhtOJ9qh/" class="post-tag i-tag
+                            i-tag-other_2">
+            #ES6
+        </a>
+                        
+                </div>
+                <div class="post-article">
+                    
+                            <div class="post-content">
+                                
+                                        <div class="post-content-content">
+                                            #RegExp构造函数#
+在ES5中，使用RegExp构造函数时
+var regex=new RegExp(&#39;xyz&#39;,&#39;i&#39;);
+//或
+var regex=new RegExp(/xyz/i);
+//等价于
+var regex=/xyz/i;
+
+但是在使用RegExp构造函数时，第一个参数为正则表达式，则第二个参数不能添加修饰符
+var regex=new RegExp(/xyz/,&#39;i&#39;);
+//错误error
+
+但是在ES6中则发生了变化，它允许使用这种方式混用的方式，并且在使用的时候，如果第一个参数的正则表达式中有修饰符的话，那么第二个参数的修饰符就会覆盖过去，原来的修饰符会被忽略，只会使用新的修饰符
+new RegExp(/xyz/ig,&#39;i&#39;).flags;
+//&amp;quot;i&amp;quot;
+
+#字符串的正则方法#
+字符串对象new String()有四种方法使用正则表达式：match()、replace()、search()、split()
+ES6使四个方法在内部全部调用RegExp的实例方法
+#u修饰符#
+ES6新增了u修饰符用于正确处理大于\uFFFF的Unicode字符，也就是可以处理4个字节的UTF-16编码
+##点字符##
+点(.)字符在正则表达式中的含义是除换行符以外的任意单个字符，而大于\uFFFF的Unicode字符，点字符不能识别
+##Unicode字符表示法##
+ES6新增了用大括号{}表示Unicode字符的方法，但是在正则表达式中，必须要加上u修饰符才能识别当中的大括号，否则会被解读为量词
+/\u{61}/.test(&#39;a&#39;)                          //false
+/\u{61}/u.test(&#39;a&#39;)                         //true
+/\u{20BB7}/u.test(&#39;𠮷&#39;)                     //true
+
+##量词##
+使用u修饰符后，所有两次都会正确识别码点大于0xFFFF的Unicode字符
+/a{a}/.test(&#39;aa&#39;)               //true
+/a{2}/u.test(&#39;aa&#39;)              //true
+/𠮷{2}/.test(&#39;𠮷𠮷&#39;)            //false
+/𠮷{2}/u.test(&#39;𠮷𠮷&#39;)           //true
+
+##预定义模式##
+u修饰符页影响到预定义模式能否正确识别码点大于0xFFFF的Unicode字符
+##i修饰符##
+有些Unicode字符的编码不同，但是字型相近，比如，\u004B和\u212A都是大写的K
+/[a-z]/i.test(&#39;\u212A&#39;)             //false
+/[a-z]/iu.test(&#39;\u212A&#39;)            //true
+
+不加修饰符无法识别非规范的K字符
+#y修饰符#
+ES6添加了y修饰符（粘连sticky修饰符）
+y修饰符与g修饰符类似，也是全局匹配，后一次匹配都从上一次匹配成功的下一个位置开始。不同之处在于，g修饰符只要剩余位置中存在匹配就行，而y修饰符会确保匹配必须从剩余的第一个位置开始
+var s=&amp;quot;aaa_aa_a&amp;quot;;
+var r1=/a+/g;
+var r2=/a+/y;
+r1.exec(s)          //[&amp;quot;aaa&amp;quot;]
+r2.exec(s)          //[&amp;quot;aaa&amp;quot;]
+r1.exec(s)          //[&amp;quot;aa&amp;quot;]
+r2.exec(s)          //null
+
+aaa之后，剩余字符串为&amp;quot;aa_a&amp;quot;，由于第一个位置为&amp;quot;&amp;quot;,所以y修饰符是不会匹配到的，返回null结果
+
+                                        </div>
+                                        
+                                            <a class="btn btn-text" href="https://greyseid.github.io/post/zheng-ze-de-tuo-zhan/">Read More ~</a>
+                            </div>
+                </div>
+            </article>
+            
+            <article class="post i-card">
+                <h2 class="post-title">
                     <a href="https://greyseid.github.io/post/hello/">
                         HELLO！！！
                     </a>
@@ -137,7 +221,7 @@
                     <!-- 个人信息 -->
                     
     <div class="id_card i-card">
-        <div class="id_card-avatar" style="background-image: url(https://greyseid.github.io//images/avatar.png?v=1605599918934)">
+        <div class="id_card-avatar" style="background-image: url(https://greyseid.github.io//images/avatar.png?v=1605600026721)">
         </div>
         <h1 class="id_card-title">
             GREYSEID

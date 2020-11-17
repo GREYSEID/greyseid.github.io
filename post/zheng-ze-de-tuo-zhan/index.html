@@ -5,7 +5,7 @@
 <meta name="description" content="" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>
-    HELLO！！！ | GREYSEID
+    正则的拓展 | GREYSEID
 </title>
 <link rel="shortcut icon" href="https://greyseid.github.io//favicon.ico?v=1605600026721">
 <!-- <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous"> -->
@@ -99,24 +99,89 @@
                 <div id="content" class="main-container-left">
                     <article class="post i-card">
                         <h2 class="post-title">
-                            HELLO！！！
+                            正则的拓展
                         </h2>
                         <div class="post-info">
                             <time class="post-time">2020-11-16</time>
                             
+                                <a href="https://greyseid.github.io/tag/uzhtOJ9qh/" class="post-tag i-tag
+                            i-tag-warning">
+                            #ES6
+                        </a>
+                                
                         </div>
                         
-                            <div class="post-feature-image" style="background-image: url('https://greyseid.github.io//post-images/hello.jpg')"></div>
-                            
                                 <div class="post-content">
-                                    <p><em><strong>HELLO WORLD!!!</strong></em></p>
-<p><em>第一篇博客</em></p>
-<p>希望以后能记录更多的内容</p>
+                                    <p>#RegExp构造函数#<br>
+在<em>ES5</em>中，使用<strong>RegExp构造函数</strong>时</p>
+<pre><code class="language-javascript">var regex=new RegExp('xyz','i');
+//或
+var regex=new RegExp(/xyz/i);
+//等价于
+var regex=/xyz/i;
+</code></pre>
+<p>但是在使用<strong>RegExp构造函数</strong>时，第一个参数为正则表达式，则第二个参数不能添加修饰符</p>
+<pre><code class="language-javascript">var regex=new RegExp(/xyz/,'i');
+//错误error
+</code></pre>
+<p>但是在<em>ES6</em>中则发生了变化，它允许使用这种方式混用的方式，并且在使用的时候，如果第一个参数的正则表达式中有修饰符的话，那么第二个参数的修饰符就会覆盖过去，原来的修饰符会被忽略，只会使用新的修饰符</p>
+<pre><code class="language-javascript">new RegExp(/xyz/ig,'i').flags;
+//&quot;i&quot;
+</code></pre>
+<p>#字符串的正则方法#<br>
+字符串对象<code>new String()</code>有四种方法使用正则表达式：<code>match()</code>、<code>replace()</code>、<code>search()</code>、<code>split()</code><br>
+<em>ES6</em>使四个方法在内部全部调用<strong>RegExp</strong>的实例方法</p>
+<p>#u修饰符#<br>
+<em>ES6</em>新增了u修饰符用于正确处理大于\uFFFF的Unicode字符，也就是可以处理4个字节的UTF-16编码<br>
+##点字符##<br>
+点(.)字符在正则表达式中的含义是除换行符以外的任意单个字符，而大于\uFFFF的Unicode字符，点字符不能识别<br>
+##Unicode字符表示法##<br>
+<em>ES6</em>新增了用大括号{}表示Unicode字符的方法，但是在正则表达式中，必须要加上u修饰符才能识别当中的大括号，否则会被解读为量词</p>
+<pre><code class="language-javascript">/\u{61}/.test('a')                          //false
+/\u{61}/u.test('a')                         //true
+/\u{20BB7}/u.test('𠮷')                     //true
+</code></pre>
+<p>##量词##<br>
+使用u修饰符后，所有两次都会正确识别码点大于0xFFFF的Unicode字符</p>
+<pre><code class="language-javascript">/a{a}/.test('aa')               //true
+/a{2}/u.test('aa')              //true
+/𠮷{2}/.test('𠮷𠮷')            //false
+/𠮷{2}/u.test('𠮷𠮷')           //true
+</code></pre>
+<p>##预定义模式##<br>
+u修饰符页影响到预定义模式能否正确识别码点大于0xFFFF的Unicode字符<br>
+##i修饰符##<br>
+有些Unicode字符的编码不同，但是字型相近，比如，\u004B和\u212A都是大写的K</p>
+<pre><code class="language-javascript">/[a-z]/i.test('\u212A')             //false
+/[a-z]/iu.test('\u212A')            //true
+</code></pre>
+<p>不加修饰符无法识别非规范的K字符</p>
+<p>#y修饰符#</p>
+<p><em>ES6</em>添加了y修饰符（粘连<em>sticky</em>修饰符）<br>
+y修饰符与g修饰符类似，也是全局匹配，后一次匹配都从上一次匹配成功的下一个位置开始。不同之处在于，g修饰符只要剩余位置中存在匹配就行，而y修饰符会确保匹配必须从剩余的第一个位置开始</p>
+<pre><code class="language-javascript">var s=&quot;aaa_aa_a&quot;;
+var r1=/a+/g;
+var r2=/a+/y;
+r1.exec(s)          //[&quot;aaa&quot;]
+r2.exec(s)          //[&quot;aaa&quot;]
+r1.exec(s)          //[&quot;aa&quot;]
+r2.exec(s)          //null
+</code></pre>
+<p>aaa之后，剩余字符串为&quot;<em>aa_a&quot;，由于第一个位置为&quot;</em>&quot;,所以y修饰符是不会匹配到的，返回null结果</p>
 
                                 </div>
                     </article>
                     <!--  -->
                     
+                        <div class="next-post">
+                            <div class="next">下一篇</div>
+                            <a href="https://greyseid.github.io/post/hello/">
+                                <h3 class="post-title">
+                                    HELLO！！！
+                                </h3>
+                            </a>
+                        </div>
+                        
                             <div id="disqus_thread"></div>
                             <div id="gitalk-container"></div>
                 </div>
