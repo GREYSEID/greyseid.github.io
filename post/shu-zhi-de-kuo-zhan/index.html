@@ -7,7 +7,7 @@
 <title>
     数值的扩展 | 正义大厅
 </title>
-<link rel="shortcut icon" href="https://greyseid.github.io//favicon.ico?v=1605795296555">
+<link rel="shortcut icon" href="https://greyseid.github.io//favicon.ico?v=1605795485712">
 <!-- <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous"> -->
 <link href="https://cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
@@ -28,7 +28,7 @@
     <div class="nav">
         <div class="logo">
             <a href="https://greyseid.github.io/">
-                <img class="avatar" src="https://greyseid.github.io//images/avatar.png?v=1605795296555" alt="">
+                <img class="avatar" src="https://greyseid.github.io//images/avatar.png?v=1605795485712" alt="">
             </a>
             <div class="site-title">
                 <h1>
@@ -105,12 +105,12 @@
                             <time class="post-time">2020-11-18</time>
                             
                                 <a href="https://greyseid.github.io/tag/AjqKAL42P/" class="post-tag i-tag
-                            i-tag-">
+                            i-tag-other_3">
                             #前端
                         </a>
                                 
                                 <a href="https://greyseid.github.io/tag/uzhtOJ9qh/" class="post-tag i-tag
-                            i-tag-other_4">
+                            i-tag-banana">
                             #ES6
                         </a>
                                 
@@ -377,7 +377,7 @@ Integer('abc')
 <p>Integer类型的+、-、*和**这四个二元运算符与Number类型的行为一致。除法运算/会舍去小数部分，返回一个整数<code>9n/5n //1n</code><br>
 几乎所有的Number运算符都可以用在Integer中，但是有两个除外：不带符号的右移运算符&gt;&gt;&gt;和一元的求正运算符+，使用时会报错。&gt;&gt;&gt;要求最高位补0，但是Integer类型没有最高位，这个运算符毫无意义。一元运算符+在asm.js里面总是返回Number类型或报错<br>
 Integer类型与Number类型进行混合运算会报错，因为无论返回Integer类型还是Number类型都会丢失信息<code>(2n**53n+1n)+0.5)</code>，返回Integer会丢失0.5这个小数，返回Number会超过53位的精确范围<br>
-运算符（<mark>）会改变数据类型，所以不允许混合使用，（</mark>=）不会改变数据类型，所以可以混合使用</p>
+运算符==会改变数据类型，所以不允许混合使用，===不会改变数据类型，所以可以混合使用</p>
 
                                 </div>
                     </article>
