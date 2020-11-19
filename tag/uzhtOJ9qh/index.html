@@ -7,7 +7,7 @@
 <title>
     ES6 | 正义大厅
 </title>
-<link rel="shortcut icon" href="https://greyseid.github.io//favicon.ico?v=1605623648980">
+<link rel="shortcut icon" href="https://greyseid.github.io//favicon.ico?v=1605795296555">
 <!-- <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous"> -->
 <link href="https://cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
@@ -27,7 +27,7 @@
     <div class="nav">
         <div class="logo">
             <a href="https://greyseid.github.io/">
-                <img class="avatar" src="https://greyseid.github.io//images/avatar.png?v=1605623648980" alt="">
+                <img class="avatar" src="https://greyseid.github.io//images/avatar.png?v=1605795296555" alt="">
             </a>
             <div class="site-title">
                 <h1>
@@ -104,6 +104,301 @@
         
             <article class="post i-card">
                 <h2 class="post-title">
+                    <a href="https://greyseid.github.io/post/shu-zhi-de-kuo-zhan/">
+                        数值的扩展
+                    </a>
+                </h2>
+                <div class="post-info">
+                    <time class="post-time">2020-11-18</time>
+                    
+                        <a href="https://greyseid.github.io/tag/AjqKAL42P/" class="post-tag i-tag
+                            i-tag-other_1">
+            #前端
+        </a>
+                        
+                        <a href="https://greyseid.github.io/tag/uzhtOJ9qh/" class="post-tag i-tag
+                            i-tag-warning">
+            #ES6
+        </a>
+                        
+                </div>
+                <div class="post-article">
+                    
+                        <a href="https://greyseid.github.io/post/shu-zhi-de-kuo-zhan/" class="post-feature-image" style="background-image:url(https://greyseid.github.io//post-images/shu-zhi-de-kuo-zhan.jpg) ">
+                        </a>
+                        
+                            <div class="post-content">
+                                
+                                        <div class="post-content-content">
+                                            
+二进制和八进制表示法
+Number.isFinite()、Number.isNaN()
+Number.parseInt()、Number.parseFloat()
+Number.isInteger()
+Number.EPSILON
+安全整数和Number.isSafeInteger()
+Math对象的拓展
+
+Math.trunc()
+Math.sign()
+Math.cbrt()
+MAth.clz32()
+Math.imul()
+Math.fround()
+Math.hypot()
+对数方法
+
+Math.expm1()
+Math.log1p()
+Math.log10()
+Math.log2()
+
+
+双曲函数方法
+
+
+Math.signbit()——提案
+指数运算符
+Integer数据类型——提案
+
+简介
+运算
+
+
+
+
+二进制和八进制表示法
+ES6提供了二进制和八进制的新写法，分别用前缀0b或0B（binary）和0o或0O（octonary）表示。八进制可以使用前缀0表示0O11===011，但是在严格模式中是不允许的，而在ES6中，进一步明确表示要用0O来表示。
+如果要将使用0b和0x前缀的字符串数值转为十进制数值，要使用Number方法
+Number(&#39;0b111&#39;) //7
+Number(&#39;0o10&#39;)  //8
+
+Number.isFinite()、Number.isNaN()
+ES6在Number对象上提供了Number.isFinite()和Number.isNaN()两个方法。一个用来判断是否有限，一个用来判断是否为NaN(not a number)。
+Number.isFinite(15);        //true
+Number.isFinite(0.8);       //true
+Number.isFinite(NaN);       //false
+Number.isFinite(Infinity);  //false
+Number.isFinite(-Infinity); //false
+Number.isFinite(&#39;foo&#39;);     //false
+Number.isFinite(&#39;15&#39;);      //false
+Number.isFinite(true);      //false
+
+新的方法与全局方法isFinite()和isNaN()的不同之处在于，新的方法是不会将传递过来的参数进行转换的，也就是说是不会对非数值进行转换，所以Number.isFinite()对于非数值，会直接返回false，Number.isNaN之对于NaN返回true，其余一律返回false
+Number.parseInt()、Number.parseFloat()
+ES6将parseInt()和parseFloat()移植到了Number对象上，行为完全保持不变
+Number.parseInt(&#39;12.34&#39;)        //12
+Number.parseFloat(&#39;123.45#&#39;)    //123.45
+
+Number.parseInt===parseInt      //true
+Number.parseFloat===parseFloat  //true
+
+这样做的目的是逐步减少全局性方法，使得语言逐步模块化
+Number.isInteger()
+Number.isInteger()用来判断一个值是否为证书。在javascript中，由于整数与浮点数是用同一种方式进行储存，所以3和3.0被视为同一个值
+Number.isInteger(25)    //true
+Number.isInteger(25.0)  //true
+Number.isInteger(25.1)  //false
+Number.isInteger(&amp;quot;15&amp;quot;)  //false
+Number.isInteger(true)  //false
+
+Number.isInteger()不会将非数值转换为数值再进行判断
+Number.EPSILON
+ES6再Number对象上新增了一个极小的常量——Number.EPSILON //2.220446049250313e-6
+引入一个这么小的量目的在于为浮点数的计算设置一个误差范围
+由于浮点数的计算是不精确的，例如0.1+0.2 //0.30000000000000004，所以如果计算的误差能够小于Number.EPSILON，那么就可以认为得到了正确的结果
+安全整数和Number.isSafeInteger()
+JavaScript能够准确表示的整数范围在-253到253之间（开区间），这是由于在js中，整数和浮点数是用同样的方法储存的，所以一共有64位储存，但是第1到11位是用来储存指数部分的，整数并不需要指数部分，所以只剩下53位来进行使用
+Math.pow(2,53)  //2^53
+Math.pow(2,53)===Math.pow(2,53)+1   //true
+
+超出2的53次方后，一个数就不精确了
+ES6引入了Number.MAX_SAFE_INTEGER //Math.pow(2,53)-1和Number.MIN_SAFE_INTEGER //-(Math.pow(2,53)-1)两个常量来表示整数范围的上下限
+使用Number.isSafeInteger()来判断一个整数是否落在这个范围之内时，除了要注意验证计算结果是否在安全整数的范围之内，还要注意参与运算的数是否在范围内
+Number.isSafeInteger(9007199254740993)
+//false
+Number.isSafeInteger(990)
+//true
+Number.isSafeInteger(9007199254740993-990)
+//true
+9007199254740993-990
+//返回正确结果：9007199254740002
+//正确答案应该是：9007199254740003
+
+之所以有这个结果是因为参与运算的数9007199254740993超出了精度范围，所以计算机内部储存为9007199254740992来进行运算，也就是253，而精度范围是不包含这个的，所以不在安全范围内。所以，如果只验证运算结果是否为安全整数，则可能得到错误的结果
+Math对象的拓展
+ES6在Math对象上新增了17个与数学相关的方法。所有这些方法都是静态方法，只能在Math对象上调用
+大部分方法对于非数值，先转换为数值再进行计算，转换不了则返回NaN或false
+Math.trunc()
+去除一个数的小数部分，返回整数部分
+对于非数值，Math.trunc内部使用Number方法转换为数值Math.trunc(&#39;123.456&#39;)//123
+对于空值和无法截取整数的值，返回NaN
+Math.trunc(NaN);    //NaN
+Math.trunc(&#39;foo&#39;);  //NaN
+Math.trunc();       //NaN
+
+Math.sign()
+判断一个数到底是正数、负数还是零。对于非数值，会先转换为数值
+返回值有5种情况
+
+参数为正数，返回+1
+参数为负数，返回-1
+参数为0，返回0
+参数为-0，返回-0
+其他值，返回NaN
+
+Math.sign(-5)//-1
+Math.sign(5)//+1
+Math.sign(0)//+0
+Math.sign(-0)//-0
+Math.sign(NaN)//NaN
+Math.sign(&#39;9&#39;)//+1
+Math.sign(&#39;foo&#39;)//NaN
+Math.sign()//NaN
+
+Math.cbrt()
+用于计算一个数的立方根
+对于非数值，Math.cbrt方法先使用Number方法转换为数值
+Math.cbrt(&#39;8&#39;)      //2
+Math.cbrt(&#39;hello&#39;)  //NaN
+
+MAth.clz32()
+JavaScript的整数使用32位二进制形式表示，Math.clz32()返回一个数的32位无符号整数形式有多少个前导0
+Math.clz32(0)//32
+Math.clz32(1)//31
+MAth.clz32(0b01000000000000000000000000000000)//1
+
+clz32：“count leading zero bits in 32-bit binary representations of a number”计算32位整数的前导0的缩写
+左移计算符&amp;lt;&amp;lt;与Math.clz32直接相关
+对于小数，Math.clz32只考虑整数部分
+对于空值或其他类型的值，Math.clz32会先将他们转换为数值，然后再计算
+Math.clz32()//32
+Math.clz32(NaN)//32
+MAth.clz32(Infinity)//32
+Math.clz32(null)//32
+Math.clz32(&#39;foo&#39;)//32
+Math.clz32([])//32
+Math.clz32({})//32
+MAth.clz32(true)//32
+
+Math.imul()
+返回两个数以32位带符号位整数形式相乘的结果，返回一个32位带符号整数
+Math.imul(2,4)//4
+MAth.imul(-1,8)//-8
+Math.imul(-2,-2)//4
+
+超过32位算溢出
+使用这个方法是因为JS有精度限制，超过253的无法精确表示，对于那些很大的数的乘法，低位数值往往都是不精确的，Math.imul方法可以返回正确的低位数值
+Math.fround()
+返回一个数的单精度浮点数形式Math.fround(1.337)//1.3370000123977661
+对于整数来说，返回的结果不会不同，区别主要在于那些无法用64个二进制位精确表示的小数，会返回最接近这个小数的单精度浮点数
+Math.hypot()
+返回所有参数的平方和的平方根
+如果参数不是数值，会将其转换为数值，如果有一个参数无法转换为数值，则返回NaN
+Math.hypot(3,4)//5
+Math.hypot(NaN)//NaN
+Math.hypot(3,4,&#39;5&#39;)//7.0710678118654755
+Math.hypot(3,4,&#39;foo&#39;)//NaN
+
+对数方法
+ES6新增了4个对数相关方法
+Math.expm1()
+Math.expm1(x)返回ex-1，即Math.exp(x)-1
+Math.expm1(-1)//0.6321205588285577
+Math.expm1(0)//0
+Math.expm1(1)//1.718281828459045
+
+Math.log1p()
+返回ln(1+x)，即Math.log(1+x)，如果x小于-1，返回NaN
+Math.log1p(1)//0.6931471805599453
+Math.log1p(0)//0
+Math.log1p(-1)//-Infinity
+Math.log1p(-2)//NaN
+
+Math.log10()
+返回以10为底的x的对数，即log10x，如果x小于0，则返回NaN
+Math.log10(2)//0.3010299956639812
+Math.log10(1)//0
+Math.log(0)//-Infinity
+Math.log10(-2)//NaN
+Math.log10(100000)//5
+
+Math.log2()
+返回以2为底的x的对数，即log2x，如果x小于0，返回NaN
+Math.log2(3)//1.58462500721156
+Math.log2(2)//1
+Math.log2(1)//0
+Math.log2(0)//-Infinity
+Math.log2(-2)//NaN
+Math.log2(1024)//10
+Math.log2(1&amp;lt;&amp;lt;29)//29
+
+双曲函数方法
+ES6新增6个双曲函数方法
+
+Math.sinh(x) 返回x的双曲正弦
+Math.cosh(x) 返回x的双曲余弦
+Math.tanh(x) 返回x的双曲正切
+Math.asinh(x) 返回x的反双曲正弦
+Math.acosh(x) 返回x的反双曲余弦
+Math.atanh(x) 返回x的反双曲正切
+
+Math.signbit()——提案
+判断一个数的符号位是否已经设置，这个方法是因为在Math.sign()用来判断正负的时候，-0的结果返回的是-0，但一般来说-0和+0是相等的-0===+0//true，所以不好判断是正是负
+Math.signbit(2)//false
+Math.signbit(-2)//true
+Math.signbit(0)//false
+Math.signbit(-0)//true
+
+该方法算法如下
+
+如果参数是NaN，返回false
+如果参数是-0，返回true
+如果参数是负值，返回true
+其他情况返回false
+
+指数运算符
+新增了一个指数运算符(**)
+2**2//4
+2**3//8
+a**=2//a=a*a
+b**=3//b=b*b*b
+
+在v8引擎中，指数运算符与Math.pow的实现不相同，对于特别大的结果，两者会有细微的差异
+Integer数据类型——提案
+简介
+JavaScript所有数字都储存为64位浮点数，使得整数的精确程度只能到53个二进制位，使得JavaScript不适合进行科学和金融方面的精确计算
+引入新的数据类型Integer，只用来表示整数，没有位数限制
+为了与Number类型区别，Integer类型的数据必须使用后缀n来表示1n+2n//3n
+JavaScript提供Integer对象，用来生成Integer类型的数值
+Integer(123)//123n
+Integer(&#39;123&#39;)//123n
+Integer(false)//0n
+Integer(true)//1n
+
+以下用法会报错
+new Integer()
+Integer(undefined)
+Integer(null)
+Integer(&#39;123n&#39;)
+Integer(&#39;abc&#39;)
+//非数值不会转换为数值
+
+运算
+Integer类型的+、-、*和**这四个二元运算符与Number类型的行为一致。除法运算/会舍去小数部分，返回一个整数9n/5n //1n
+几乎所有的Number运算符都可以用在Integer中，但是有两个除外：不带符号的右移运算符&amp;gt;&amp;gt;&amp;gt;和一元的求正运算符+，使用时会报错。&amp;gt;&amp;gt;&amp;gt;要求最高位补0，但是Integer类型没有最高位，这个运算符毫无意义。一元运算符+在asm.js里面总是返回Number类型或报错
+Integer类型与Number类型进行混合运算会报错，因为无论返回Integer类型还是Number类型都会丢失信息(2n**53n+1n)+0.5)，返回Integer会丢失0.5这个小数，返回Number会超过53位的精确范围
+运算符（）会改变数据类型，所以不允许混合使用，（=）不会改变数据类型，所以可以混合使用
+
+                                        </div>
+                                        
+                                            <a class="btn btn-text" href="https://greyseid.github.io/post/shu-zhi-de-kuo-zhan/">Read More ~</a>
+                            </div>
+                </div>
+            </article>
+            
+            <article class="post i-card">
+                <h2 class="post-title">
                     <a href="https://greyseid.github.io/post/zheng-ze-de-tuo-zhan/">
                         正则的拓展
                     </a>
@@ -112,12 +407,12 @@
                     <time class="post-time">2020-11-16</time>
                     
                         <a href="https://greyseid.github.io/tag/AjqKAL42P/" class="post-tag i-tag
-                            i-tag-other_3">
+                            i-tag-banana">
             #前端
         </a>
                         
                         <a href="https://greyseid.github.io/tag/uzhtOJ9qh/" class="post-tag i-tag
-                            i-tag-info">
+                            i-tag-warning">
             #ES6
         </a>
                         
@@ -312,7 +607,7 @@ RE_TWICE.test(&#39;abc!abc!ab&#39;)     //false
                     <!-- 个人信息 -->
                     
     <div class="id_card i-card">
-        <div class="id_card-avatar" style="background-image: url(https://greyseid.github.io//images/avatar.png?v=1605623648980)">
+        <div class="id_card-avatar" style="background-image: url(https://greyseid.github.io//images/avatar.png?v=1605795296555)">
         </div>
         <h1 class="id_card-title">
             正义大厅
