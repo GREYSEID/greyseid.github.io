@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://greyseid.github.io/</id>
     <title>正义大厅</title>
-    <updated>2020-11-19T14:18:07.464Z</updated>
+    <updated>2020-11-22T01:27:31.283Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://greyseid.github.io/"/>
     <link rel="self" href="https://greyseid.github.io/atom.xml"/>
@@ -10,6 +10,257 @@
     <logo>https://greyseid.github.io/images/avatar.png</logo>
     <icon>https://greyseid.github.io/favicon.ico</icon>
     <rights>All rights reserved 2020, 正义大厅</rights>
+    <entry>
+        <title type="html"><![CDATA[数组的扩展]]></title>
+        <id>https://greyseid.github.io/post/shu-zu-de-kuo-zhan/</id>
+        <link href="https://greyseid.github.io/post/shu-zu-de-kuo-zhan/">
+        </link>
+        <updated>2020-11-20T07:24:05.000Z</updated>
+        <content type="html"><![CDATA[<p><ul class="markdownIt-TOC">
+<li><a href="#%E6%89%A9%E5%B1%95%E8%BF%90%E7%AE%97%E7%AC%A6">扩展运算符</a>
+<ul>
+<li><a href="#%E5%90%AB%E4%B9%89">含义</a></li>
+<li><a href="#%E6%9B%BF%E4%BB%A3%E6%95%B0%E7%BB%84%E7%9A%84apply%E6%96%B9%E6%B3%95">替代数组的apply方法</a></li>
+<li><a href="#%E6%89%A9%E5%B1%95%E8%BF%90%E7%AE%97%E7%AC%A6%E7%9A%84%E5%BA%94%E7%94%A8">扩展运算符的应用</a>
+<ul>
+<li><a href="#%E5%90%88%E5%B9%B6%E6%95%B0%E7%BB%84">合并数组</a></li>
+<li><a href="#%E4%B8%8E%E7%BB%93%E6%9E%84%E8%B5%8B%E5%80%BC%E7%BB%93%E5%90%88">与结构赋值结合</a></li>
+<li><a href="#%E5%87%BD%E6%95%B0%E7%9A%84%E8%BF%94%E5%9B%9E%E5%80%BC">函数的返回值</a></li>
+<li><a href="#%E5%AD%97%E7%AC%A6%E4%B8%B2">字符串</a></li>
+<li><a href="#%E5%AE%9E%E7%8E%B0iterator%E6%8E%A5%E5%8F%A3%E7%9A%84%E5%AF%B9%E8%B1%A1">实现Iterator接口的对象</a></li>
+<li><a href="#map%E5%92%8Cset%E7%BB%93%E6%9E%84-generator%E5%87%BD%E6%95%B0">Map和Set结构、Generator函数</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#arrayfrom">Array.from()</a></li>
+<li><a href="#arrayof">Array.of()</a></li>
+<li><a href="#%E6%95%B0%E7%BB%84%E5%AE%9E%E4%BE%8B%E7%9A%84copywithin">数组实例的copyWithin()</a></li>
+<li><a href="#%E6%95%B0%E7%BB%84%E5%AE%9E%E4%BE%8B%E7%9A%84find%E5%92%8Cfindindex">数组实例的find()和findIndex()</a></li>
+<li><a href="#%E6%95%B0%E7%BB%84%E5%AE%9E%E5%8A%9B%E7%9A%84fill">数组实力的fill()</a></li>
+<li><a href="#%E6%95%B0%E7%BB%84%E5%AE%9E%E4%BE%8B%E7%9A%84entries-keys%E5%92%8Cvalues">数组实例的entries()、keys()和values()</a></li>
+<li><a href="#%E6%95%B0%E7%BB%84%E5%AE%9E%E4%BE%8B%E7%9A%84includes">数组实例的includes()</a></li>
+<li><a href="#%E6%95%B0%E7%BB%84%E5%AE%9E%E4%BE%8B%E7%9A%84flastflatmap">数组实例的flast()，flatMap()</a></li>
+<li><a href="#%E6%95%B0%E7%BB%84%E7%9A%84%E7%A9%BA%E4%BD%8D">数组的空位</a></li>
+<li><a href="#arrayprototypesort%E7%9A%84%E6%8E%92%E5%BA%8F%E7%A8%B3%E5%AE%9A%E6%80%A7">Array.prototype.sort()的排序稳定性</a></li>
+</ul>
+</p>
+<h1 id="扩展运算符">扩展运算符</h1>
+<h2 id="含义">含义</h2>
+<p>扩展运算符是三个点...，它如同rest参数的逆运算，将一个数组转为用逗号分隔的参数序列。rest参数相当于接收不定量的参数，形成数组，类似于arguments参数，而扩展运算符...相当于拆解数组。</p>
+<pre><code class="language-javascript">console.log(...[1,2,3])//1 2 3
+console.log(1,...[2,3,4],5)//1 2 3 4 5
+[...document.querySelectorAll('div')]//[&lt;div&gt;,&lt;div&gt;,&lt;div&gt;]
+</code></pre>
+<h2 id="替代数组的apply方法">替代数组的apply方法</h2>
+<p>由于扩展运算符可以展开数组，所以不需要使用apply方法将数组转为函数的参数</p>
+<pre><code class="language-javascript">function f(x,y,z){
+    //
+}
+var args=[0,1,2];
+f.apply(null,args);//ES5
+f(...args);//ES6
+</code></pre>
+<h2 id="扩展运算符的应用">扩展运算符的应用</h2>
+<h3 id="合并数组">合并数组</h3>
+<pre><code class="language-javascript">//ES5
+[1,2].concat(more)
+//ES6
+[1,2,...more]
+[...arr1,...arr2,...arr3]
+</code></pre>
+<h3 id="与结构赋值结合">与结构赋值结合</h3>
+<p>扩展运算符可以与解构赋值结合起来，并用于生成数组</p>
+<pre><code class="language-javascript">//ES5
+a=list[0],rest=list.slice(1)
+//ES6
+[a,...rest]=list
+const[first,...rest]=[1,2,3,4,5];
+first//1
+rest//[2,3,4,5]
+const[first,...rest]=[]
+first//unddefined
+rest//[]
+</code></pre>
+<p>如果扩展运算符用于数组赋值，则只能将其放在参数的最后一位，否则会报错</p>
+<h3 id="函数的返回值">函数的返回值</h3>
+<p>JavaScript的函数只能返回一个值，如果需要传回多个值，只能返回数组或对象，拓展运算符提供了一种变通的方法，通过拓展运算符，将传来的数组或对象变为一个参数序列</p>
+<h3 id="字符串">字符串</h3>
+<p>扩展运算符可以将字符串转换为数组<code>[...'hello']//['h','e','l','l','o']</code><br>
+扩展运算符这样写的好处在于能够正确识别32位的Unicode字符</p>
+<pre><code class="language-javascript">'x\uD83D\uDE80y'.length//4
+[...'x\uD83D\uDE80y'].length//3
+</code></pre>
+<p>凡是涉及32位Unicode字符的函数都有这个问题，因此最好用扩展运算符改写</p>
+<h3 id="实现iterator接口的对象">实现Iterator接口的对象</h3>
+<p>任何Iterator接口的对象都可以用扩展运算符转换为真正的数组</p>
+<pre><code class="language-javascript">var nodeList=document.querySelectorAll('div');
+var array=[...nodeList];
+</code></pre>
+<p>上面的代码中，querySelectorAll方法返回的是一个nodeList对象，扩展运算符能将其转换为数组，原因在于nodeList对象实现了Iterator<br>
+对于没有部署Iterator接口的类似数组的对象，扩展运算符无法将其转为真正的数组</p>
+<h3 id="map和set结构-generator函数">Map和Set结构、Generator函数</h3>
+<p>扩展运算符内部调用的是数据结构的Iterator接口，因此只要具有Iterator接口的对象，都可以使用扩展运算符。<br>
+Map结构</p>
+<pre><code class="language-javascript">let map=new Map([
+    [1,'one'],[2,'two'],[3,'three'],
+])
+</code></pre>
+<p>Generator函数运行后会返回一个遍历器对象</p>
+<pre><code class="language-javascript">var go=function*(){
+    yield 1;
+    yield 2;
+    yield 3;
+}
+[...go()]//[1,2,3]
+</code></pre>
+<h1 id="arrayfrom">Array.from()</h1>
+<p>用于将两类对象转为真正的数组：类似数组的对象和可便利的对象<br>
+只要是部署了Iterator接口的数据结构，Array.from都能将其转为数组<br>
+如果参数是一个真正的数组，Array.form会返回一个一摸一样的新数组<br>
+扩展运算符...也可以将某些数据结构转为数组</p>
+<pre><code class="language-javascript">function(){
+    var args=[...arguments];
+}
+</code></pre>
+<p>Array.form支持转换类似数组的对象，也就是必须有属性length，有属性length就可以转换为数组，这种情况就不能通过扩展运算符转换<br>
+Array.form可以接受第二个参数，类似于数组的map方法，用来同时对每个元素进行处理，处理后放入返回的数组<br>
+可以传入第三个参数，用来绑定this<br>
+Array.form的另一个应用就是将字符串转换为数组，因为它能正确处理各种Unicode字符</p>
+<pre><code class="language-javascript">function(string){
+    return Array.from(string).length;
+}
+</code></pre>
+<h1 id="arrayof">Array.of()</h1>
+<p>用于将一组值转换为数组<code>Array.of(3,11,8)//[3,11,8]</code><br>
+主要目的是弥补数组构造函数Array()的不足，因为参数个数的不同会导致Array()的行为有差异</p>
+<pre><code class="language-javascript">Array()//[]
+Array(3)//[,,,]
+Array(3,11,8)//[3,11,8]
+</code></pre>
+<p>Array.of基本可以用来代替Array()或new Array()，并且不存在由于参数不同而导致的重载<br>
+Array.of总是返回参数值组成的数组。如果没有参数，返回一个空数组</p>
+<h1 id="数组实例的copywithin">数组实例的copyWithin()</h1>
+<p>数组实例的copyWithin方法会在当前数组内部将指定位置的成员复制到其他位置（会覆盖原有成员），然后返回当前数组，使用这个数组会改变当前数组<br>
+<code>Array.prototype.copyWithin(target,start=0,end=this.length)</code><br>
+接受三个参数</p>
+<ul>
+<li>target（必选）：从该位置开始替换数据</li>
+<li>start（可选）：从该位置开始读取数据，默认为0，如果为负值，表示倒数</li>
+<li>end（可选）：到该值前停止读取数据，默认等于数组长度。如果为负值，表示倒数</li>
+</ul>
+<p>如果参数为非数值，则会转换为数值</p>
+<pre><code class="language-javascript">[1,2,3,4,5].copyWithin(0,-2,-1)
+//[4,2,3,4,5]
+[].copyWithin.call({length:5,3:1},0,3)
+//{0:1,3:1,length:5}
+</code></pre>
+<h1 id="数组实例的find和findindex">数组实例的find()和findIndex()</h1>
+<p>数组实例的find方法用于找出第一个符合条件的数组成员。他的参数是一个回调函数，所有数组成员依次执行该回调函数，知道找出第一个返回值为true的成员，然后返回该成员，如果没有符合条件的成员，则返回undefined<br>
+数组实例的findIndex方法的用法与find方法类似，返回第一个符合条件的数组的成员的位置，如果所有成员都不符合条件，则返回-1<br>
+这两个方法都可以接受第二个参数，用来绑定回调函数的this对象（个人猜测应该是用于箭头函数中的，因为箭头函数没有this指针，所以需要额外传一个进来），都可以发现<strong>NaN</strong>，弥补了数组的IndexOf方法的不足</p>
+<h1 id="数组实力的fill">数组实力的fill()</h1>
+<p>fill方法使用给定值填充一个数组<br>
+fill方法也可以接受第二个和第三个参数，用于指定填充的起始位置和结束位置</p>
+<pre><code class="language-javascript">['a','b','c'].fill(7,1,2)
+//['a',7,'c']
+</code></pre>
+<h1 id="数组实例的entries-keys和values">数组实例的entries()、keys()和values()</h1>
+<p>用于遍历数组，都返回一个遍历器对象，可用for...of循环遍历，区别在于keys()是对键名的遍历，values()是对键值的遍历，entries()是对键值对的遍历</p>
+<pre><code class="language-javascript">for(let index of ['a','b'].keys()){
+    console.log(index);
+}
+//0
+//1
+for(let elem of['a','b'].values()){
+    console.log(elem);
+}
+//'a'
+//'b'
+for(let[index,elem]of['a','b'].entries()){
+    console.log(index,elem);
+}
+//0&quot;a&quot;
+//1&quot;b&quot;
+</code></pre>
+<p>如果不使用for...of循环，可以手动调用遍历器对象的next方法进行遍历</p>
+<pre><code class="language-javascript">let letter=['a','b','c'];
+let entries=letter.entries();
+console.log(entries.next().value);//[0,'a']
+console.log(entries.next().value);//[1,'b']
+console.log(entries.next().value);//[2,'c']
+</code></pre>
+<h1 id="数组实例的includes">数组实例的includes()</h1>
+<p>返回一个布尔值，表示某个数组是否包含给定的值，与字符串的<code>includes</code>方法类似</p>
+<pre><code class="language-javascript">[1,2,3].includes(2)//true
+[1,2,3].includes(4)//false
+[1,2,NaN].includes(NaN)//true
+</code></pre>
+<p>该方法的第二个参数表示搜索的起始位置，默认为0，如果第二个参数为负数，则表示倒数的位置，如果大于数组的长度，则重置为0<br>
+在<code>includes</code>之前，我们通常使用数组的<code>indexOf</code>方法。<code>indexOf</code>有两个缺点，一个是不够语义化，该方法是找到参数出现的第一个位置，比较是否不等于-1，表达起来不够直观，二是由于内部使用了===，所以会对NaN造成误判<code>[NaN].indexOf(NaN)//-1</code><br>
+Map和Set数据结构有一个has方法，Map的has方法是用来查找键名的，Set的has方法是用来查找值的</p>
+<h1 id="数组实例的flastflatmap">数组实例的flast()，flatMap()</h1>
+<p>数组的成员有时还是数组（二维数组等），<code>Array.prototype.flat()</code>用于将嵌套的数组拉平，变成一个一维的数组，该方法返回一个新数组，对原数据没有影响<code>[1,2,[3,4]].flat()//[1,2,3,4]</code><br>
+<code>flat()</code>默认只会拉平一层，如果想要拉平多层，可以设置一个参数，表示想拉平的层数，默认为1</p>
+<pre><code class="language-javascript">[1,2,[3,[4,5]]].flat()//[1,2,3,[4,5]]
+[1,2,[3,[4,5]]].flat(2)//[1,2,3,4,5]
+</code></pre>
+<p>如果不管有多少层嵌套，都要转成一维数组，可以用<code>Infinity</code>关键字作为参数<br>
+<code>[1,[2,[3]]].flat(Infinity)//[1,2,3]</code><br>
+如果原数组有空位，<code>flat()</code>方法会跳过空位。<code>[1,2,,4,5].flat()//[1,2,4,5]</code><br>
+<code>flatMap()</code>方法对原数组的每个成员执行一个函数，相当于map()，然后对返回值组成的数组执行<code>flat()</code>方法，该方法返回一个新数组，不改变原数组</p>
+<pre><code class="language-javascript">//相当于[[2,4,],[3,6],[4,8]].flat()
+[2,3,4].flatMap((x)=&gt;[x,x*2])
+//[2,4,3,6,4,8]
+</code></pre>
+<p><code>flatMap()</code>只能展开一层数组<br>
+<code>flatMap()</code>的参数是一个遍历函数，该函数可以接受三个参数，分别是当前数组成员、当前数组成员的位置（从0开始）、原数组<br>
+还可以接受第二个参数，用来绑定遍历函数里面的this</p>
+<h1 id="数组的空位">数组的空位</h1>
+<p>数组的空位指数组上没有任何值，比如，Array构造函数返回的数组都是空位<code>Array(3)//[,,,]</code><br>
+空位不是<code>undefined</code>，一个位置的值等于<code>undefined</code>，依然是有值的，空位是没有让你和值，<code>in</code>运算符可以说明这一点</p>
+<pre><code class="language-javascript">0 in [undefined,undefined,undefined]//true
+0 in [,,,]//false
+</code></pre>
+<p><em>ES5</em>的处理是不一致的，大部分情况会忽略空位</p>
+<ul>
+<li><code>forEach()</code>,<code>filter()</code>,<code>reduce()</code>, <code>every()</code> 和<code>some()</code>都会跳过空位</li>
+<li><code>map()</code>会跳过空位，但会保留这个值</li>
+<li><code>join()</code>和<code>toString()</code>会将空位视为<code>undefined</code>，而<code>undefined</code>和<code>null</code>会被处理成空字符串</li>
+</ul>
+<p><em>ES6</em>则是明确将空位转换为<code>undefined</code><br>
+数组有空位，for...of并不会忽略，如果改成map方法遍历，空位是会跳过的</p>
+<h1 id="arrayprototypesort的排序稳定性">Array.prototype.sort()的排序稳定性</h1>
+<p>排序稳定性是排序算法的重要属性，指的是排序关键字相同的项目，排序前后的顺序不变</p>
+<pre><code class="language-javascript">const arr = [
+  'peach',
+  'straw',
+  'apple',
+  'spork'
+];
+
+const stableSorting = (s1, s2) =&gt; {
+  if (s1[0] &lt; s2[0]) return -1;
+  return 1;
+};
+
+arr.sort(stableSorting)
+// [&quot;apple&quot;, &quot;peach&quot;, &quot;straw&quot;, &quot;spork&quot;]
+</code></pre>
+<p>上面代码对数组arr按照首字母进行排序。排序结果中，straw在spork的前面，跟原始顺序一致，所以排序算法stableSorting是稳定排序。</p>
+<pre><code class="language-javascript">const unstableSorting = (s1, s2) =&gt; {
+  if (s1[0] &lt;= s2[0]) return -1;
+  return 1;
+};
+
+arr.sort(unstableSorting)
+// [&quot;apple&quot;, &quot;peach&quot;, &quot;spork&quot;, &quot;straw&quot;]
+</code></pre>
+<p>上面代码中，排序结果是spork在straw前面，跟原始顺序相反，所以排序算法unstableSorting是不稳定的。<br>
+常见的排序算法之中，插入排序、合并排序、冒泡排序等都是稳定的，堆排序、快速排序等是不稳定的。不稳定排序的主要缺点是，多重排序时可能会产生问题。假设有一个姓和名的列表，要求按照“姓氏为主要关键字，名字为次要关键字”进行排序。开发者可能会先按名字排序，再按姓氏进行排序。如果排序算法是稳定的，这样就可以达到“先姓氏，后名字”的排序效果。如果是不稳定的，就不行<br>
+之前的排序算法是否稳定是交给浏览器自己决定的，现在在<em>ES2019</em>中明确规定<code>Array.prototype.sort()</code>的默认排序算法必须稳定</p>
+]]></content>
+    </entry>
     <entry>
         <title type="html"><![CDATA[数值的扩展]]></title>
         <id>https://greyseid.github.io/post/shu-zhi-de-kuo-zhan/</id>
