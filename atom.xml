@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://greyseid.github.io/</id>
     <title>正义大厅</title>
-    <updated>2020-11-22T01:39:01.256Z</updated>
+    <updated>2020-11-24T16:03:35.454Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://greyseid.github.io/"/>
     <link rel="self" href="https://greyseid.github.io/atom.xml"/>
@@ -10,6 +10,148 @@
     <logo>https://greyseid.github.io/images/avatar.png</logo>
     <icon>https://greyseid.github.io/favicon.ico</icon>
     <rights>All rights reserved 2020, 正义大厅</rights>
+    <entry>
+        <title type="html"><![CDATA[正则表达式]]></title>
+        <id>https://greyseid.github.io/post/zheng-ze-biao-da-shi/</id>
+        <link href="https://greyseid.github.io/post/zheng-ze-biao-da-shi/">
+        </link>
+        <updated>2020-11-24T14:28:11.000Z</updated>
+        <content type="html"><![CDATA[<p><ul class="markdownIt-TOC">
+<li><a href="#%E4%BB%8B%E7%BB%8D">介绍</a></li>
+<li><a href="#%E4%BD%BF%E7%94%A8%E5%AD%97%E7%AC%A6%E4%B8%B2%E6%96%B9%E6%B3%95">使用字符串方法</a></li>
+<li><a href="#%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F%E4%BF%AE%E9%A5%B0%E7%AC%A6">正则表达式修饰符</a></li>
+<li><a href="#%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F%E6%A8%A1%E5%BC%8F">正则表达式模式</a></li>
+<li><a href="#%E4%BD%BF%E7%94%A8regexp%E5%AF%B9%E8%B1%A1">使用RegExp对象</a></li>
+<li><a href="#%E4%BD%BF%E7%94%A8test">使用test()</a></li>
+<li><a href="#%E4%BD%BF%E7%94%A8exec">使用exec()</a></li>
+</ul>
+</p>
+<h1 id="介绍">介绍</h1>
+<p>正则表达式是一个有字符序列形成的搜索模式<br>
+当你在文本中搜索数据时，可以用搜索模式来描述你要查询的内容<br>
+语法<br>
+<code>/正则表达式主体/修饰符(可选)</code></p>
+<h1 id="使用字符串方法">使用字符串方法</h1>
+<p><code>search()</code>方法用于检索字符串中指定的子字符串，也可以用来检索与正则表达式相匹配的子字符串，并返回子字符串的起始位置<br>
+<code>replace()</code>方法用于在字符串中用一些字符替换另一些字符，或替换一个与正则表达式相匹配的子串</p>
+<pre><code class="language-javascript">var str=&quot;Visit Runoob!&quot;;
+var n=str.search(/Runoob/i);
+//6
+var n=str.search(&quot;Runoob&quot;);//6
+
+var str=&quot;请访问 Microsoft!&quot;;
+var txt=str.replace(/microsoft/i,&quot;Runoob&quot;);
+var txt=str.replace(&quot;Microsoft&quot;,&quot;Runoob&quot;);//请访问 Runoob!
+</code></pre>
+<h1 id="正则表达式修饰符">正则表达式修饰符</h1>
+<table>
+<thead>
+<tr>
+<th>修饰符</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>i</td>
+<td>执行对大小写不敏感的匹配</td>
+</tr>
+<tr>
+<td>g</td>
+<td>执行全局匹配，查找所有匹配而非在找到第一个匹配后停止</td>
+</tr>
+<tr>
+<td>m</td>
+<td>执行多行匹配</td>
+</tr>
+</tbody>
+</table>
+<h1 id="正则表达式模式">正则表达式模式</h1>
+<p>方括号用于查找某个范围内的字符</p>
+<table>
+<thead>
+<tr>
+<th>表达式</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>[abc]</td>
+<td>查找方括号之间的任何字符</td>
+</tr>
+<tr>
+<td>[0-9]</td>
+<td>查找任何0至9的数字</td>
+</tr>
+<tr>
+<td>(x|y)</td>
+<td>查找任何以|分隔的选项</td>
+</tr>
+</tbody>
+</table>
+<p>元字符是拥有特殊含义的字符</p>
+<table>
+<thead>
+<tr>
+<th>元字符</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>\d</td>
+<td>查找数字</td>
+</tr>
+<tr>
+<td>\s</td>
+<td>查找空白字符</td>
+</tr>
+<tr>
+<td>\b</td>
+<td>匹配单词边界</td>
+</tr>
+<tr>
+<td>\uxxxx</td>
+<td>查找以十六进制数xxxx规定的Unicode字符</td>
+</tr>
+</tbody>
+</table>
+<p>量词</p>
+<table>
+<thead>
+<tr>
+<th>量词</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>n+</td>
+<td>匹配任何包含至少一个n的字符串</td>
+</tr>
+<tr>
+<td>n*</td>
+<td>匹配任何包含0个或多个n的字符串</td>
+</tr>
+<tr>
+<td>n?</td>
+<td>匹配任何包含0个或一个n的字符串</td>
+</tr>
+</tbody>
+</table>
+<h1 id="使用regexp对象">使用RegExp对象</h1>
+<p>在 JavaScript 中，RegExp 对象是一个预定义了属性和方法的正则表达式对象</p>
+<h1 id="使用test">使用test()</h1>
+<p><code>test()</code>方法是一个正则表达式方法，用于检测一个字符串是否匹配某个模式，如果字符串中含有匹配的文本，则返回true，否则返回false</p>
+<pre><code class="language-javascript">/e/.test(&quot;The best things in my life is money&quot;);//true
+</code></pre>
+<h1 id="使用exec">使用exec()</h1>
+<p><code>exec()</code>方法是一个正则表达式放啊，用于检索字符串中的正则表达式的匹配，返回一个数组，其中存放匹配的结果，如果未找到匹配，则返回null</p>
+<pre><code class="language-javascript">/e/.exec(&quot;The best things in my life is money&quot;);//e
+</code></pre>
+]]></content>
+    </entry>
     <entry>
         <title type="html"><![CDATA[数组的扩展]]></title>
         <id>https://greyseid.github.io/post/shu-zu-de-kuo-zhan/</id>

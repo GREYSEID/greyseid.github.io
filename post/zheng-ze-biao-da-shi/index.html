@@ -1,0 +1,349 @@
+<html>
+
+<head>
+    <meta charset="utf-8" />
+<meta name="description" content="" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>
+    正则表达式 | 正义大厅
+</title>
+<link rel="shortcut icon" href="https://greyseid.github.io//favicon.ico?v=1606233805649">
+<!-- <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous"> -->
+<link href="https://cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
+<link rel="stylesheet" href="https://greyseid.github.io//styles/main.css">
+<!-- js -->
+<script src="https://cdn.bootcss.com/jquery/3.4.1/jquery.min.js"></script>
+<script src="https://greyseid.github.io//media/js/jquery.sticky-sidebar.min.js"></script>
+<script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
+<script src="https://cdn.bootcss.com/moment.js/2.23.0/moment.min.js"></script>
+
+
+        
+</head>
+
+<body>
+    <div class="main">
+        <div class="header">
+    <div class="nav">
+        <div class="logo">
+            <a href="https://greyseid.github.io/">
+                <img class="avatar" src="https://greyseid.github.io//images/avatar.png?v=1606233805649" alt="">
+            </a>
+            <div class="site-title">
+                <h1>
+                    正义大厅
+                </h1>
+            </div>
+        </div>
+        <span class="menu-btn fa fa-align-justify"></span>
+        <div class="menu-container">
+            <ul>
+                
+                    
+                            <li>
+                                <a href="/" class="menu">
+                                    首页
+                                </a>
+                            </li>
+                            
+                                
+                    
+                            <li>
+                                <a href="/archives" class="menu">
+                                    归档
+                                </a>
+                            </li>
+                            
+                                
+                    
+                            <li>
+                                <a href="/tags" class="menu">
+                                    标签
+                                </a>
+                            </li>
+                            
+                                
+                    
+                            <li>
+                                <a href="/post/about" class="menu">
+                                    关于
+                                </a>
+                            </li>
+                            
+                                
+            </ul>
+        </div>
+    </div>
+</div>
+
+<script>
+    $(document).ready(function() {
+        $(".menu-btn").click(function() {
+            $(".menu-container").slideToggle();
+        });
+        $(window).resize(function() {
+
+            if (window.matchMedia('(min-width: 960px)').matches) {
+                $(".menu-container").css('display', 'block')
+            } else {
+                $(".menu-container").css('display', 'none')
+            }
+
+        });
+    });
+</script>
+
+            <div id="main-content" class="post-detail main-container">
+                <!-- left -->
+                <div id="content" class="main-container-left">
+                    <article class="post i-card">
+                        <h2 class="post-title">
+                            正则表达式
+                        </h2>
+                        <div class="post-info">
+                            <time class="post-time">2020-11-24</time>
+                            
+                                <a href="https://greyseid.github.io/tag/UmmQ4L2qI/" class="post-tag i-tag
+                            i-tag-other_4">
+                            #JavaScript
+                        </a>
+                                
+                                <a href="https://greyseid.github.io/tag/AjqKAL42P/" class="post-tag i-tag
+                            i-tag-warning">
+                            #前端
+                        </a>
+                                
+                        </div>
+                        
+                            <div class="post-feature-image" style="background-image: url('https://greyseid.github.io//post-images/zheng-ze-biao-da-shi.jpg')"></div>
+                            
+                                <div class="post-content">
+                                    <p><ul class="markdownIt-TOC">
+<li><a href="#%E4%BB%8B%E7%BB%8D">介绍</a></li>
+<li><a href="#%E4%BD%BF%E7%94%A8%E5%AD%97%E7%AC%A6%E4%B8%B2%E6%96%B9%E6%B3%95">使用字符串方法</a></li>
+<li><a href="#%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F%E4%BF%AE%E9%A5%B0%E7%AC%A6">正则表达式修饰符</a></li>
+<li><a href="#%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F%E6%A8%A1%E5%BC%8F">正则表达式模式</a></li>
+<li><a href="#%E4%BD%BF%E7%94%A8regexp%E5%AF%B9%E8%B1%A1">使用RegExp对象</a></li>
+<li><a href="#%E4%BD%BF%E7%94%A8test">使用test()</a></li>
+<li><a href="#%E4%BD%BF%E7%94%A8exec">使用exec()</a></li>
+</ul>
+</p>
+<h1 id="介绍">介绍</h1>
+<p>正则表达式是一个有字符序列形成的搜索模式<br>
+当你在文本中搜索数据时，可以用搜索模式来描述你要查询的内容<br>
+语法<br>
+<code>/正则表达式主体/修饰符(可选)</code></p>
+<h1 id="使用字符串方法">使用字符串方法</h1>
+<p><code>search()</code>方法用于检索字符串中指定的子字符串，也可以用来检索与正则表达式相匹配的子字符串，并返回子字符串的起始位置<br>
+<code>replace()</code>方法用于在字符串中用一些字符替换另一些字符，或替换一个与正则表达式相匹配的子串</p>
+<pre><code class="language-javascript">var str=&quot;Visit Runoob!&quot;;
+var n=str.search(/Runoob/i);
+//6
+var n=str.search(&quot;Runoob&quot;);//6
+
+var str=&quot;请访问 Microsoft!&quot;;
+var txt=str.replace(/microsoft/i,&quot;Runoob&quot;);
+var txt=str.replace(&quot;Microsoft&quot;,&quot;Runoob&quot;);//请访问 Runoob!
+</code></pre>
+<h1 id="正则表达式修饰符">正则表达式修饰符</h1>
+<table>
+<thead>
+<tr>
+<th>修饰符</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>i</td>
+<td>执行对大小写不敏感的匹配</td>
+</tr>
+<tr>
+<td>g</td>
+<td>执行全局匹配，查找所有匹配而非在找到第一个匹配后停止</td>
+</tr>
+<tr>
+<td>m</td>
+<td>执行多行匹配</td>
+</tr>
+</tbody>
+</table>
+<h1 id="正则表达式模式">正则表达式模式</h1>
+<p>方括号用于查找某个范围内的字符</p>
+<table>
+<thead>
+<tr>
+<th>表达式</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>[abc]</td>
+<td>查找方括号之间的任何字符</td>
+</tr>
+<tr>
+<td>[0-9]</td>
+<td>查找任何0至9的数字</td>
+</tr>
+<tr>
+<td>(x|y)</td>
+<td>查找任何以|分隔的选项</td>
+</tr>
+</tbody>
+</table>
+<p>元字符是拥有特殊含义的字符</p>
+<table>
+<thead>
+<tr>
+<th>元字符</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>\d</td>
+<td>查找数字</td>
+</tr>
+<tr>
+<td>\s</td>
+<td>查找空白字符</td>
+</tr>
+<tr>
+<td>\b</td>
+<td>匹配单词边界</td>
+</tr>
+<tr>
+<td>\uxxxx</td>
+<td>查找以十六进制数xxxx规定的Unicode字符</td>
+</tr>
+</tbody>
+</table>
+<p>量词</p>
+<table>
+<thead>
+<tr>
+<th>量词</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>n+</td>
+<td>匹配任何包含至少一个n的字符串</td>
+</tr>
+<tr>
+<td>n*</td>
+<td>匹配任何包含0个或多个n的字符串</td>
+</tr>
+<tr>
+<td>n?</td>
+<td>匹配任何包含0个或一个n的字符串</td>
+</tr>
+</tbody>
+</table>
+<h1 id="使用regexp对象">使用RegExp对象</h1>
+<p>在 JavaScript 中，RegExp 对象是一个预定义了属性和方法的正则表达式对象</p>
+<h1 id="使用test">使用test()</h1>
+<p><code>test()</code>方法是一个正则表达式方法，用于检测一个字符串是否匹配某个模式，如果字符串中含有匹配的文本，则返回true，否则返回false</p>
+<pre><code class="language-javascript">/e/.test(&quot;The best things in my life is money&quot;);//true
+</code></pre>
+<h1 id="使用exec">使用exec()</h1>
+<p><code>exec()</code>方法是一个正则表达式放啊，用于检索字符串中的正则表达式的匹配，返回一个数组，其中存放匹配的结果，如果未找到匹配，则返回null</p>
+<pre><code class="language-javascript">/e/.exec(&quot;The best things in my life is money&quot;);//e
+</code></pre>
+
+                                </div>
+                    </article>
+                    <!--  -->
+                    
+                        <div class="next-post">
+                            <div class="next">下一篇</div>
+                            <a href="https://greyseid.github.io/post/shu-zu-de-kuo-zhan/">
+                                <h3 class="post-title">
+                                    数组的扩展
+                                </h3>
+                            </a>
+                        </div>
+                        
+                            <div id="disqus_thread"></div>
+                            <div id="gitalk-container"></div>
+                </div>
+                <!-- middle -->
+                <div class="main-container-middle"></div>
+                <!-- right -->
+                <div id="sidebar" class="main-container-right">
+                    
+                        <!-- toc -->
+                        
+    <div class="toc-card i-card ">
+        <div class="toc-title i-card-title">目录</div>
+        <div class="toc-content">
+            <ul class="markdownIt-TOC">
+<li><a href="#%E4%BB%8B%E7%BB%8D">介绍</a></li>
+<li><a href="#%E4%BD%BF%E7%94%A8%E5%AD%97%E7%AC%A6%E4%B8%B2%E6%96%B9%E6%B3%95">使用字符串方法</a></li>
+<li><a href="#%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F%E4%BF%AE%E9%A5%B0%E7%AC%A6">正则表达式修饰符</a></li>
+<li><a href="#%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F%E6%A8%A1%E5%BC%8F">正则表达式模式</a></li>
+<li><a href="#%E4%BD%BF%E7%94%A8regexp%E5%AF%B9%E8%B1%A1">使用RegExp对象</a></li>
+<li><a href="#%E4%BD%BF%E7%94%A8test">使用test()</a></li>
+<li><a href="#%E4%BD%BF%E7%94%A8exec">使用exec()</a></li>
+</ul>
+
+        </div>
+        <script>
+            function locateCatelogList() {
+                /*获取文章目录集合,可通过:header过滤器*/
+                var alis = $('.post-content :header');
+                /*获取侧边栏目录列表集合**/
+                var sidebar_alis = $('.markdownIt-TOC a');
+                /*获取滚动条到顶部的距离*/
+                var scroll_height = $(window).scrollTop();
+                for (var i = 0; i < alis.length; i++) {
+                    /*获取锚点集合中的元素分别到顶点的距离*/
+                    var a_height = $(alis[i]).offset().top;
+                    if (a_height < scroll_height) {
+                        /*高亮显示*/
+                        sidebar_alis.removeClass('on');
+                        $(sidebar_alis[i]).addClass('on');
+                    }
+                }
+            }
+            $(function() {
+                /*绑定滚动事件 */
+                $(window).bind('scroll', locateCatelogList);
+            });
+        </script>
+    </div>
+    
+                            
+
+                </div>
+
+
+
+
+            </div>
+
+
+            <div class="site-footer">
+  Powered by <a href="https://github.com/getgridea/gridea" target="_blank">Gridea</a> | 
+  <a class="rss" href="https://greyseid.github.io//atom.xml" target="_blank">RSS</a>
+</div>
+
+<script>
+  hljs.initHighlightingOnLoad()
+</script>
+
+
+    </div>
+    <script>
+        $('#sidebar').stickySidebar({
+            topSpacing: 80,
+            // bottomSpacing: 60
+        });
+    </script>
+    
+</body>
+
+</html>
