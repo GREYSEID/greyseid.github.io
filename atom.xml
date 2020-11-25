@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://greyseid.github.io/</id>
     <title>正义大厅</title>
-    <updated>2020-11-24T16:05:44.496Z</updated>
+    <updated>2020-11-25T06:30:53.481Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://greyseid.github.io/"/>
     <link rel="self" href="https://greyseid.github.io/atom.xml"/>
@@ -147,7 +147,7 @@ var txt=str.replace(&quot;Microsoft&quot;,&quot;Runoob&quot;);//请访问 Runoob
 <pre><code class="language-javascript">/e/.test(&quot;The best things in my life is money&quot;);//true
 </code></pre>
 <h1 id="使用exec">使用exec()</h1>
-<p><code>exec()</code>方法是一个正则表达式放啊，用于检索字符串中的正则表达式的匹配，返回一个数组，其中存放匹配的结果，如果未找到匹配，则返回null</p>
+<p><code>exec()</code>方法是一个正则表达式方法，用于检索字符串中的正则表达式的匹配，返回一个数组，其中存放匹配的结果，如果未找到匹配，则返回null</p>
 <pre><code class="language-javascript">/e/.exec(&quot;The best things in my life is money&quot;);//e
 </code></pre>
 ]]></content>
