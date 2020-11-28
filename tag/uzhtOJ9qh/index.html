@@ -7,7 +7,7 @@
 <title>
     ES6 | 正义大厅
 </title>
-<link rel="shortcut icon" href="https://greyseid.github.io//favicon.ico?v=1606385864529">
+<link rel="shortcut icon" href="https://greyseid.github.io//favicon.ico?v=1606547953219">
 <!-- <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous"> -->
 <link href="https://cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
@@ -27,7 +27,7 @@
     <div class="nav">
         <div class="logo">
             <a href="https://greyseid.github.io/">
-                <img class="avatar" src="https://greyseid.github.io//images/avatar.png?v=1606385864529" alt="">
+                <img class="avatar" src="https://greyseid.github.io//images/avatar.png?v=1606547953219" alt="">
             </a>
             <div class="site-title">
                 <h1>
@@ -104,6 +104,444 @@
         
             <article class="post i-card">
                 <h2 class="post-title">
+                    <a href="https://greyseid.github.io/post/han-shu-de-kuo-zhan/">
+                        函数的扩展
+                    </a>
+                </h2>
+                <div class="post-info">
+                    <time class="post-time">2020-11-19</time>
+                    
+                        <a href="https://greyseid.github.io/tag/AjqKAL42P/" class="post-tag i-tag
+                            i-tag-other_3">
+            #前端
+        </a>
+                        
+                        <a href="https://greyseid.github.io/tag/uzhtOJ9qh/" class="post-tag i-tag
+                            i-tag-success">
+            #ES6
+        </a>
+                        
+                </div>
+                <div class="post-article">
+                    
+                        <a href="https://greyseid.github.io/post/han-shu-de-kuo-zhan/" class="post-feature-image" style="background-image:url(https://greyseid.github.io//post-images/han-shu-de-kuo-zhan.jpg) ">
+                        </a>
+                        
+                            <div class="post-content">
+                                
+                                        <div class="post-content-content">
+                                            
+函数参数的默认值
+
+基本用法
+与解构赋值默认值结合使用
+
+参数默认值的位置
+函数的length属性
+作用域
+
+
+
+
+rest参数
+严格模式
+name属性
+箭头函数
+
+注意
+不适用场合
+嵌套的箭头函数
+
+
+尾调用优化
+
+尾调用优化
+尾递归
+递归函数的改写
+严格模式
+尾递归优化的实现
+
+
+函数参数的尾逗号
+Function.prototype.toString()
+catch命令的参数省略
+
+
+函数参数的默认值
+基本用法
+ES6之前是不能给函数参数指定默认值的
+ES6允许为函数设置默认值，在参数后直接进行赋值
+function log(x, y = &#39;World&#39;) {
+  console.log(x, y);
+}
+
+log(&#39;Hello&#39;) // Hello World
+log(&#39;Hello&#39;, &#39;China&#39;) // Hello China
+log(&#39;Hello&#39;, &#39;&#39;) // Hello
+
+参数变量是默认声明的，不能用let和const再次声明
+function foo(x = 5) {
+  let x = 1; // error
+  const x = 2; // error
+}
+
+使用参数默认值时，函数不能有同名参数
+// 不报错
+function foo(x, x, y) {
+  // ...
+}
+// 报错
+function foo(x, x, y = 1) {
+  // ...
+}
+// SyntaxError: Duplicate parameter name not allowed in this context
+
+参数默认值不是传值的，每次都重新计算默认值表达式的值。参数默认值是惰性求值的
+let x = 99;
+function foo(p = x + 1) {
+  console.log(p);
+}
+foo() // 100
+x = 100;
+foo() // 101
+
+参数p的默认值是x + 1。这时，每次调用函数foo，都会重新计算x + 1，而不是默认p等于 100
+与解构赋值默认值结合使用
+function foo({x, y = 5}) {
+  console.log(x, y);
+}
+foo({}) // undefined 5
+foo({x: 1}) // 1 5
+foo({x: 1, y: 2}) // 1 2
+foo() // TypeError: Cannot read property &#39;x&#39; of undefined
+
+当函数的参数是一个对象时，参数内的变量才会通过解构赋值生成。如果函数调用时没有提供参数，变量就不会生成，从而报错，通过提供函数参数的默认值就可以避免这种情况
+function foo({x, y = 5} = {}) {
+  console.log(x, y);
+}
+foo() // undefined 5
+
+如果没有提供参数，函数foo的参数默认为一个空对象
+function fetch(url, { body = &#39;&#39;, method = &#39;GET&#39;, headers = {} }) {
+  console.log(method);
+}
+fetch(&#39;http://example.com&#39;, {})
+// &amp;quot;GET&amp;quot;
+fetch(&#39;http://example.com&#39;)
+//报错
+
+虽然对象内的属性设置了默认值，但是并不相当于这个对象设置了默认值，所以传参的时候还是要传一个对象
+如果函数fetch的第二个参数是一个对象，就可以为它的三个属性设置默认值。这种写法不能省略第二个参数，如果结合函数参数的默认值，就可以省略第二个参数。这时，就出现了双重默认值
+// 写法一
+function m1({x = 0, y = 0} = {}) {
+  return [x, y];
+}
+// 写法二
+function m2({x, y} = { x: 0, y: 0 }) {
+  return [x, y];
+}
+// 函数没有参数的情况
+m1() // [0, 0]
+m2() // [0, 0]
+// x 和 y 都有值的情况
+m1({x: 3, y: 8}) // [3, 8]
+m2({x: 3, y: 8}) // [3, 8]
+// x 有值，y 无值的情况
+m1({x: 3}) // [3, 0]
+m2({x: 3}) // [3, undefined]
+// x 和 y 都无值的情况
+m1({}) // [0, 0];
+m2({}) // [undefined, undefined]
+m1({z: 3}) // [0, 0]
+m2({z: 3}) // [undefined, undefined]
+
+参数默认值的位置
+定义了参数默认值的参数应该在参数位置的尾部，因为函数在使用的时候，中间的参数是不能省略的，所以默认参数放中间的话必须有一个值传参，那这个值就覆盖了默认参数了，除非显示输入undefined
+// 例一
+function f(x = 1, y) {
+  return [x, y];
+}
+f() // [1, undefined]
+f(2) // [2, undefined]
+f(, 1) // 报错
+f(undefined, 1) // [1, 1]
+// 例二
+function f(x, y = 5, z) {
+  return [x, y, z];
+}
+f() // [undefined, 5, undefined]
+f(1) // [1, 5, undefined]
+f(1, ,2) // 报错
+f(1, undefined, 2) // [1, 5, 2]
+
+函数的length属性
+指定了默认值之后，length属性返回没有指定默认值的参数个数
+这是因为length属性的含义是，该函数预期传入的参数个数。某个参数指定默认值以后，预期传入的参数个数就不包括这个参数了。同理，后文的 rest 参数也不会计入length属性(function(...args) {}).length // 0
+如果设置了默认值的参数不是尾参数，那么length属性也不再计入后面的参数了
+(function (a = 0, b, c) {}).length // 0
+(function (a, b = 1, c) {}).length // 1
+
+作用域
+一旦设置了参数的默认值，函数进行声明初始化时，参数会形成一个单独的作用域（context）。等到初始化结束，这个作用域就会消失。这种语法行为，在不设置参数默认值时，是不会出现的
+var x = 1;
+function f(x, y = x) {
+  console.log(y);
+}
+f(2) // 2
+
+参数y的默认值等于变量x。调用函数f时，参数形成一个单独的作用域。在这个作用域里面，默认值变量x指向第一个参数x，而不是全局变量x，所以输出是2
+let x = 1;
+function f(y = x) {
+  let x = 2;
+  console.log(y);
+}
+f() // 1
+
+函数f调用时，参数y = x形成一个单独的作用域。这个作用域里面，变量x本身没有定义，所以指向外层的全局变量x。函数调用时，函数体内部的局部变量x影响不到默认值变量x
+var x = 1;
+function foo(x = x) {
+  // ...
+}
+foo() // ReferenceError: x is not defined
+
+参数x = x形成一个单独作用域。实际执行的是let x = x，由于暂时性死区的原因，这行代码会报错”x 未定义“
+如果参数的默认值是一个函数，该函数的作用域也遵守这个规则
+let foo = &#39;outer&#39;;
+function bar(func = () =&amp;gt; foo) {
+  let foo = &#39;inner&#39;;
+  console.log(func());
+}
+bar(); // outer
+
+函数bar的参数func的默认值是一个匿名函数，返回值为变量foo。函数参数形成的单独作用域里面，并没有定义变量foo，所以foo指向外层的全局变量foo，因此输出outer
+rest参数
+ES6引入 rest 参数（形式为...变量名），用于获取函数的多余参数，这样就不需要使用arguments对象了。rest 参数搭配的变量是一个数组，该变量将多余的参数放入数组中
+function add(...values) {
+  let sum = 0;
+  for (var val of values) {
+    sum += val;
+  }
+  return sum;
+}
+add(2, 5, 3) // 10
+
+add函数是一个求和函数，利用 rest 参数，可以向该函数传入任意数目的参数
+arguments对象不是数组，而是一个类似数组的对象。所以为了使用数组的方法，必须使用Array.prototype.slice.call先将其转为数组。rest 参数就不存在这个问题，它就是一个真正的数组，数组特有的方法都可以使用
+rest 参数之后不能再有其他参数（即只能是最后一个参数），否则会报错
+函数的length属性，不包括 rest 参数
+严格模式
+ES2016规定只要函数参数使用默认值、解构赋值、扩展运算符，那么函数内部不能显示设定为严格模式
+这样规定的原因是，函数内部的严格模式，同时适用于函数体和函数参数。但是，函数执行的时候，先执行函数参数，然后再执行函数体。这样就有一个不合理的地方，只有从函数体之中，才能知道参数是否应该以严格模式执行，但是参数却应该先于函数体执行
+两种方法可以规避这种限制
+
+设定全局性的严格模式
+把函数抱在一个无参数的立即执行函数里面
+
+name属性
+函数的name属性返回函数的函数名
+如果将一个匿名函数赋值给一个变量，ES5会返回空字符串，ES6会返回实际的函数名
+var f = function () {};
+// ES5
+f.name // &amp;quot;&amp;quot;
+// ES6
+f.name // &amp;quot;f&amp;quot;
+
+如果将一个具名函数赋值给一个变量，则ES5和ES6的name属性都返回这个具名函数原本的名字
+Function构造函数返回的函数实例，name属性的值为anonymous
+bind返回的函数，name属性会加上bound前缀
+(new Function).name // &amp;quot;anonymous&amp;quot;
+function foo() {};
+foo.bind({}).name // &amp;quot;bound foo&amp;quot;
+(function(){}).bind({}).name // &amp;quot;bound &amp;quot;
+
+箭头函数
+使用=&amp;gt;定义函数
+如果箭头函数不需要参数或需要多个参数，就使用一个圆括号代表参数部分
+如果箭头函数的代码块部分多于一条语句，就是用大括号括起来，使用return语句返回
+如果箭头函数返回一个对象，必须在对象外加上括号，否则会报错
+// 报错
+let getTempItem = id =&amp;gt; { id: id, name: &amp;quot;Temp&amp;quot; };
+// 不报错
+let getTempItem = id =&amp;gt; ({ id: id, name: &amp;quot;Temp&amp;quot; });
+
+特殊情况，虽然可以运行，会得到错误的结果
+let foo = () =&amp;gt; { a: 1 };
+foo() // undefined
+
+原始意图是返回一个对象{ a: 1 }，但是由于引擎认为大括号是代码块，所以执行了一行语句a: 1。这时，a可以被解释为语句的标签，因此实际执行的语句是1;，然后函数就结束了，没有返回值
+如果箭头函数只有一行语句，且不需要返回值let fn = () =&amp;gt; void doesNotReturn();
+箭头函数可以与变量解构结合使用
+const full = ({ first, last }) =&amp;gt; first + &#39; &#39; + last;
+// 等同于
+function full(person) {
+  return person.first + &#39; &#39; + person.last;
+}
+
+rest 参数与箭头函数结合的例子
+const numbers = (...nums) =&amp;gt; nums;
+numbers(1, 2, 3, 4, 5)
+// [1,2,3,4,5]
+const headAndTail = (head, ...tail) =&amp;gt; [head, tail];
+headAndTail(1, 2, 3, 4, 5)
+// [1,[2,3,4,5]]
+
+注意
+
+函数体内的this对象，就是定义时所在的对象，而不是使用时所在的对象，与别处不同。箭头函数本身没有this，是直接使用所在对象的this
+不可以当作构造函数，也就是说，不可以使用new命令，否则会抛出一个错误
+不可以使用arguments对象，该对象在函数体内不存在。如果要用，可以用 rest 参数代替
+不可以使用yield命令，因此箭头函数不能用作 Generator 函数
+
+this对象的指向是可变的，但是在箭头函数中，它是固定的
+箭头函数可以让this指向固定化，这种特性很有利于封装回调函数
+this指向的固定化，并不是因为箭头函数内部有绑定this的机制，实际原因是箭头函数根本没有自己的this，导致内部的this就是外层代码块的this。正是因为它没有this，所以也就不能用作构造函数
+除了this，以下三个变量在箭头函数之中也是不存在的，指向外层函数的对应变量：arguments、super、new.target
+由于箭头函数没有自己的this，所以当然也就不能用call()、apply()、bind()这些方法去改变this的指向
+不适用场合
+由于箭头函数使得this从“动态”变成“静态”，下面两个场合不应该使用箭头函数
+第一个场合是定义对象的方法，且该方法内部包括this
+const cat = {
+  lives: 9,
+  jumps: () =&amp;gt; {
+    this.lives--;
+  }
+}
+
+cat.jumps()方法是一个箭头函数，这是错误的。调用cat.jumps()时，如果是普通函数，该方法内部的this指向cat；如果写成上面那样的箭头函数，使得this指向全局对象，因此不会得到预期结果。这是因为对象不构成单独的作用域，导致jumps箭头函数定义时的作用域就是全局作用域
+第二个场合是需要动态this的时候，也不应使用箭头函数
+嵌套的箭头函数
+箭头函数内部还可以再使用箭头函数
+箭头函数还有一个功能，就是可以很方便地改写 λ 演算
+尾调用优化
+指某个函数的最后一步是调用另一个函数
+以下三种情况，都不属于尾调用
+// 情况一
+function f(x){
+  let y = g(x);
+  return y;
+}
+// 情况二
+function f(x){
+  return g(x) + 1;
+}
+// 情况三
+function f(x){
+  g(x);
+}
+
+情况一是调用函数g之后，还有赋值操作，所以不属于尾调用，即使语义完全一样。情况二也属于调用后还有操作，即使写在一行内。情况三等同于下面的代码
+function f(x){
+  g(x);
+  return undefined;
+}
+
+尾调用优化
+函数调用会在内存形成一个“调用记录”，又称“调用帧”（call frame），保存调用位置和内部变量等信息。如果在函数A的内部调用函数B，那么在A的调用帧上方，还会形成一个B的调用帧。等到B运行结束，将结果返回到A，B的调用帧才会消失。如果函数B内部还调用函数C，那就还有一个C的调用帧，以此类推。所有的调用帧，就形成一个“调用栈”（call stack）
+尾调用由于是函数的最后一步操作，所以不需要保留外层函数的调用帧，因为调用位置、内部变量等信息都不会再用到了，只要直接用内层函数的调用帧，取代外层函数的调用帧就可以了
+function f() {
+  let m = 1;
+  let n = 2;
+  return g(m + n);
+}
+f();
+// 等同于
+function f() {
+  return g(3);
+}
+f();
+// 等同于
+g(3);
+
+如果函数g不是尾调用，函数f就需要保存内部变量m和n的值、g的调用位置等信息。但由于调用g之后，函数f就结束了，所以执行到最后一步，完全可以删除f(x)的调用帧，只保留g(3)的调用帧
+这就叫做“尾调用优化”（Tail call optimization），即只保留内层函数的调用帧。如果所有函数都是尾调用，那么完全可以做到每次执行时，调用帧只有一项，这将大大节省内存。这就是“尾调用优化”的意义
+注意，只有不再用到外层函数的内部变量，内层函数的调用帧才会取代外层函数的调用帧，否则就无法进行“尾调用优化”
+function addOne(a){
+  var one = 1;
+  function inner(b){
+    return b + one;
+  }
+  return inner(a);
+}
+
+函数不会进行尾调用优化，因为内层函数inner用到了外层函数addOne的内部变量one
+尾递归
+递归非常浪费内存，因为会保存大量的调用帧，容易发生栈溢出错误，所以使用尾递归，栈中只会存在一个调用帧，所以不会发生溢出
+function factorial(n) {
+  if (n === 1) return 1;
+  return n * factorial(n - 1);
+}
+factorial(5) // 120
+
+上面代码是一个阶乘函数，计算n的阶乘，最多需要保存n个调用记录，复杂度 O(n)
+如果改写成尾递归，只保留一个调用记录，复杂度 O(1)
+function factorial(n, total) {
+  if (n === 1) return total;
+  return factorial(n - 1, n * total);
+}
+factorial(5, 1) // 120
+
+递归函数的改写
+改写函数需要将内部用到的变量，用在return语句上计算的变量，需要转换为函数中的参数。这样的缺点是不够直观，如上面的函数，为什么计算5的阶乘，需要传入两个参数5和1
+两个方法可以解决这个问题。方法一是在尾递归函数之外，再提供一个正常形式的函数
+function tailFactorial(n, total) {
+  if (n === 1) return total;
+  return tailFactorial(n - 1, n * total);
+}
+function factorial(n) {
+  return tailFactorial(n, 1);
+}
+factorial(5) // 120
+
+函数式编程有一个概念，叫做柯里化（currying），意思是将多参数的函数转换成单参数的形式。这里也可以使用柯里化
+function currying(fn, n) {
+  return function (m) {
+    return fn.call(this, m, n);
+  };
+}
+function tailFactorial(n, total) {
+  if (n === 1) return total;
+  return tailFactorial(n - 1, n * total);
+}
+const factorial = currying(tailFactorial, 1);
+factorial(5) // 120
+
+第二种方法就简单多了，就是采用 ES6 的函数默认值
+严格模式
+ES6 的尾调用优化只在严格模式下开启，正常模式是无效的
+这是因为在正常模式下，函数内部有两个变量，可以跟踪函数的调用栈
+
+func.arguments：返回调用时函数的参数
+func.caller：返回调用当前函数的那个函数
+
+尾调用优化发生时，函数的调用栈会改写，因此上面两个变量就会失真。严格模式禁用这两个变量，所以尾调用模式仅在严格模式下生效
+function restricted() {
+  &#39;use strict&#39;;
+  restricted.caller;    // 报错
+  restricted.arguments; // 报错
+}
+restricted();
+
+尾递归优化的实现
+尾递归之所以需要优化，原因是调用栈太多，造成溢出，那么只要减少调用栈，就不会溢出。怎么做可以减少调用栈呢？就是采用“循环”换掉“递归”
+函数参数的尾逗号
+ES2017允许函数最后一个参数有尾逗号
+这样的规定也使得，函数参数与数组和对象的尾逗号规则，保持一致了
+Function.prototype.toString()
+ES2019对函数实例的toString()方法做出修改
+toString()方法返回函数代码本身，以前会省略注释和空格
+修改后的toString()方法，明确要求返回一摸一样的原始代码
+catch命令的参数省略
+try...catch以前明确要求catch命令后面必须跟参数，ES2019允许catch语句省略参数
+
+                                        </div>
+                                        
+                                            <a class="btn btn-text" href="https://greyseid.github.io/post/han-shu-de-kuo-zhan/">Read More ~</a>
+                            </div>
+                </div>
+            </article>
+            
+            <article class="post i-card">
+                <h2 class="post-title">
                     <a href="https://greyseid.github.io/post/shu-zhi-de-kuo-zhan/">
                         数值的扩展
                     </a>
@@ -112,12 +550,12 @@
                     <time class="post-time">2020-11-18</time>
                     
                         <a href="https://greyseid.github.io/tag/AjqKAL42P/" class="post-tag i-tag
-                            i-tag-success">
+                            i-tag-">
             #前端
         </a>
                         
                         <a href="https://greyseid.github.io/tag/uzhtOJ9qh/" class="post-tag i-tag
-                            i-tag-info">
+                            i-tag-other_2">
             #ES6
         </a>
                         
@@ -407,12 +845,12 @@ Integer类型与Number类型进行混合运算会报错，因为无论返回Inte
                     <time class="post-time">2020-11-16</time>
                     
                         <a href="https://greyseid.github.io/tag/AjqKAL42P/" class="post-tag i-tag
-                            i-tag-warning">
+                            i-tag-other_4">
             #前端
         </a>
                         
                         <a href="https://greyseid.github.io/tag/uzhtOJ9qh/" class="post-tag i-tag
-                            i-tag-other_3">
+                            i-tag-error">
             #ES6
         </a>
                         
@@ -607,7 +1045,7 @@ RE_TWICE.test(&#39;abc!abc!ab&#39;)     //false
                     <!-- 个人信息 -->
                     
     <div class="id_card i-card">
-        <div class="id_card-avatar" style="background-image: url(https://greyseid.github.io//images/avatar.png?v=1606385864529)">
+        <div class="id_card-avatar" style="background-image: url(https://greyseid.github.io//images/avatar.png?v=1606547953219)">
         </div>
         <h1 class="id_card-title">
             正义大厅
