@@ -7,7 +7,7 @@
 <title>
     正义大厅
 </title>
-<link rel="shortcut icon" href="https://greyseid.github.io//favicon.ico?v=1606837551305">
+<link rel="shortcut icon" href="https://greyseid.github.io//favicon.ico?v=1607418921589">
 <!-- <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous"> -->
 <link href="https://cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
@@ -27,7 +27,7 @@
     <div class="nav">
         <div class="logo">
             <a href="https://greyseid.github.io/">
-                <img class="avatar" src="https://greyseid.github.io//images/avatar.png?v=1606837551305" alt="">
+                <img class="avatar" src="https://greyseid.github.io//images/avatar.png?v=1607418921589" alt="">
             </a>
             <div class="site-title">
                 <h1>
@@ -97,6 +97,803 @@
                 <div id="content" class="main-container-left">
                     
         
+            <article class="post i-card">
+                <h2 class="post-title">
+                    <a href="https://greyseid.github.io/post/jquery-de-xue-xi/">
+                        jQuery的学习
+                    </a>
+                </h2>
+                <div class="post-info">
+                    <time class="post-time">2020-12-03</time>
+                    
+                        <a href="https://greyseid.github.io/tag/vTQYGgH_4/" class="post-tag i-tag
+                            i-tag-primary">
+            #jQuery
+        </a>
+                        
+                        <a href="https://greyseid.github.io/tag/UmmQ4L2qI/" class="post-tag i-tag
+                            i-tag-primary">
+            #JavaScript
+        </a>
+                        
+                </div>
+                <div class="post-article">
+                    
+                        <a href="https://greyseid.github.io/post/jquery-de-xue-xi/" class="post-feature-image" style="background-image:url(https://greyseid.github.io//post-images/jquery-de-xue-xi.jpg) ">
+                        </a>
+                        
+                            <div class="post-content">
+                                
+                                        <div class="post-content-content">
+                                            
+jQuery概述
+
+JavaScript库
+jQuery的概念
+
+优点
+
+
+
+
+jQuery的基本使用
+jQuery的基本使用
+
+jQuery的顶级对象$
+jQuery对象和DOM对象
+
+
+this
+jQuery常用api
+
+jQuery选择器
+
+基本选择器
+jQuery层级选择器
+
+css()
+
+
+jQuery筛选选择器
+jQuery属性选择器
+
+
+jQuery筛选方法*
+jQuery里面的排他思想
+index()
+
+
+jQuery样式操作
+
+css
+设置类样式方法
+
+链式编程
+类操作与className区别
+
+
+
+
+jQuery效果
+
+显示隐藏效果
+
+显示
+隐藏
+切换
+
+
+滑动效果
+
+下滑
+上滑
+切换
+事件切换
+
+
+动画队列及其停止排队方法
+
+停止动画
+
+
+淡入淡出效果
+
+渐进方式调整到指定的不透明度
+淡入
+淡出
+切换
+
+
+自定义动画animate
+
+
+jQuery属性操作
+
+设置或获取元素固有属性值prop()
+
+获取属性语法
+设置属性语法
+
+
+设置或获取元素自定义属性值attr()
+
+获取属性语法
+设置属性语法
+
+
+数据缓存data()
+实例
+
+:checked选择器、
+
+
+
+
+jQuery内容文本值
+
+普通元素内容html()(相当于原生innerHTML)
+普通元素文本内容text()（相当于原生innerText）
+表单的值val()（相当于原生value）
+实例
+
+parents()
+toFixed()
+
+
+
+
+jQuery元素操作
+
+遍历元素
+创建元素
+
+内部添加
+外部添加
+
+
+删除元素
+
+
+jQuery事件
+
+jQuery事件注册
+
+单个事件注册
+事件处理on()绑定事件
+
+
+事件处理off()解绑事件
+one()
+自动触发事件trigger()
+jQuery事件对象
+
+
+jQuery其他方法
+
+jQuery对象拷贝
+jQuery多库共存
+
+解决方案
+
+
+jQuery插件
+
+
+jQuery尺寸、位置操作
+
+jQuery尺寸
+jQuery位置
+
+offset()设置或获取元素偏移
+position()
+scrollTop()/scrollLeft()设置或获取元素被卷去的头部和左侧
+
+
+
+
+
+
+jQuery概述
+JavaScript库
+一个封装好特定方法函数的特定集合，是一个js文件，使用原生js代码生成了各种各样功能的js库，提供了很多便捷而又强大的功能
+jQuery的概念
+jQuery提倡写少代码，做多点事情
+j：JavaScript；Query：查询js
+优化DOM操作、事件处理、动画设计和Ajax交互
+优点
+
+jQuery的基本使用
+jQuery的入口函数
+//等待页面的DOM元素加载完成再去执行jQuery代码
+$(document).ready(
+    function(){
+        //...code
+        //$().function();
+    }
+)
+$(function(){
+    //...code
+    //$().function();
+})
+
+
+jQuery的基本使用
+jQuery的顶级对象$
+
+$是jQuery的别名
+是jQuery的顶级对象，相当于js中的window，把元素利用是jQuery的顶级对象，相当于js中的window，把元素利用是jQuery的顶级对象，相当于js中的window，把元素利用包装成jQuery对象，就可以调用jQuery方法
+
+jQuery对象和DOM对象
+
+利用原生js获取的对象就是DOM对象
+用jQuery获取的对象就是jQuery对象
+jQuery利用$对DOM对象进行包装后产生的对象，以伪数组的形式储存
+jQuery对象只能使用jQuery方法，DOM对象则使用原生js属性和方法$(&#39;div&#39;).style.display=&#39;none//error
+
+DOM对象与jQuery对象是可以相互转换的，原生js有很多属性方法是jQuery中没有封装的，要使用这些，就需要转换才能使用
+
+原生DOM转换：$(DOM对象)
+jQuery对象转换：
+
+$()[index]
+$().get(index)
+
+
+
+this
+在jQuery中，(this)指向的是定义在对象的位置，相当于一个jQuery对象this相当于指向一个元素，使用(this)指向的是定义在对象的位置，相当于一个jQuery对象
+this相当于指向一个元素，使用(this)指向的是定义在对象的位置，相当于一个jQuery对象this相当于指向一个元素，使用()将其转换为jQuery对象
+jQuery常用api
+jQuery选择器
+与css选择器类似，加引号即可
+菜鸟教程有详细表格
+基本选择器
+
+
+
+名称
+用法
+描述
+
+
+
+
+ID选择器
+$(&amp;quot;#id&amp;quot;)
+获取指定id的元素
+
+
+全选选择器
+$(&amp;quot;*&amp;quot;)
+匹配所有元素
+
+
+类选择器
+$(&amp;quot;.class&amp;quot;)
+获取同一类class的所有元素
+
+
+标签选择器
+$(&amp;quot;div&amp;quot;)
+获取同一类标签的所有元素
+
+
+并集选择器
+$(&amp;quot;div,p,li&amp;quot;)
+获取多个元素
+
+
+交集选择器
+$(&amp;quot;li.current&amp;quot;)
+交集元素
+
+
+
+jQuery层级选择器
+
+
+
+名称
+用法
+描述
+
+
+
+
+子代选择器
+$(&amp;quot;nl&amp;gt;li&amp;quot;)
+使用&amp;gt;，获取亲儿子层级的元素，并不会获取孙子层级的元素
+
+
+后代选择器
+$(&amp;quot;ul li&amp;quot;)
+使用空格，代表后代选择器，获取ul下的所有li元素，包括孙子等
+
+
+
+css()
+jQuery对象设置css样式用css(&amp;quot;属性&amp;quot;,&amp;quot;值&amp;quot;)
+jQuery内部有隐式迭代，把匹配的所有元素都进行遍历循环
+jQuery筛选选择器
+
+
+
+语法
+用法
+描述
+
+
+
+
+:first
+$(&#39;li:first)
+获取第一个li元素
+
+
+:last
+$(&amp;quot;li:last&amp;quot;)
+获取最后一个li元素
+
+
+:eq(index)
+$(&#39;le:eq(2)&#39;)
+获取的li元素中，选择索引号为2的元素，索引号index从0开始
+
+
+:odd
+$(&#39;li:odd&#39;)
+获取到的li元素中，选择索引号为奇数的元素
+
+
+:even
+$(&#39;li:even&#39;)
+获取到的li元素中，选择索引号为偶数的元素
+
+
+
+jQuery属性选择器
+jQuery 使用 XPath 表达式来选择带有给定属性的元素。
+(&amp;quot;[href]&amp;quot;)选取所有带有href属性的元素。(&amp;quot;[href]&amp;quot;) 选取所有带有 href 属性的元素。
+(&amp;quot;[href]&amp;quot;)选取所有带有href属性的元素。(&amp;quot;[href=&#39;#&#39;]&amp;quot;) 选取所有带有 href 值等于 &amp;quot;#&amp;quot; 的元素。
+(&amp;quot;[href!=&amp;#039;#&amp;#039;]&amp;quot;) 选取所有带有 href 值不等于 &amp;quot;#&amp;quot; 的元素。
+(&amp;quot;[href$=&#39;.jpg&#39;]&amp;quot;) 选取所有 href 值以 &amp;quot;.jpg&amp;quot; 结尾的元素。
+jQuery筛选方法*
+
+
+
+语法
+用法
+说明
+
+
+
+
+parent()
+$(&#39;li&#39;).parent()
+查找父级，返回的是最近一级的父级元素
+
+
+children(selector)
+$(&#39;ul&#39;).children(&#39;li&#39;)
+相当于$(&#39;ul&amp;gt;li&#39;)，最近一级（亲儿子）
+
+
+find(selector)
+$(&#39;ul&#39;).find(&#39;li&#39;)
+相当于$(&#39;ul li&#39;)，后代选择器
+
+
+siblings(selector)
+$(&#39;.first&#39;).siblings(&#39;li&#39;)
+查找兄弟节点，不包括自己本身
+
+
+nextAll([expr])
+$(&#39;.first&#39;).nextAll()
+查找当前元素之后所有的同辈元素
+
+
+prevAll([expr])
+$(&#39;.last&#39;).prevAll()
+查找当前元素之前所有的同辈元素
+
+
+hasClass(class)
+$(&#39;div&#39;).hasClass(&#39;protected&#39;)
+检测当前的元素是否含有某个特定的类，如果有，则返回true
+
+
+eq(index)
+$(&#39;li&#39;).eq(2)
+相当于$(&#39;li:eq(2)&#39;)，index从0开始
+
+
+
+重点：parent()、children()、find()、siblings()、eq()
+hasClass()只要里面有一个元素有对应class就会返回true
+&amp;lt;div id=&amp;quot;div&amp;quot;&amp;gt;
+    &amp;lt;div&amp;gt;&amp;lt;/div&amp;gt;
+    &amp;lt;div class=&#39;a&#39;&amp;gt;&amp;lt;/div&amp;gt;
+&amp;lt;/div&amp;gt;
+$(function(){
+    cohsole.log($(&#39;#div&#39;).children(&#39;div&#39;).hasClass(&#39;a&#39;))//true
+})
+
+jQuery里面的排他思想
+当前元素设置样式，其余的兄弟元素清除样式
+有隐式迭代，省了个for循环之类的
+$(function(){
+    $(&amp;quot;button&amp;quot;).click(function(){
+        $(this).css(&amp;quot;backgrround-color&amp;quot;,&amp;quot;pink&amp;quot;);
+        $(this).siblings(&amp;quot;button&amp;quot;).css(&amp;quot;background-color&amp;quot;,&amp;quot;&amp;quot;);
+    })
+})
+
+index()
+获取索引号
+$(this).index()
+jQuery样式操作
+css
+参数只写属性名，返回属性值$(this).css(&amp;quot;color&amp;quot;)
+参数是属性名、属性值，逗号分隔，设置一组样式，属性必须加引号，值如果是数字可以不用跟单位和引号
+参数可以是对象形式，设置多组样式，属性名可以不用加引号，复合属性必须使用驼峰命名法，如果值不是数字，必须加引号
+$(function(){
+    $(&amp;quot;div&amp;quot;).css({
+        color:&amp;quot;red&amp;quot;,
+        backgroundColor:&amp;quot;red&amp;quot;,
+        width:100
+    });
+})
+
+设置类样式方法
+
+添加类$(&amp;quot;div&amp;quot;).addClass(&amp;quot;current&amp;quot;)
+移除类$(&amp;quot;div&amp;quot;).removeClass(&amp;quot;current&amp;quot;)
+切换类$(&amp;quot;div&amp;quot;).toggleClass(&amp;quot;current&amp;quot;)
+
+类名不能跟选择器一样，不能使用.class加点
+链式编程
+$(&amp;quot;div&amp;quot;).addClasss(&amp;quot;current&amp;quot;).siblings().removeClass(&amp;quot;current&amp;quot;)
+本元素添加类，兄弟元素去除类
+类操作与className区别
+原生js中className会覆盖元素原先里面的类名
+jQuery里面类操作知识对特定类进行操作，不影响原先的类名
+jQuery效果
+动画效果
+
+很明显，由于传参的时候的数值是一定不同的，所以有些函数可以省略各个位置的参数，不必在意后面是否有参数，有些是speed一定要填，后面才能跟其他参数
+属于过渡效果，类似与封装了css中的tranform之类的修改方法
+显示隐藏效果
+显示
+show([speed,[easing],[fn]])
+参数：
+参数都可以省略
+speed：使用字符串“slow”、“normal”、“fast”或者数字表示毫秒数来确定显示速度
+easing：指定切换效果，默认“swing”，可用参数“linear”
+fh：回调函数，动画完成时执行的函数，每个元素执行一次
+$(&amp;quot;p&amp;quot;).show(&amp;quot;slow&amp;quot;);
+$(&amp;quot;p&amp;quot;).show(&amp;quot;fast&amp;quot;,function(){
+   $(this).text(&amp;quot;Animation Done!&amp;quot;);
+ });
+$(&amp;quot;p&amp;quot;).show(4000,function(){
+   $(this).text(&amp;quot;Animation Done...&amp;quot;);
+ });
+
+隐藏
+hide([speed,[easing],[fn]])
+参数使用与显示类似
+$(&amp;quot;p&amp;quot;).hide()
+$(&amp;quot;p&amp;quot;).hide(&amp;quot;slow&amp;quot;);
+$(&amp;quot;p&amp;quot;).hide(&amp;quot;fast&amp;quot;,function(){
+   alert(&amp;quot;Animation Done.&amp;quot;);
+ });
+
+切换
+toggle([speed],[easing],[fn])
+参数使用与显示类似
+$(&#39;td).toggle();
+$(&amp;quot;p&amp;quot;).toggle(&amp;quot;slow&amp;quot;);
+$(&amp;quot;p&amp;quot;).toggle(&amp;quot;fast&amp;quot;,function(){
+   alert(&amp;quot;Animation Done.&amp;quot;);
+ });
+
+滑动效果
+下滑
+slideDown([speed,[easing],[fn]])
+参数使用与显示类似
+$(&amp;quot;.btn2&amp;quot;).click(function(){
+  $(&amp;quot;p&amp;quot;).slideDown();
+});
+$(&amp;quot;p&amp;quot;).slideDown(&amp;quot;slow&amp;quot;);
+$(&amp;quot;p&amp;quot;).slideDown(&amp;quot;fast&amp;quot;,function(){
+   alert(&amp;quot;Animation Done.&amp;quot;);
+ });
+
+上滑
+slideUp([speed,[easing],[fn]])
+参数使用与显示类似
+$(&amp;quot;p&amp;quot;).slideUp(&amp;quot;slow&amp;quot;);
+$(&amp;quot;p&amp;quot;).slideUp(&amp;quot;fast&amp;quot;,function(){
+   alert(&amp;quot;Animation Done.&amp;quot;);
+ });
+
+切换
+slideToggle([speed],[easing],[fn])
+参数使用与显示类似
+$(&amp;quot;p&amp;quot;).slideToggle(&amp;quot;slow&amp;quot;);
+$(&amp;quot;p&amp;quot;).slideToggle(&amp;quot;fast&amp;quot;,function(){
+   alert(&amp;quot;Animation Done.&amp;quot;);
+ });
+
+事件切换
+hover([over,]out)
+
+over:鼠标移到元素上要触发的函数（相当于mouseenter）
+out:鼠标移出元素要触发的函数（相当于mouseleave）
+如果只写一个函数，鼠标经过离开都会触发函数
+
+动画队列及其停止排队方法
+动画或者效果一旦触发就会执行，如果多次触发，就会造成多个动画或者效果排队执行
+停止动画
+stop()
+stop()方法用于停止动画或效果
+注意：stop写到动画或效果的前面，相当于停止结束上一次动画
+$(&amp;quot;div&amp;quot;).stop().toggle()
+淡入淡出效果
+渐进方式调整到指定的不透明度
+fadeTo([[speed],opacity,[easing],[fn]])
+参数：
+
+opacity必须写，取值0-1
+speed：三种预定速度字符串：“slow”、“normal”、“fast”，或者使用毫秒数值。必须写
+easing：指定切换效果，默认swing，可用linear
+fn：回调函数
+
+$(&amp;quot;p&amp;quot;).fadeTo(&amp;quot;slow&amp;quot;, 0.66);
+$(&amp;quot;p&amp;quot;).fadeTo(&amp;quot;fast&amp;quot;, 0.25, function(){
+   alert(&amp;quot;Animation Done.&amp;quot;);
+ });
+
+淡入
+fadeIn([speed],[easing],[fn])
+参数与之前的作用一样
+$(&amp;quot;p&amp;quot;).fadeIn(&amp;quot;slow&amp;quot;);
+(&amp;quot;p&amp;quot;).fadeIn(&amp;quot;fast&amp;quot;,function(){
+   alert(&amp;quot;Animation Done.&amp;quot;);
+ });
+
+淡出
+fadeOut([speed],[easing],[fn])
+参数与之前的作用一样
+$(&amp;quot;p&amp;quot;).fadeOut(&amp;quot;slow&amp;quot;);
+$(&amp;quot;p&amp;quot;).fadeOut(&amp;quot;fast&amp;quot;,function(){
+   alert(&amp;quot;Animation Done.&amp;quot;);
+ });
+
+切换
+fadeToggle([speed,[easing],[fn]])
+参数与之前的作用一样
+$(&amp;quot;p&amp;quot;).fadeToggle(&amp;quot;slow&amp;quot;,&amp;quot;linear&amp;quot;);
+$(&amp;quot;p&amp;quot;).fadeToggle(&amp;quot;fast&amp;quot;,function(){
+   alert(&amp;quot;Animation Done.&amp;quot;);
+ });
+
+自定义动画animate
+animate(params,[speed],[easing],[fn])
+参数：
+params：想要修改的样式属性，以对象形式传递，必写，属性名不用带引号，但要使用驼峰命名法，其余参数可以省略
+speed：slow、normal、fast、毫秒数值
+easing：默认swing，可选linear
+fn：回调函数
+jQuery属性操作
+设置或获取元素固有属性值prop()
+元素固有属性就是元素本身自带的属性，比如&amp;lt;a&amp;gt;元素里的href，比如&amp;lt;input&amp;gt;里的type
+获取属性语法
+prop(&amp;quot;属性&amp;quot;)
+设置属性语法
+prop(&amp;quot;属性&amp;quot;,&amp;quot;属性值&amp;quot;)
+设置或获取元素自定义属性值attr()
+用户自己给元素添加属性，我们称之为自定义属性，比如给div添加index=1
+获取属性语法
+attr(&amp;quot;属性&amp;quot;)//类似原生getAttribute()，css也有attr获取属性值
+设置属性语法
+attr(&amp;quot;属性&amp;quot;,&amp;quot;属性值&amp;quot;)//类似原生setAttribute()
+该方法可以获取H5自定义属性
+数据缓存data()
+data()方法可以在指定的元素上存取数据，并不会修改DOM元素结构。一旦页面刷新，之前存放的数据都将被移除
+$(&amp;quot;span&amp;quot;).data(&amp;quot;uname&amp;quot;,&amp;quot;andy&amp;quot;)
+$(&amp;quot;span&amp;quot;).data(&amp;quot;uname&amp;quot;)
+//data-index
+$(&amp;quot;span&amp;quot;).data(&amp;quot;index&amp;quot;)
+
+获取H5自定义属性，不用写前缀data-，返回的是数字型
+实例
+$(&amp;quot;j-check:checked&amp;quot;).length//复选框被勾选的数量
+
+:checked选择器、
+:checked 选择器选取所有选中的复选框或单选按钮
+$(&amp;quot;:checked&amp;quot;)
+jQuery内容文本值
+主要针对元素的内容还有表单的值操作
+普通元素内容html()(相当于原生innerHTML)
+html()//获取元素的内容
+html(&amp;quot;内容&amp;quot;)//设置元素的内容
+普通元素文本内容text()（相当于原生innerText）
+text()//获取元素的文本内容
+text(&amp;quot;文本内容&amp;quot;)//设置元素的文本内容
+表单的值val()（相当于原生value）
+$(&amp;quot;input&amp;quot;).val()//获取表单的值
+$(&amp;quot;input&amp;quot;).val(&amp;quot;123&amp;quot;)//设置表单的值
+实例
+parents()
+返回元素的所有的父亲，会包括html，body，参数可以指定要找的那个祖先元素
+toFixed()
+四舍五入保留小数位数，参数指定保留几位
+jQuery元素操作
+主要是遍历、创建、添加、删除元素操作
+遍历元素
+jQuery隐式迭代是对同一类元素做了同样的操作。如果想要给同一类元素做不同的操作，就需要用到遍历
+$(&amp;quot;div&amp;quot;).each(function(index,doEle){})
+index是每个元素的索引号，demEle是每个DOM元素对象，不是jQuery对象
+$.each(object,function(index,element){})
+$each()可以用于遍历任何对象，主要用于数据处理，比如数组，对象
+index是每个元素的索引号，element是遍历内容
+创建元素
+var li=$(&amp;quot;&amp;lt;li&amp;gt;&amp;lt;/li&amp;gt;&amp;quot;)
+创建了一个li标签
+内部添加
+element.append(&amp;quot;内容&amp;quot;)
+$(&amp;quot;ul&amp;quot;).append(li)
+把内容放在匹配元素内部的后面
+$(&amp;quot;ul&amp;quot;).preend(li)
+把内容放在匹配元素内部的前面
+外部添加
+$(&amp;quot;.test&amp;quot;).after($(&amp;quot;&amp;lt;div&amp;gt;&amp;lt;/div&amp;gt;&amp;quot;))
+把内容放在匹配元素的后面
+$(&amp;quot;.test&amp;quot;).before($(&amp;quot;&amp;lt;div&amp;gt;&amp;lt;/div&amp;gt;&amp;quot;))
+把内容放在匹配元素的前面
+内部添加元素，是父子关系
+外部添加元素，是兄弟关系
+删除元素
+element.remove()//删除匹配的元素
+element.empty()//删除匹配的元素集合中所有的子节点
+element.html(&amp;quot;&amp;quot;)//清空匹配的元素内容
+jQuery事件
+jQuery事件注册
+单个事件注册
+element.事件(function(){})
+$(&amp;quot;div&amp;quot;).click(function(){事件处理程序})
+事件处理on()绑定事件
+on()方法优势：
+可以绑定多个事件，多个处理事件处理程序
+$(&amp;quot;div&amp;quot;).on({
+    mouseover:function(){},
+    mouseout:function(){}
+})
+
+事件处理程序相同
+$(&amp;quot;div&amp;quot;).on(&amp;quot;mouseover mouseout&amp;quot;,function(){})
+
+优势：
+可以事件委派操作。事件委派的定义是，把原来加给子元素身上的
+事件绑定在父元素身上，把事件委派个父元素。类似于vue的组件，子组件的事件可以向上传递给父组件，父组件监听子组件的事件
+$(&amp;quot;ul&amp;quot;).on(&amp;quot;click&amp;quot;,&amp;quot;li&amp;quot;,function(){//绑定在ul身上，触发是用li
+    alert(&amp;quot;hi&amp;quot;);
+});
+
+动态创建元素，click()没法绑定事件，on()可以给动态生成的元素绑定事件
+$(&amp;quot;ol&amp;quot;).on(&amp;quot;click&amp;quot;,&amp;quot;li&amp;quot;,function(){});
+var li=$(&amp;quot;&amp;lt;li&amp;gt;&amp;lt;/li&amp;gt;&amp;quot;)
+$(&amp;quot;ol&amp;quot;).append(li);
+
+事件处理off()解绑事件
+$(&amp;quot;div&amp;quot;).off()
+解绑所有事件
+$(&amp;quot;div&amp;quot;).off(&amp;quot;click&amp;quot;)
+解除点击事件
+$(&amp;quot;ul&amp;quot;).off(&amp;quot;click&amp;quot;,&amp;quot;li&amp;quot;)
+解除事件委托
+one()
+写法与on()一样，但只触发一次
+自动触发事件trigger()
+有些事件希望自动触发，比如轮播图自动播放功能跟点击右侧按钮一致。可以利用定时器自动触发右侧按钮点击事件，不必鼠标点击触发
+element.click()//第一种简写形式
+element.trigger()//第二种自动触发模式
+$(&amp;quot;p&amp;quot;).on(&amp;quot;click&amp;quot;,function(){
+    alert(&amp;quot;hi~&amp;quot;);
+});
+$(&amp;quot;p&amp;quot;).trigger(&amp;quot;click&amp;quot;);//此时自动触发点击事件，不需要鼠标点击，会触发元素默认行为，用了focus之后光标会在框里闪，triggerHandler()不会
+element.triggerHandler(type)//第三种自动触发模式，不会触发元素默认行为
+
+jQuery事件对象
+事件被触发就会有事件对象产生
+element.on(events,[selector],function(event){})
+阻止默认行为：event.preventDefault()或者return false
+阻止冒泡：event.stopPropagation()
+jQuery其他方法
+jQuery对象拷贝
+如果想要把某个对象拷贝（合并）给另外一个对象使用，此时可以使用$.extend()方法
+$.extend([deep],target,object1,[objectN])
+deep：如果设为true为深拷贝，默认为false浅拷贝
+target：要拷贝的目标对象
+object1：待拷贝到第一个对象的对象
+浅拷贝：把原来对象里面复杂数据类型地址拷贝给目标对象
+深拷贝：完全克隆，拷贝的是对象的数据而不是地址，修改不会影响其他对象，如果复制时对象内有不冲突的属性，会进行合并
+拷贝的时候，如果键值也是一个对象，那么其实只是拷贝了一个地址，修改这个会影响那个
+jQuery多库共存
+jQuery使用作为标示符，随着jQuery的流行，其他js库也可能使用作为标示符，随着jQuery的流行，其他js库也可能使用作为标示符，随着jQuery的流行，其他js库也可能使用作为标识符，这样一起使用可能会发生冲突
+解决方案
+
+把$统一使用jQuery
+自定义var i=$.noConflict()
+
+jQuery插件
+jQuery功能有限，实现更复杂功能可以使用jQuery插件
+常用网站：
+
+jQuery尺寸、位置操作
+jQuery尺寸
+width(300)//设置宽度为300
+
+
+
+语法
+用法
+
+
+
+
+width()/height()
+取得匹配元素怒宽度和高度值 只算width/width
+
+
+innerWidth()/innerHeight()
+取得匹配元素宽度和高度值包括padding
+
+
+outerWidth()/outerHeight()
+取得匹配元素宽度和高度值包括padding、border
+
+
+outerWidth(true)/outerHeight(true)
+取得匹配元素宽度和高度值包括padding、border、margin
+
+
+
+括号为空，则获取相应值，返回数字型
+参数为数字，设置尺寸，可以不用加单位
+jQuery位置
+位置方法：offset()、position()、scrollTop()/scrollLeft()
+offset()设置或获取元素偏移
+offset()方法设置或返回被选元素相对于文档的偏移坐标，跟父级没关系
+返回的是一个对象{top: ,left: }
+$(.son).offset({
+    top:200,
+    left:200
+})
+
+加了定位position还是一样的返回结果
+position()
+获取距离带有定位父级位置position，如果没有带有定位的父级，以文档为准
+使用方法效果与offset()一致，但是position()不能用来设置元素偏移，只能获取
+scrollTop()/scrollLeft()设置或获取元素被卷去的头部和左侧
+scrollTop()方法设置或返回被元素卷去的头部
+scrollLeft()方法设置或返回被元素卷去的左部
+设置参数就是转到指定位置
+可以使用animate的scrollTop属性做出过渡效果
+元素才能做动画，文档不行
+$(&amp;quot;body,html&amp;quot;).stop().animate({
+    scrollTop:0
+})
+
+
+                                        </div>
+                                        
+                                            <a class="btn btn-text" href="https://greyseid.github.io/post/jquery-de-xue-xi/">Read More ~</a>
+                            </div>
+                </div>
+            </article>
+            
             <article class="post i-card">
                 <h2 class="post-title">
                     <a href="https://greyseid.github.io/post/dui-xiang-de-kuo-zhan/">
@@ -1058,12 +1855,12 @@ arr.sort(unstableSorting)
                     <time class="post-time">2020-11-19</time>
                     
                         <a href="https://greyseid.github.io/tag/AjqKAL42P/" class="post-tag i-tag
-                            i-tag-success">
+                            i-tag-primary">
             #前端
         </a>
                         
                         <a href="https://greyseid.github.io/tag/uzhtOJ9qh/" class="post-tag i-tag
-                            i-tag-other_1">
+                            i-tag-other_4">
             #ES6
         </a>
                         
@@ -1496,12 +2293,12 @@ try...catch以前明确要求catch命令后面必须跟参数，ES2019允许catc
                     <time class="post-time">2020-11-18</time>
                     
                         <a href="https://greyseid.github.io/tag/AjqKAL42P/" class="post-tag i-tag
-                            i-tag-">
+                            i-tag-info">
             #前端
         </a>
                         
                         <a href="https://greyseid.github.io/tag/uzhtOJ9qh/" class="post-tag i-tag
-                            i-tag-other_4">
+                            i-tag-banana">
             #ES6
         </a>
                         
@@ -1791,12 +2588,12 @@ Integer类型与Number类型进行混合运算会报错，因为无论返回Inte
                     <time class="post-time">2020-11-16</time>
                     
                         <a href="https://greyseid.github.io/tag/AjqKAL42P/" class="post-tag i-tag
-                            i-tag-">
+                            i-tag-info">
             #前端
         </a>
                         
                         <a href="https://greyseid.github.io/tag/uzhtOJ9qh/" class="post-tag i-tag
-                            i-tag-other_2">
+                            i-tag-error">
             #ES6
         </a>
                         
@@ -2020,7 +2817,7 @@ RE_TWICE.test(&#39;abc!abc!ab&#39;)     //false
                     <!-- 个人信息 -->
                     
     <div class="id_card i-card">
-        <div class="id_card-avatar" style="background-image: url(https://greyseid.github.io//images/avatar.png?v=1606837551305)">
+        <div class="id_card-avatar" style="background-image: url(https://greyseid.github.io//images/avatar.png?v=1607418921589)">
         </div>
         <h1 class="id_card-title">
             正义大厅

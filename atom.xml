@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://greyseid.github.io/</id>
     <title>正义大厅</title>
-    <updated>2020-12-01T15:45:52.937Z</updated>
+    <updated>2020-12-08T09:16:21.072Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://greyseid.github.io/"/>
     <link rel="self" href="https://greyseid.github.io/atom.xml"/>
@@ -10,6 +10,775 @@
     <logo>https://greyseid.github.io/images/avatar.png</logo>
     <icon>https://greyseid.github.io/favicon.ico</icon>
     <rights>All rights reserved 2020, 正义大厅</rights>
+    <entry>
+        <title type="html"><![CDATA[jQuery的学习]]></title>
+        <id>https://greyseid.github.io/post/jquery-de-xue-xi/</id>
+        <link href="https://greyseid.github.io/post/jquery-de-xue-xi/">
+        </link>
+        <updated>2020-12-03T06:22:16.000Z</updated>
+        <content type="html"><![CDATA[<p><ul class="markdownIt-TOC">
+<li><a href="#jquery%E6%A6%82%E8%BF%B0">jQuery概述</a>
+<ul>
+<li><a href="#javascript%E5%BA%93">JavaScript库</a></li>
+<li><a href="#jquery%E7%9A%84%E6%A6%82%E5%BF%B5">jQuery的概念</a>
+<ul>
+<li><a href="#%E4%BC%98%E7%82%B9">优点</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#jquery%E7%9A%84%E5%9F%BA%E6%9C%AC%E4%BD%BF%E7%94%A8">jQuery的基本使用</a></li>
+<li><a href="#jquery%E7%9A%84%E5%9F%BA%E6%9C%AC%E4%BD%BF%E7%94%A8-2">jQuery的基本使用</a>
+<ul>
+<li><a href="#jquery%E7%9A%84%E9%A1%B6%E7%BA%A7%E5%AF%B9%E8%B1%A1">jQuery的顶级对象$</a></li>
+<li><a href="#jquery%E5%AF%B9%E8%B1%A1%E5%92%8Cdom%E5%AF%B9%E8%B1%A1">jQuery对象和DOM对象</a></li>
+</ul>
+</li>
+<li><a href="#this">this</a></li>
+<li><a href="#jquery%E5%B8%B8%E7%94%A8api">jQuery常用api</a>
+<ul>
+<li><a href="#jquery%E9%80%89%E6%8B%A9%E5%99%A8">jQuery选择器</a>
+<ul>
+<li><a href="#%E5%9F%BA%E6%9C%AC%E9%80%89%E6%8B%A9%E5%99%A8">基本选择器</a></li>
+<li><a href="#jquery%E5%B1%82%E7%BA%A7%E9%80%89%E6%8B%A9%E5%99%A8">jQuery层级选择器</a>
+<ul>
+<li><a href="#css">css()</a></li>
+</ul>
+</li>
+<li><a href="#jquery%E7%AD%9B%E9%80%89%E9%80%89%E6%8B%A9%E5%99%A8">jQuery筛选选择器</a></li>
+<li><a href="#jquery%E5%B1%9E%E6%80%A7%E9%80%89%E6%8B%A9%E5%99%A8">jQuery属性选择器</a></li>
+</ul>
+</li>
+<li><a href="#jquery%E7%AD%9B%E9%80%89%E6%96%B9%E6%B3%95">jQuery筛选方法*</a></li>
+<li><a href="#jquery%E9%87%8C%E9%9D%A2%E7%9A%84%E6%8E%92%E4%BB%96%E6%80%9D%E6%83%B3">jQuery里面的排他思想</a></li>
+<li><a href="#index">index()</a></li>
+</ul>
+</li>
+<li><a href="#jquery%E6%A0%B7%E5%BC%8F%E6%93%8D%E4%BD%9C">jQuery样式操作</a>
+<ul>
+<li><a href="#css-2">css</a></li>
+<li><a href="#%E8%AE%BE%E7%BD%AE%E7%B1%BB%E6%A0%B7%E5%BC%8F%E6%96%B9%E6%B3%95">设置类样式方法</a>
+<ul>
+<li><a href="#%E9%93%BE%E5%BC%8F%E7%BC%96%E7%A8%8B">链式编程</a></li>
+<li><a href="#%E7%B1%BB%E6%93%8D%E4%BD%9C%E4%B8%8Eclassname%E5%8C%BA%E5%88%AB">类操作与className区别</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#jquery%E6%95%88%E6%9E%9C">jQuery效果</a>
+<ul>
+<li><a href="#%E6%98%BE%E7%A4%BA%E9%9A%90%E8%97%8F%E6%95%88%E6%9E%9C">显示隐藏效果</a>
+<ul>
+<li><a href="#%E6%98%BE%E7%A4%BA">显示</a></li>
+<li><a href="#%E9%9A%90%E8%97%8F">隐藏</a></li>
+<li><a href="#%E5%88%87%E6%8D%A2">切换</a></li>
+</ul>
+</li>
+<li><a href="#%E6%BB%91%E5%8A%A8%E6%95%88%E6%9E%9C">滑动效果</a>
+<ul>
+<li><a href="#%E4%B8%8B%E6%BB%91">下滑</a></li>
+<li><a href="#%E4%B8%8A%E6%BB%91">上滑</a></li>
+<li><a href="#%E5%88%87%E6%8D%A2-2">切换</a></li>
+<li><a href="#%E4%BA%8B%E4%BB%B6%E5%88%87%E6%8D%A2">事件切换</a></li>
+</ul>
+</li>
+<li><a href="#%E5%8A%A8%E7%94%BB%E9%98%9F%E5%88%97%E5%8F%8A%E5%85%B6%E5%81%9C%E6%AD%A2%E6%8E%92%E9%98%9F%E6%96%B9%E6%B3%95">动画队列及其停止排队方法</a>
+<ul>
+<li><a href="#%E5%81%9C%E6%AD%A2%E5%8A%A8%E7%94%BB">停止动画</a></li>
+</ul>
+</li>
+<li><a href="#%E6%B7%A1%E5%85%A5%E6%B7%A1%E5%87%BA%E6%95%88%E6%9E%9C">淡入淡出效果</a>
+<ul>
+<li><a href="#%E6%B8%90%E8%BF%9B%E6%96%B9%E5%BC%8F%E8%B0%83%E6%95%B4%E5%88%B0%E6%8C%87%E5%AE%9A%E7%9A%84%E4%B8%8D%E9%80%8F%E6%98%8E%E5%BA%A6">渐进方式调整到指定的不透明度</a></li>
+<li><a href="#%E6%B7%A1%E5%85%A5">淡入</a></li>
+<li><a href="#%E6%B7%A1%E5%87%BA">淡出</a></li>
+<li><a href="#%E5%88%87%E6%8D%A2-3">切换</a></li>
+</ul>
+</li>
+<li><a href="#%E8%87%AA%E5%AE%9A%E4%B9%89%E5%8A%A8%E7%94%BBanimate">自定义动画animate</a></li>
+</ul>
+</li>
+<li><a href="#jquery%E5%B1%9E%E6%80%A7%E6%93%8D%E4%BD%9C">jQuery属性操作</a>
+<ul>
+<li><a href="#%E8%AE%BE%E7%BD%AE%E6%88%96%E8%8E%B7%E5%8F%96%E5%85%83%E7%B4%A0%E5%9B%BA%E6%9C%89%E5%B1%9E%E6%80%A7%E5%80%BCprop">设置或获取元素固有属性值prop()</a>
+<ul>
+<li><a href="#%E8%8E%B7%E5%8F%96%E5%B1%9E%E6%80%A7%E8%AF%AD%E6%B3%95">获取属性语法</a></li>
+<li><a href="#%E8%AE%BE%E7%BD%AE%E5%B1%9E%E6%80%A7%E8%AF%AD%E6%B3%95">设置属性语法</a></li>
+</ul>
+</li>
+<li><a href="#%E8%AE%BE%E7%BD%AE%E6%88%96%E8%8E%B7%E5%8F%96%E5%85%83%E7%B4%A0%E8%87%AA%E5%AE%9A%E4%B9%89%E5%B1%9E%E6%80%A7%E5%80%BCattr">设置或获取元素自定义属性值attr()</a>
+<ul>
+<li><a href="#%E8%8E%B7%E5%8F%96%E5%B1%9E%E6%80%A7%E8%AF%AD%E6%B3%95-2">获取属性语法</a></li>
+<li><a href="#%E8%AE%BE%E7%BD%AE%E5%B1%9E%E6%80%A7%E8%AF%AD%E6%B3%95-2">设置属性语法</a></li>
+</ul>
+</li>
+<li><a href="#%E6%95%B0%E6%8D%AE%E7%BC%93%E5%AD%98data">数据缓存data()</a></li>
+<li><a href="#%E5%AE%9E%E4%BE%8B">实例</a>
+<ul>
+<li><a href="#checked%E9%80%89%E6%8B%A9%E5%99%A8">:checked选择器、</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#jquery%E5%86%85%E5%AE%B9%E6%96%87%E6%9C%AC%E5%80%BC">jQuery内容文本值</a>
+<ul>
+<li><a href="#%E6%99%AE%E9%80%9A%E5%85%83%E7%B4%A0%E5%86%85%E5%AE%B9html%E7%9B%B8%E5%BD%93%E4%BA%8E%E5%8E%9F%E7%94%9Finnerhtml">普通元素内容html()(相当于原生innerHTML)</a></li>
+<li><a href="#%E6%99%AE%E9%80%9A%E5%85%83%E7%B4%A0%E6%96%87%E6%9C%AC%E5%86%85%E5%AE%B9text%E7%9B%B8%E5%BD%93%E4%BA%8E%E5%8E%9F%E7%94%9Finnertext">普通元素文本内容text()（相当于原生innerText）</a></li>
+<li><a href="#%E8%A1%A8%E5%8D%95%E7%9A%84%E5%80%BCval%E7%9B%B8%E5%BD%93%E4%BA%8E%E5%8E%9F%E7%94%9Fvalue">表单的值val()（相当于原生value）</a></li>
+<li><a href="#%E5%AE%9E%E4%BE%8B-2">实例</a>
+<ul>
+<li><a href="#parents">parents()</a></li>
+<li><a href="#tofixed">toFixed()</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#jquery%E5%85%83%E7%B4%A0%E6%93%8D%E4%BD%9C">jQuery元素操作</a>
+<ul>
+<li><a href="#%E9%81%8D%E5%8E%86%E5%85%83%E7%B4%A0">遍历元素</a></li>
+<li><a href="#%E5%88%9B%E5%BB%BA%E5%85%83%E7%B4%A0">创建元素</a>
+<ul>
+<li><a href="#%E5%86%85%E9%83%A8%E6%B7%BB%E5%8A%A0">内部添加</a></li>
+<li><a href="#%E5%A4%96%E9%83%A8%E6%B7%BB%E5%8A%A0">外部添加</a></li>
+</ul>
+</li>
+<li><a href="#%E5%88%A0%E9%99%A4%E5%85%83%E7%B4%A0">删除元素</a></li>
+</ul>
+</li>
+<li><a href="#jquery%E4%BA%8B%E4%BB%B6">jQuery事件</a>
+<ul>
+<li><a href="#jquery%E4%BA%8B%E4%BB%B6%E6%B3%A8%E5%86%8C">jQuery事件注册</a>
+<ul>
+<li><a href="#%E5%8D%95%E4%B8%AA%E4%BA%8B%E4%BB%B6%E6%B3%A8%E5%86%8C">单个事件注册</a></li>
+<li><a href="#%E4%BA%8B%E4%BB%B6%E5%A4%84%E7%90%86on%E7%BB%91%E5%AE%9A%E4%BA%8B%E4%BB%B6">事件处理on()绑定事件</a></li>
+</ul>
+</li>
+<li><a href="#%E4%BA%8B%E4%BB%B6%E5%A4%84%E7%90%86off%E8%A7%A3%E7%BB%91%E4%BA%8B%E4%BB%B6">事件处理off()解绑事件</a></li>
+<li><a href="#one">one()</a></li>
+<li><a href="#%E8%87%AA%E5%8A%A8%E8%A7%A6%E5%8F%91%E4%BA%8B%E4%BB%B6trigger">自动触发事件trigger()</a></li>
+<li><a href="#jquery%E4%BA%8B%E4%BB%B6%E5%AF%B9%E8%B1%A1">jQuery事件对象</a></li>
+</ul>
+</li>
+<li><a href="#jquery%E5%85%B6%E4%BB%96%E6%96%B9%E6%B3%95">jQuery其他方法</a>
+<ul>
+<li><a href="#jquery%E5%AF%B9%E8%B1%A1%E6%8B%B7%E8%B4%9D">jQuery对象拷贝</a></li>
+<li><a href="#jquery%E5%A4%9A%E5%BA%93%E5%85%B1%E5%AD%98">jQuery多库共存</a>
+<ul>
+<li><a href="#%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88">解决方案</a></li>
+</ul>
+</li>
+<li><a href="#jquery%E6%8F%92%E4%BB%B6">jQuery插件</a></li>
+</ul>
+</li>
+<li><a href="#jquery%E5%B0%BA%E5%AF%B8-%E4%BD%8D%E7%BD%AE%E6%93%8D%E4%BD%9C">jQuery尺寸、位置操作</a>
+<ul>
+<li><a href="#jquery%E5%B0%BA%E5%AF%B8">jQuery尺寸</a></li>
+<li><a href="#jquery%E4%BD%8D%E7%BD%AE">jQuery位置</a>
+<ul>
+<li><a href="#offset%E8%AE%BE%E7%BD%AE%E6%88%96%E8%8E%B7%E5%8F%96%E5%85%83%E7%B4%A0%E5%81%8F%E7%A7%BB">offset()设置或获取元素偏移</a></li>
+<li><a href="#position">position()</a></li>
+<li><a href="#scrolltopscrollleft%E8%AE%BE%E7%BD%AE%E6%88%96%E8%8E%B7%E5%8F%96%E5%85%83%E7%B4%A0%E8%A2%AB%E5%8D%B7%E5%8E%BB%E7%9A%84%E5%A4%B4%E9%83%A8%E5%92%8C%E5%B7%A6%E4%BE%A7">scrollTop()/scrollLeft()设置或获取元素被卷去的头部和左侧</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</p>
+<h1 id="jquery概述">jQuery概述</h1>
+<h2 id="javascript库">JavaScript库</h2>
+<p>一个封装好特定方法函数的特定集合，是一个js文件，使用原生js代码生成了各种各样功能的js库，提供了很多便捷而又强大的功能</p>
+<h2 id="jquery的概念">jQuery的概念</h2>
+<p>jQuery提倡写少代码，做多点事情<br>
+j：JavaScript；Query：查询js<br>
+优化DOM操作、事件处理、动画设计和Ajax交互</p>
+<h3 id="优点">优点</h3>
+<figure data-type="image" tabindex="1"><img src="https://greyseid.github.io//post-images/1606978056754.png" alt="" loading="lazy"></figure>
+<h1 id="jquery的基本使用">jQuery的基本使用</h1>
+<p><code>jQuery</code>的入口函数</p>
+<pre><code class="language-javascript">//等待页面的DOM元素加载完成再去执行jQuery代码
+$(document).ready(
+    function(){
+        //...code
+        //$().function();
+    }
+)
+$(function(){
+    //...code
+    //$().function();
+})
+</code></pre>
+<figure data-type="image" tabindex="2"><img src="https://greyseid.github.io//post-images/1606978783008.png" alt="" loading="lazy"></figure>
+<h1 id="jquery的基本使用-2">jQuery的基本使用</h1>
+<h2 id="jquery的顶级对象">jQuery的顶级对象$</h2>
+<ol>
+<li>$是jQuery的别名</li>
+<li><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi mathvariant="normal">是</mi><mi>j</mi><mi>Q</mi><mi>u</mi><mi>e</mi><mi>r</mi><mi>y</mi><mi mathvariant="normal">的</mi><mi mathvariant="normal">顶</mi><mi mathvariant="normal">级</mi><mi mathvariant="normal">对</mi><mi mathvariant="normal">象</mi><mi mathvariant="normal">，</mi><mi mathvariant="normal">相</mi><mi mathvariant="normal">当</mi><mi mathvariant="normal">于</mi><mi>j</mi><mi>s</mi><mi mathvariant="normal">中</mi><mi mathvariant="normal">的</mi><mi>w</mi><mi>i</mi><mi>n</mi><mi>d</mi><mi>o</mi><mi>w</mi><mi mathvariant="normal">，</mi><mi mathvariant="normal">把</mi><mi mathvariant="normal">元</mi><mi mathvariant="normal">素</mi><mi mathvariant="normal">利</mi><mi mathvariant="normal">用</mi></mrow><annotation encoding="application/x-tex">是jQuery的顶级对象，相当于js中的window，把元素利用</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8888799999999999em;vertical-align:-0.19444em;"></span><span class="mord cjk_fallback">是</span><span class="mord mathdefault" style="margin-right:0.05724em;">j</span><span class="mord mathdefault">Q</span><span class="mord mathdefault">u</span><span class="mord mathdefault">e</span><span class="mord mathdefault" style="margin-right:0.02778em;">r</span><span class="mord mathdefault" style="margin-right:0.03588em;">y</span><span class="mord cjk_fallback">的</span><span class="mord cjk_fallback">顶</span><span class="mord cjk_fallback">级</span><span class="mord cjk_fallback">对</span><span class="mord cjk_fallback">象</span><span class="mord cjk_fallback">，</span><span class="mord cjk_fallback">相</span><span class="mord cjk_fallback">当</span><span class="mord cjk_fallback">于</span><span class="mord mathdefault" style="margin-right:0.05724em;">j</span><span class="mord mathdefault">s</span><span class="mord cjk_fallback">中</span><span class="mord cjk_fallback">的</span><span class="mord mathdefault" style="margin-right:0.02691em;">w</span><span class="mord mathdefault">i</span><span class="mord mathdefault">n</span><span class="mord mathdefault">d</span><span class="mord mathdefault">o</span><span class="mord mathdefault" style="margin-right:0.02691em;">w</span><span class="mord cjk_fallback">，</span><span class="mord cjk_fallback">把</span><span class="mord cjk_fallback">元</span><span class="mord cjk_fallback">素</span><span class="mord cjk_fallback">利</span><span class="mord cjk_fallback">用</span></span></span></span>包装成jQuery对象，就可以调用jQuery方法</li>
+</ol>
+<h2 id="jquery对象和dom对象">jQuery对象和DOM对象</h2>
+<ol>
+<li>利用原生js获取的对象就是DOM对象</li>
+<li>用jQuery获取的对象就是jQuery对象</li>
+<li>jQuery利用$对DOM对象进行包装后产生的对象，以伪数组的形式储存</li>
+<li>jQuery对象只能使用jQuery方法，DOM对象则使用原生js属性和方法<code>$('div').style.display='none//error</code></li>
+</ol>
+<p>DOM对象与jQuery对象是可以相互转换的，原生js有很多属性方法是jQuery中没有封装的，要使用这些，就需要转换才能使用</p>
+<ol>
+<li>原生DOM转换：<code>$(DOM对象)</code></li>
+<li>jQuery对象转换：
+<ul>
+<li><code>$()[index]</code></li>
+<li><code>$().get(index)</code></li>
+</ul>
+</li>
+</ol>
+<h1 id="this">this</h1>
+<p>在jQuery中，<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mo>(</mo><mi>t</mi><mi>h</mi><mi>i</mi><mi>s</mi><mo>)</mo><mi mathvariant="normal">指</mi><mi mathvariant="normal">向</mi><mi mathvariant="normal">的</mi><mi mathvariant="normal">是</mi><mi mathvariant="normal">定</mi><mi mathvariant="normal">义</mi><mi mathvariant="normal">在</mi><mi mathvariant="normal">对</mi><mi mathvariant="normal">象</mi><mi mathvariant="normal">的</mi><mi mathvariant="normal">位</mi><mi mathvariant="normal">置</mi><mi mathvariant="normal">，</mi><mi mathvariant="normal">相</mi><mi mathvariant="normal">当</mi><mi mathvariant="normal">于</mi><mi mathvariant="normal">一</mi><mi mathvariant="normal">个</mi><mi>j</mi><mi>Q</mi><mi>u</mi><mi>e</mi><mi>r</mi><mi>y</mi><mi mathvariant="normal">对</mi><mi mathvariant="normal">象</mi><mi>t</mi><mi>h</mi><mi>i</mi><mi>s</mi><mi mathvariant="normal">相</mi><mi mathvariant="normal">当</mi><mi mathvariant="normal">于</mi><mi mathvariant="normal">指</mi><mi mathvariant="normal">向</mi><mi mathvariant="normal">一</mi><mi mathvariant="normal">个</mi><mi mathvariant="normal">元</mi><mi mathvariant="normal">素</mi><mi mathvariant="normal">，</mi><mi mathvariant="normal">使</mi><mi mathvariant="normal">用</mi></mrow><annotation encoding="application/x-tex">(this)指向的是定义在对象的位置，相当于一个jQuery对象
+this相当于指向一个元素，使用</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mopen">(</span><span class="mord mathdefault">t</span><span class="mord mathdefault">h</span><span class="mord mathdefault">i</span><span class="mord mathdefault">s</span><span class="mclose">)</span><span class="mord cjk_fallback">指</span><span class="mord cjk_fallback">向</span><span class="mord cjk_fallback">的</span><span class="mord cjk_fallback">是</span><span class="mord cjk_fallback">定</span><span class="mord cjk_fallback">义</span><span class="mord cjk_fallback">在</span><span class="mord cjk_fallback">对</span><span class="mord cjk_fallback">象</span><span class="mord cjk_fallback">的</span><span class="mord cjk_fallback">位</span><span class="mord cjk_fallback">置</span><span class="mord cjk_fallback">，</span><span class="mord cjk_fallback">相</span><span class="mord cjk_fallback">当</span><span class="mord cjk_fallback">于</span><span class="mord cjk_fallback">一</span><span class="mord cjk_fallback">个</span><span class="mord mathdefault" style="margin-right:0.05724em;">j</span><span class="mord mathdefault">Q</span><span class="mord mathdefault">u</span><span class="mord mathdefault">e</span><span class="mord mathdefault" style="margin-right:0.02778em;">r</span><span class="mord mathdefault" style="margin-right:0.03588em;">y</span><span class="mord cjk_fallback">对</span><span class="mord cjk_fallback">象</span><span class="mord mathdefault">t</span><span class="mord mathdefault">h</span><span class="mord mathdefault">i</span><span class="mord mathdefault">s</span><span class="mord cjk_fallback">相</span><span class="mord cjk_fallback">当</span><span class="mord cjk_fallback">于</span><span class="mord cjk_fallback">指</span><span class="mord cjk_fallback">向</span><span class="mord cjk_fallback">一</span><span class="mord cjk_fallback">个</span><span class="mord cjk_fallback">元</span><span class="mord cjk_fallback">素</span><span class="mord cjk_fallback">，</span><span class="mord cjk_fallback">使</span><span class="mord cjk_fallback">用</span></span></span></span>()将其转换为jQuery对象</p>
+<h1 id="jquery常用api">jQuery常用api</h1>
+<h2 id="jquery选择器">jQuery选择器</h2>
+<p>与css选择器类似，加引号即可<br>
+菜鸟教程有详细<a href="https://www.runoob.com/jquery/jquery-selectors.html">表格</a></p>
+<h3 id="基本选择器">基本选择器</h3>
+<table>
+<thead>
+<tr>
+<th>名称</th>
+<th>用法</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>ID选择器</td>
+<td>$(&quot;#id&quot;)</td>
+<td>获取指定id的元素</td>
+</tr>
+<tr>
+<td>全选选择器</td>
+<td>$(&quot;*&quot;)</td>
+<td>匹配所有元素</td>
+</tr>
+<tr>
+<td>类选择器</td>
+<td>$(&quot;.class&quot;)</td>
+<td>获取同一类class的所有元素</td>
+</tr>
+<tr>
+<td>标签选择器</td>
+<td>$(&quot;div&quot;)</td>
+<td>获取同一类标签的所有元素</td>
+</tr>
+<tr>
+<td>并集选择器</td>
+<td>$(&quot;div,p,li&quot;)</td>
+<td>获取多个元素</td>
+</tr>
+<tr>
+<td>交集选择器</td>
+<td>$(&quot;li.current&quot;)</td>
+<td>交集元素</td>
+</tr>
+</tbody>
+</table>
+<h3 id="jquery层级选择器">jQuery层级选择器</h3>
+<table>
+<thead>
+<tr>
+<th>名称</th>
+<th>用法</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>子代选择器</td>
+<td>$(&quot;nl&gt;li&quot;)</td>
+<td>使用&gt;，获取亲儿子层级的元素，并不会获取孙子层级的元素</td>
+</tr>
+<tr>
+<td>后代选择器</td>
+<td>$(&quot;ul li&quot;)</td>
+<td>使用空格，代表后代选择器，获取ul下的所有li元素，包括孙子等</td>
+</tr>
+</tbody>
+</table>
+<h4 id="css">css()</h4>
+<p>jQuery对象设置css样式用<code>css(&quot;属性&quot;,&quot;值&quot;)</code><br>
+jQuery内部有隐式迭代，把匹配的所有元素都进行遍历循环</p>
+<h3 id="jquery筛选选择器">jQuery筛选选择器</h3>
+<table>
+<thead>
+<tr>
+<th>语法</th>
+<th>用法</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>:first</td>
+<td>$('li:first)</td>
+<td>获取第一个li元素</td>
+</tr>
+<tr>
+<td>:last</td>
+<td>$(&quot;li:last&quot;)</td>
+<td>获取最后一个li元素</td>
+</tr>
+<tr>
+<td>:eq(index)</td>
+<td>$('le:eq(2)')</td>
+<td>获取的li元素中，选择索引号为2的元素，索引号index从0开始</td>
+</tr>
+<tr>
+<td>:odd</td>
+<td>$('li:odd')</td>
+<td>获取到的li元素中，选择索引号为奇数的元素</td>
+</tr>
+<tr>
+<td>:even</td>
+<td>$('li:even')</td>
+<td>获取到的li元素中，选择索引号为偶数的元素</td>
+</tr>
+</tbody>
+</table>
+<h3 id="jquery属性选择器">jQuery属性选择器</h3>
+<p>jQuery 使用 XPath 表达式来选择带有给定属性的元素。<br>
+<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mo>(</mo><mi mathvariant="normal">&quot;</mi><mo>[</mo><mi>h</mi><mi>r</mi><mi>e</mi><mi>f</mi><mo>]</mo><mi mathvariant="normal">&quot;</mi><mo>)</mo><mi mathvariant="normal">选</mi><mi mathvariant="normal">取</mi><mi mathvariant="normal">所</mi><mi mathvariant="normal">有</mi><mi mathvariant="normal">带</mi><mi mathvariant="normal">有</mi><mi>h</mi><mi>r</mi><mi>e</mi><mi>f</mi><mi mathvariant="normal">属</mi><mi mathvariant="normal">性</mi><mi mathvariant="normal">的</mi><mi mathvariant="normal">元</mi><mi mathvariant="normal">素</mi><mi mathvariant="normal">。</mi></mrow><annotation encoding="application/x-tex">(&quot;[href]&quot;) 选取所有带有 href 属性的元素。
+</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mopen">(</span><span class="mord">&quot;</span><span class="mopen">[</span><span class="mord mathdefault">h</span><span class="mord mathdefault" style="margin-right:0.02778em;">r</span><span class="mord mathdefault">e</span><span class="mord mathdefault" style="margin-right:0.10764em;">f</span><span class="mclose">]</span><span class="mord">&quot;</span><span class="mclose">)</span><span class="mord cjk_fallback">选</span><span class="mord cjk_fallback">取</span><span class="mord cjk_fallback">所</span><span class="mord cjk_fallback">有</span><span class="mord cjk_fallback">带</span><span class="mord cjk_fallback">有</span><span class="mord mathdefault">h</span><span class="mord mathdefault" style="margin-right:0.02778em;">r</span><span class="mord mathdefault">e</span><span class="mord mathdefault" style="margin-right:0.10764em;">f</span><span class="mord cjk_fallback">属</span><span class="mord cjk_fallback">性</span><span class="mord cjk_fallback">的</span><span class="mord cjk_fallback">元</span><span class="mord cjk_fallback">素</span><span class="mord cjk_fallback">。</span></span></span></span>(&quot;[href='#']&quot;) 选取所有带有 href 值等于 &quot;#&quot; 的元素。<br>
+<span class='katex-error' title='ParseError: KaTeX parse error: Expected &#039;EOF&#039;, got &#039;#&#039; at position 11: (&quot;[href!=&#039;#̲&#039;]&quot;) 选取所有带有 hre…'>(&quot;[href!=&#039;#&#039;]&quot;) 选取所有带有 href 值不等于 &quot;#&quot; 的元素。
+</span>(&quot;[href$='.jpg']&quot;) 选取所有 href 值以 &quot;.jpg&quot; 结尾的元素。</p>
+<h2 id="jquery筛选方法">jQuery筛选方法*</h2>
+<table>
+<thead>
+<tr>
+<th>语法</th>
+<th>用法</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>parent()</td>
+<td>$('li').parent()</td>
+<td>查找父级，返回的是最近一级的父级元素</td>
+</tr>
+<tr>
+<td>children(selector)</td>
+<td>$('ul').children('li')</td>
+<td>相当于$('ul&gt;li')，最近一级（亲儿子）</td>
+</tr>
+<tr>
+<td>find(selector)</td>
+<td>$('ul').find('li')</td>
+<td>相当于$('ul li')，后代选择器</td>
+</tr>
+<tr>
+<td>siblings(selector)</td>
+<td>$('.first').siblings('li')</td>
+<td>查找兄弟节点，不包括自己本身</td>
+</tr>
+<tr>
+<td>nextAll([expr])</td>
+<td>$('.first').nextAll()</td>
+<td>查找当前元素之后所有的同辈元素</td>
+</tr>
+<tr>
+<td>prevAll([expr])</td>
+<td>$('.last').prevAll()</td>
+<td>查找当前元素之前所有的同辈元素</td>
+</tr>
+<tr>
+<td>hasClass(class)</td>
+<td>$('div').hasClass('protected')</td>
+<td>检测当前的元素是否含有某个特定的类，如果有，则返回true</td>
+</tr>
+<tr>
+<td>eq(index)</td>
+<td>$('li').eq(2)</td>
+<td>相当于$('li:eq(2)')，index从0开始</td>
+</tr>
+</tbody>
+</table>
+<p>重点：<code>parent()</code>、<code>children()</code>、<code>find()</code>、<code>siblings()</code>、<code>eq()</code><br>
+<code>hasClass()</code>只要里面有一个元素有对应class就会返回<code>true</code></p>
+<pre><code class="language-javascript">&lt;div id=&quot;div&quot;&gt;
+    &lt;div&gt;&lt;/div&gt;
+    &lt;div class='a'&gt;&lt;/div&gt;
+&lt;/div&gt;
+$(function(){
+    cohsole.log($('#div').children('div').hasClass('a'))//true
+})
+</code></pre>
+<h2 id="jquery里面的排他思想">jQuery里面的排他思想</h2>
+<p>当前元素设置样式，其余的兄弟元素清除样式<br>
+有隐式迭代，省了个for循环之类的</p>
+<pre><code class="language-javascript">$(function(){
+    $(&quot;button&quot;).click(function(){
+        $(this).css(&quot;backgrround-color&quot;,&quot;pink&quot;);
+        $(this).siblings(&quot;button&quot;).css(&quot;background-color&quot;,&quot;&quot;);
+    })
+})
+</code></pre>
+<h2 id="index">index()</h2>
+<p>获取索引号<br>
+<code>$(this).index()</code></p>
+<h1 id="jquery样式操作">jQuery样式操作</h1>
+<h2 id="css-2">css</h2>
+<p>参数只写属性名，返回属性值<code>$(this).css(&quot;color&quot;)</code><br>
+参数是属性名、属性值，逗号分隔，设置一组样式，属性必须加引号，值如果是数字可以不用跟单位和引号<br>
+参数可以是对象形式，设置多组样式，属性名可以不用加引号，复合属性必须使用驼峰命名法，如果值不是数字，必须加引号</p>
+<pre><code class="language-javascript">$(function(){
+    $(&quot;div&quot;).css({
+        color:&quot;red&quot;,
+        backgroundColor:&quot;red&quot;,
+        width:100
+    });
+})
+</code></pre>
+<h2 id="设置类样式方法">设置类样式方法</h2>
+<ol>
+<li>添加类<code>$(&quot;div&quot;).addClass(&quot;current&quot;)</code></li>
+<li>移除类<code>$(&quot;div&quot;).removeClass(&quot;current&quot;)</code></li>
+<li>切换类<code>$(&quot;div&quot;).toggleClass(&quot;current&quot;)</code></li>
+</ol>
+<p>类名不能跟选择器一样，不能使用<code>.class</code>加点</p>
+<h3 id="链式编程">链式编程</h3>
+<p><code>$(&quot;div&quot;).addClasss(&quot;current&quot;).siblings().removeClass(&quot;current&quot;)</code><br>
+本元素添加类，兄弟元素去除类</p>
+<h3 id="类操作与classname区别">类操作与className区别</h3>
+<p>原生js中className会覆盖元素原先里面的类名<br>
+jQuery里面类操作知识对特定类进行操作，不影响原先的类名</p>
+<h1 id="jquery效果">jQuery效果</h1>
+<p>动画效果<br>
+<img src="https://greyseid.github.io//post-images/1607075550074.png" alt="" loading="lazy"><br>
+很明显，由于传参的时候的数值是一定不同的，所以有些函数可以省略各个位置的参数，不必在意后面是否有参数，有些是speed一定要填，后面才能跟其他参数<br>
+属于过渡效果，类似与封装了css中的tranform之类的修改方法</p>
+<h2 id="显示隐藏效果">显示隐藏效果</h2>
+<h3 id="显示">显示</h3>
+<p><code>show([speed,[easing],[fn]])</code><br>
+参数：<br>
+参数都可以省略<br>
+speed：使用字符串“slow”、“normal”、“fast”或者数字表示毫秒数来确定显示速度<br>
+easing：指定切换效果，默认“swing”，可用参数“linear”<br>
+fh：回调函数，动画完成时执行的函数，每个元素执行一次</p>
+<pre><code class="language-javascript">$(&quot;p&quot;).show(&quot;slow&quot;);
+$(&quot;p&quot;).show(&quot;fast&quot;,function(){
+   $(this).text(&quot;Animation Done!&quot;);
+ });
+$(&quot;p&quot;).show(4000,function(){
+   $(this).text(&quot;Animation Done...&quot;);
+ });
+</code></pre>
+<h3 id="隐藏">隐藏</h3>
+<p><code>hide([speed,[easing],[fn]])</code><br>
+参数使用与显示类似</p>
+<pre><code class="language-javascript">$(&quot;p&quot;).hide()
+$(&quot;p&quot;).hide(&quot;slow&quot;);
+$(&quot;p&quot;).hide(&quot;fast&quot;,function(){
+   alert(&quot;Animation Done.&quot;);
+ });
+</code></pre>
+<h3 id="切换">切换</h3>
+<p><code>toggle([speed],[easing],[fn])</code><br>
+参数使用与显示类似</p>
+<pre><code class="language-javascript">$('td).toggle();
+$(&quot;p&quot;).toggle(&quot;slow&quot;);
+$(&quot;p&quot;).toggle(&quot;fast&quot;,function(){
+   alert(&quot;Animation Done.&quot;);
+ });
+</code></pre>
+<h2 id="滑动效果">滑动效果</h2>
+<h3 id="下滑">下滑</h3>
+<p><code>slideDown([speed,[easing],[fn]])</code><br>
+参数使用与显示类似</p>
+<pre><code class="language-javascript">$(&quot;.btn2&quot;).click(function(){
+  $(&quot;p&quot;).slideDown();
+});
+$(&quot;p&quot;).slideDown(&quot;slow&quot;);
+$(&quot;p&quot;).slideDown(&quot;fast&quot;,function(){
+   alert(&quot;Animation Done.&quot;);
+ });
+</code></pre>
+<h3 id="上滑">上滑</h3>
+<p><code>slideUp([speed,[easing],[fn]])</code><br>
+参数使用与显示类似</p>
+<pre><code class="language-javascript">$(&quot;p&quot;).slideUp(&quot;slow&quot;);
+$(&quot;p&quot;).slideUp(&quot;fast&quot;,function(){
+   alert(&quot;Animation Done.&quot;);
+ });
+</code></pre>
+<h3 id="切换-2">切换</h3>
+<p><code>slideToggle([speed],[easing],[fn])</code><br>
+参数使用与显示类似</p>
+<pre><code class="language-javascript">$(&quot;p&quot;).slideToggle(&quot;slow&quot;);
+$(&quot;p&quot;).slideToggle(&quot;fast&quot;,function(){
+   alert(&quot;Animation Done.&quot;);
+ });
+</code></pre>
+<h3 id="事件切换">事件切换</h3>
+<p><code>hover([over,]out)</code></p>
+<ol>
+<li>over:鼠标移到元素上要触发的函数（相当于mouseenter）</li>
+<li>out:鼠标移出元素要触发的函数（相当于mouseleave）</li>
+<li>如果只写一个函数，鼠标经过离开都会触发函数</li>
+</ol>
+<h2 id="动画队列及其停止排队方法">动画队列及其停止排队方法</h2>
+<p>动画或者效果一旦触发就会执行，如果多次触发，就会造成多个动画或者效果排队执行</p>
+<h3 id="停止动画">停止动画</h3>
+<p><code>stop()</code><br>
+<code>stop()</code>方法用于停止动画或效果<br>
+注意：<code>stop</code>写到动画或效果的前面，相当于停止结束上一次动画<br>
+<code>$(&quot;div&quot;).stop().toggle()</code></p>
+<h2 id="淡入淡出效果">淡入淡出效果</h2>
+<h3 id="渐进方式调整到指定的不透明度">渐进方式调整到指定的不透明度</h3>
+<p><code>fadeTo([[speed],opacity,[easing],[fn]])</code><br>
+参数：</p>
+<ol>
+<li>opacity必须写，取值0-1</li>
+<li>speed：三种预定速度字符串：“slow”、“normal”、“fast”，或者使用毫秒数值。必须写</li>
+<li>easing：指定切换效果，默认swing，可用linear</li>
+<li>fn：回调函数</li>
+</ol>
+<pre><code class="language-javascript">$(&quot;p&quot;).fadeTo(&quot;slow&quot;, 0.66);
+$(&quot;p&quot;).fadeTo(&quot;fast&quot;, 0.25, function(){
+   alert(&quot;Animation Done.&quot;);
+ });
+</code></pre>
+<h3 id="淡入">淡入</h3>
+<p><code>fadeIn([speed],[easing],[fn])</code><br>
+参数与之前的作用一样</p>
+<pre><code class="language-javascript">$(&quot;p&quot;).fadeIn(&quot;slow&quot;);
+(&quot;p&quot;).fadeIn(&quot;fast&quot;,function(){
+   alert(&quot;Animation Done.&quot;);
+ });
+</code></pre>
+<h3 id="淡出">淡出</h3>
+<p><code>fadeOut([speed],[easing],[fn])</code><br>
+参数与之前的作用一样</p>
+<pre><code class="language-javascript">$(&quot;p&quot;).fadeOut(&quot;slow&quot;);
+$(&quot;p&quot;).fadeOut(&quot;fast&quot;,function(){
+   alert(&quot;Animation Done.&quot;);
+ });
+</code></pre>
+<h3 id="切换-3">切换</h3>
+<p><code>fadeToggle([speed,[easing],[fn]])</code><br>
+参数与之前的作用一样</p>
+<pre><code class="language-javascript">$(&quot;p&quot;).fadeToggle(&quot;slow&quot;,&quot;linear&quot;);
+$(&quot;p&quot;).fadeToggle(&quot;fast&quot;,function(){
+   alert(&quot;Animation Done.&quot;);
+ });
+</code></pre>
+<h2 id="自定义动画animate">自定义动画animate</h2>
+<p><code>animate(params,[speed],[easing],[fn])</code><br>
+参数：<br>
+params：想要修改的样式属性，以对象形式传递，必写，属性名不用带引号，但要使用驼峰命名法，其余参数可以省略<br>
+speed：slow、normal、fast、毫秒数值<br>
+easing：默认swing，可选linear<br>
+fn：回调函数</p>
+<h1 id="jquery属性操作">jQuery属性操作</h1>
+<h2 id="设置或获取元素固有属性值prop">设置或获取元素固有属性值prop()</h2>
+<p>元素固有属性就是元素本身自带的属性，比如&lt;a&gt;元素里的href，比如&lt;input&gt;里的type</p>
+<h3 id="获取属性语法">获取属性语法</h3>
+<p><code>prop(&quot;属性&quot;)</code></p>
+<h3 id="设置属性语法">设置属性语法</h3>
+<p><code>prop(&quot;属性&quot;,&quot;属性值&quot;)</code></p>
+<h2 id="设置或获取元素自定义属性值attr">设置或获取元素自定义属性值attr()</h2>
+<p>用户自己给元素添加属性，我们称之为自定义属性，比如给div添加index=1</p>
+<h3 id="获取属性语法-2">获取属性语法</h3>
+<p><code>attr(&quot;属性&quot;)//类似原生getAttribute()，css也有attr获取属性值</code></p>
+<h3 id="设置属性语法-2">设置属性语法</h3>
+<p><code>attr(&quot;属性&quot;,&quot;属性值&quot;)//类似原生setAttribute()</code></p>
+<p>该方法可以获取H5自定义属性</p>
+<h2 id="数据缓存data">数据缓存data()</h2>
+<p>data()方法可以在指定的元素上存取数据，并不会修改DOM元素结构。一旦页面刷新，之前存放的数据都将被移除</p>
+<pre><code class="language-javascript">$(&quot;span&quot;).data(&quot;uname&quot;,&quot;andy&quot;)
+$(&quot;span&quot;).data(&quot;uname&quot;)
+//data-index
+$(&quot;span&quot;).data(&quot;index&quot;)
+</code></pre>
+<p>获取H5自定义属性，不用写前缀data-，返回的是数字型</p>
+<h2 id="实例">实例</h2>
+<pre><code class="language-javascript">$(&quot;j-check:checked&quot;).length//复选框被勾选的数量
+</code></pre>
+<h3 id="checked选择器">:checked选择器、</h3>
+<p>:checked 选择器选取所有选中的复选框或单选按钮<br>
+<code>$(&quot;:checked&quot;)</code></p>
+<h1 id="jquery内容文本值">jQuery内容文本值</h1>
+<p>主要针对元素的内容还有表单的值操作</p>
+<h2 id="普通元素内容html相当于原生innerhtml">普通元素内容html()(相当于原生innerHTML)</h2>
+<p><code>html()//获取元素的内容</code><br>
+<code>html(&quot;内容&quot;)//设置元素的内容</code></p>
+<h2 id="普通元素文本内容text相当于原生innertext">普通元素文本内容text()（相当于原生innerText）</h2>
+<p><code>text()//获取元素的文本内容</code><br>
+<code>text(&quot;文本内容&quot;)//设置元素的文本内容</code></p>
+<h2 id="表单的值val相当于原生value">表单的值val()（相当于原生value）</h2>
+<p><code>$(&quot;input&quot;).val()//获取表单的值</code><br>
+<code>$(&quot;input&quot;).val(&quot;123&quot;)//设置表单的值</code></p>
+<h2 id="实例-2">实例</h2>
+<h3 id="parents">parents()</h3>
+<p>返回元素的所有的父亲，会包括html，body，参数可以指定要找的那个祖先元素</p>
+<h3 id="tofixed">toFixed()</h3>
+<p>四舍五入保留小数位数，参数指定保留几位</p>
+<h1 id="jquery元素操作">jQuery元素操作</h1>
+<p>主要是遍历、创建、添加、删除元素操作</p>
+<h2 id="遍历元素">遍历元素</h2>
+<p>jQuery隐式迭代是对同一类元素做了同样的操作。如果想要给同一类元素做不同的操作，就需要用到遍历<br>
+<code>$(&quot;div&quot;).each(function(index,doEle){})</code><br>
+index是每个元素的索引号，demEle是每个DOM元素对象，不是jQuery对象<br>
+<code>$.each(object,function(index,element){})</code><br>
+<code>$each()</code>可以用于遍历任何对象，主要用于数据处理，比如数组，对象<br>
+index是每个元素的索引号，element是遍历内容</p>
+<h2 id="创建元素">创建元素</h2>
+<p><code>var li=$(&quot;&lt;li&gt;&lt;/li&gt;&quot;)</code><br>
+创建了一个li标签</p>
+<h3 id="内部添加">内部添加</h3>
+<p><code>element.append(&quot;内容&quot;)</code><br>
+<code>$(&quot;ul&quot;).append(li)</code><br>
+把内容放在匹配元素内部的后面<br>
+<code>$(&quot;ul&quot;).preend(li)</code><br>
+把内容放在匹配元素内部的前面</p>
+<h3 id="外部添加">外部添加</h3>
+<p><code>$(&quot;.test&quot;).after($(&quot;&lt;div&gt;&lt;/div&gt;&quot;))</code><br>
+把内容放在匹配元素的后面<br>
+<code>$(&quot;.test&quot;).before($(&quot;&lt;div&gt;&lt;/div&gt;&quot;))</code><br>
+把内容放在匹配元素的前面</p>
+<p>内部添加元素，是父子关系<br>
+外部添加元素，是兄弟关系</p>
+<h2 id="删除元素">删除元素</h2>
+<p><code>element.remove()//删除匹配的元素</code><br>
+<code>element.empty()//删除匹配的元素集合中所有的子节点</code><br>
+<code>element.html(&quot;&quot;)//清空匹配的元素内容</code></p>
+<h1 id="jquery事件">jQuery事件</h1>
+<h2 id="jquery事件注册">jQuery事件注册</h2>
+<h3 id="单个事件注册">单个事件注册</h3>
+<p><code>element.事件(function(){})</code><br>
+<code>$(&quot;div&quot;).click(function(){事件处理程序})</code></p>
+<h3 id="事件处理on绑定事件">事件处理on()绑定事件</h3>
+<p>on()方法优势：<br>
+可以绑定多个事件，多个处理事件处理程序</p>
+<pre><code class="language-javascript">$(&quot;div&quot;).on({
+    mouseover:function(){},
+    mouseout:function(){}
+})
+</code></pre>
+<p>事件处理程序相同</p>
+<pre><code class="language-javascript">$(&quot;div&quot;).on(&quot;mouseover mouseout&quot;,function(){})
+</code></pre>
+<p>优势：<br>
+可以事件委派操作。事件委派的定义是，把原来加给子元素身上的<br>
+事件绑定在父元素身上，把事件委派个父元素。类似于vue的组件，子组件的事件可以向上传递给父组件，父组件监听子组件的事件</p>
+<pre><code class="language-javascript">$(&quot;ul&quot;).on(&quot;click&quot;,&quot;li&quot;,function(){//绑定在ul身上，触发是用li
+    alert(&quot;hi&quot;);
+});
+</code></pre>
+<p>动态创建元素，click()没法绑定事件，on()可以给动态生成的元素绑定事件</p>
+<pre><code class="language-javscript">$(&quot;ol&quot;).on(&quot;click&quot;,&quot;li&quot;,function(){});
+var li=$(&quot;&lt;li&gt;&lt;/li&gt;&quot;)
+$(&quot;ol&quot;).append(li);
+</code></pre>
+<h2 id="事件处理off解绑事件">事件处理off()解绑事件</h2>
+<p><code>$(&quot;div&quot;).off()</code><br>
+解绑所有事件</p>
+<p><code>$(&quot;div&quot;).off(&quot;click&quot;)</code><br>
+解除点击事件</p>
+<p><code>$(&quot;ul&quot;).off(&quot;click&quot;,&quot;li&quot;)</code><br>
+解除事件委托</p>
+<h2 id="one">one()</h2>
+<p>写法与on()一样，但只触发一次</p>
+<h2 id="自动触发事件trigger">自动触发事件trigger()</h2>
+<p>有些事件希望自动触发，比如轮播图自动播放功能跟点击右侧按钮一致。可以利用定时器自动触发右侧按钮点击事件，不必鼠标点击触发</p>
+<pre><code class="language-javascript">element.click()//第一种简写形式
+element.trigger()//第二种自动触发模式
+$(&quot;p&quot;).on(&quot;click&quot;,function(){
+    alert(&quot;hi~&quot;);
+});
+$(&quot;p&quot;).trigger(&quot;click&quot;);//此时自动触发点击事件，不需要鼠标点击，会触发元素默认行为，用了focus之后光标会在框里闪，triggerHandler()不会
+element.triggerHandler(type)//第三种自动触发模式，不会触发元素默认行为
+</code></pre>
+<h2 id="jquery事件对象">jQuery事件对象</h2>
+<p>事件被触发就会有事件对象产生<br>
+<code>element.on(events,[selector],function(event){})</code><br>
+阻止默认行为：event.preventDefault()或者return false<br>
+阻止冒泡：event.stopPropagation()</p>
+<h1 id="jquery其他方法">jQuery其他方法</h1>
+<h2 id="jquery对象拷贝">jQuery对象拷贝</h2>
+<p>如果想要把某个对象拷贝（合并）给另外一个对象使用，此时可以使用<code>$.extend()</code>方法<br>
+<code>$.extend([deep],target,object1,[objectN])</code><br>
+deep：如果设为true为深拷贝，默认为false浅拷贝<br>
+target：要拷贝的目标对象<br>
+object1：待拷贝到第一个对象的对象<br>
+浅拷贝：把原来对象里面复杂数据类型地址拷贝给目标对象<br>
+深拷贝：完全克隆，拷贝的是对象的数据而不是地址，修改不会影响其他对象，如果复制时对象内有不冲突的属性，会进行合并<br>
+拷贝的时候，如果键值也是一个对象，那么其实只是拷贝了一个地址，修改这个会影响那个</p>
+<h2 id="jquery多库共存">jQuery多库共存</h2>
+<p>jQuery使用<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi mathvariant="normal">作</mi><mi mathvariant="normal">为</mi><mi mathvariant="normal">标</mi><mi mathvariant="normal">示</mi><mi mathvariant="normal">符</mi><mi mathvariant="normal">，</mi><mi mathvariant="normal">随</mi><mi mathvariant="normal">着</mi><mi>j</mi><mi>Q</mi><mi>u</mi><mi>e</mi><mi>r</mi><mi>y</mi><mi mathvariant="normal">的</mi><mi mathvariant="normal">流</mi><mi mathvariant="normal">行</mi><mi mathvariant="normal">，</mi><mi mathvariant="normal">其</mi><mi mathvariant="normal">他</mi><mi>j</mi><mi>s</mi><mi mathvariant="normal">库</mi><mi mathvariant="normal">也</mi><mi mathvariant="normal">可</mi><mi mathvariant="normal">能</mi><mi mathvariant="normal">使</mi><mi mathvariant="normal">用</mi></mrow><annotation encoding="application/x-tex">作为标示符，随着jQuery的流行，其他js库也可能使用</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8777699999999999em;vertical-align:-0.19444em;"></span><span class="mord cjk_fallback">作</span><span class="mord cjk_fallback">为</span><span class="mord cjk_fallback">标</span><span class="mord cjk_fallback">示</span><span class="mord cjk_fallback">符</span><span class="mord cjk_fallback">，</span><span class="mord cjk_fallback">随</span><span class="mord cjk_fallback">着</span><span class="mord mathdefault" style="margin-right:0.05724em;">j</span><span class="mord mathdefault">Q</span><span class="mord mathdefault">u</span><span class="mord mathdefault">e</span><span class="mord mathdefault" style="margin-right:0.02778em;">r</span><span class="mord mathdefault" style="margin-right:0.03588em;">y</span><span class="mord cjk_fallback">的</span><span class="mord cjk_fallback">流</span><span class="mord cjk_fallback">行</span><span class="mord cjk_fallback">，</span><span class="mord cjk_fallback">其</span><span class="mord cjk_fallback">他</span><span class="mord mathdefault" style="margin-right:0.05724em;">j</span><span class="mord mathdefault">s</span><span class="mord cjk_fallback">库</span><span class="mord cjk_fallback">也</span><span class="mord cjk_fallback">可</span><span class="mord cjk_fallback">能</span><span class="mord cjk_fallback">使</span><span class="mord cjk_fallback">用</span></span></span></span>作为标识符，这样一起使用可能会发生冲突</p>
+<h3 id="解决方案">解决方案</h3>
+<ol>
+<li>把$统一使用jQuery</li>
+<li>自定义<code>var i=$.noConflict()</code></li>
+</ol>
+<h2 id="jquery插件">jQuery插件</h2>
+<p>jQuery功能有限，实现更复杂功能可以使用jQuery插件<br>
+常用网站：<br>
+<img src="https://greyseid.github.io//post-images/1607413869488.png" alt="" loading="lazy"></p>
+<h1 id="jquery尺寸-位置操作">jQuery尺寸、位置操作</h1>
+<h2 id="jquery尺寸">jQuery尺寸</h2>
+<p><code>width(300)//设置宽度为300</code></p>
+<table>
+<thead>
+<tr>
+<th>语法</th>
+<th>用法</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>width()/height()</td>
+<td>取得匹配元素怒宽度和高度值 只算width/width</td>
+</tr>
+<tr>
+<td>innerWidth()/innerHeight()</td>
+<td>取得匹配元素宽度和高度值包括padding</td>
+</tr>
+<tr>
+<td>outerWidth()/outerHeight()</td>
+<td>取得匹配元素宽度和高度值包括padding、border</td>
+</tr>
+<tr>
+<td>outerWidth(true)/outerHeight(true)</td>
+<td>取得匹配元素宽度和高度值包括padding、border、margin</td>
+</tr>
+</tbody>
+</table>
+<p>括号为空，则获取相应值，返回数字型<br>
+参数为数字，设置尺寸，可以不用加单位</p>
+<h2 id="jquery位置">jQuery位置</h2>
+<p>位置方法：<code>offset()</code>、<code>position()</code>、<code>scrollTop()</code>/<code>scrollLeft()</code></p>
+<h3 id="offset设置或获取元素偏移">offset()设置或获取元素偏移</h3>
+<p>offset()方法设置或返回被选元素相对于文档的偏移坐标，跟父级没关系<br>
+返回的是一个对象<code>{top: ,left: }</code></p>
+<pre><code class="language-javascript">$(.son).offset({
+    top:200,
+    left:200
+})
+</code></pre>
+<p>加了定位position还是一样的返回结果</p>
+<h3 id="position">position()</h3>
+<p>获取距离带有定位父级位置position，如果没有带有定位的父级，以文档为准<br>
+使用方法效果与offset()一致，但是<code>position()</code>不能用来设置元素偏移，只能获取</p>
+<h3 id="scrolltopscrollleft设置或获取元素被卷去的头部和左侧">scrollTop()/scrollLeft()设置或获取元素被卷去的头部和左侧</h3>
+<p><code>scrollTop()</code>方法设置或返回被元素卷去的头部<br>
+<code>scrollLeft()</code>方法设置或返回被元素卷去的左部<br>
+设置参数就是转到指定位置</p>
+<p>可以使用animate的scrollTop属性做出过渡效果<br>
+元素才能做动画，文档不行</p>
+<pre><code class="language-javascript">$(&quot;body,html&quot;).stop().animate({
+    scrollTop:0
+})
+</code></pre>
+]]></content>
+    </entry>
     <entry>
         <title type="html"><![CDATA[对象的扩展]]></title>
         <id>https://greyseid.github.io/post/dui-xiang-de-kuo-zhan/</id>
