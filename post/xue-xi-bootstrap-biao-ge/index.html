@@ -5,7 +5,7 @@
 <meta name="description" content="" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>
-    Hello Gridea | 正义大厅
+    学习Bootstrap——表格 | 正义大厅
 </title>
 <link rel="shortcut icon" href="https://greyseid.github.io//favicon.ico?v=1608466677780">
 <!-- <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous"> -->
@@ -99,42 +99,116 @@
                 <div id="content" class="main-container-left">
                     <article class="post i-card">
                         <h2 class="post-title">
-                            Hello Gridea
+                            学习Bootstrap——表格
                         </h2>
                         <div class="post-info">
-                            <time class="post-time">2018-12-12</time>
+                            <time class="post-time">2020-12-15</time>
                             
                         </div>
                         
-                            <div class="post-feature-image" style="background-image: url('https://greyseid.github.io//post-images/hello-gridea.png')"></div>
-                            
                                 <div class="post-content">
-                                    <p>👏  欢迎使用 <strong>Gridea</strong> ！<br>
-✍️  <strong>Gridea</strong> 一个静态博客写作客户端。你可以用它来记录你的生活、心情、知识、笔记、创意... ...</p>
-<!-- more -->
-<p><a href="https://github.com/getgridea/gridea">Github</a><br>
-<a href="https://gridea.dev/">Gridea 主页</a><br>
-<a href="http://fehey.com/">示例网站</a></p>
-<h2 id="特性">特性👇</h2>
-<p>📝  你可以使用最酷的 <strong>Markdown</strong> 语法，进行快速创作</p>
-<p>🌉  你可以给文章配上精美的封面图和在文章任意位置插入图片</p>
-<p>🏷️  你可以对文章进行标签分组</p>
-<p>📋  你可以自定义菜单，甚至可以创建外部链接菜单</p>
-<p>💻  你可以在 <strong>Windows</strong>，<strong>MacOS</strong> 或 <strong>Linux</strong> 设备上使用此客户端</p>
-<p>🌎  你可以使用 <strong>𝖦𝗂𝗍𝗁𝗎𝖻 𝖯𝖺𝗀𝖾𝗌</strong> 或 <strong>Coding Pages</strong> 向世界展示，未来将支持更多平台</p>
-<p>💬  你可以进行简单的配置，接入 <a href="https://github.com/gitalk/gitalk">Gitalk</a> 或 <a href="https://github.com/SukkaW/DisqusJS">DisqusJS</a> 评论系统</p>
-<p>🇬🇧  你可以使用<strong>中文简体</strong>或<strong>英语</strong></p>
-<p>🌁  你可以任意使用应用内默认主题或任意第三方主题，强大的主题自定义能力</p>
-<p>🖥  你可以自定义源文件夹，利用 OneDrive、百度网盘、iCloud、Dropbox 等进行多设备同步</p>
-<p>🌱 当然 <strong>Gridea</strong> 还很年轻，有很多不足，但请相信，它会不停向前 🏃</p>
-<p>未来，它一定会成为你离不开的伙伴</p>
-<p>尽情发挥你的才华吧！</p>
-<p>😘 Enjoy~</p>
+                                    <p></p>
+<p>Bootstrap对html中的表格元素都进行了一定程度上的重构<br>
+并且还额外提供了表格样式类来部分自定义表格样式</p>
+<p>用于<code>&lt;table&gt;</code>标签的类</p>
+<table>
+<thead>
+<tr>
+<th>类</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>.table</td>
+<td>为任意<code>&lt;table&gt;</code>添加基本样式（只有横分隔线）</td>
+</tr>
+<tr>
+<td>.table-striped</td>
+<td>在<code>&lt;tbody&gt;</code>中添加斑马条纹（ie8）不支持</td>
+</tr>
+<tr>
+<td>.table-bordered</td>
+<td>为所有表格的单元格添加边框</td>
+</tr>
+<tr>
+<td>.table-hover</td>
+<td>在<code>&lt;tbody&gt;</code>内的任一行启用鼠标悬停状态</td>
+</tr>
+<tr>
+<td>.table-condensed</td>
+<td>让表格更加紧凑（虽然使用了Bootstrap提供的<code>&lt;table&gt;</code>标签已经比原来紧凑了）</td>
+</tr>
+</tbody>
+</table>
+<p><code>&lt;tr&gt;</code>、<code>&lt;th&gt;</code>、<code>&lt;td&gt;</code></p>
+<table>
+<thead>
+<tr>
+<th>类</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>.active</td>
+<td>将悬停的颜色应用在行或单元格中</td>
+</tr>
+<tr>
+<td>.success</td>
+<td>将Bootstrap中代表成功的颜色应用到行或单元格中</td>
+</tr>
+<tr>
+<td>.info</td>
+<td>将Bootstrap中代表信息的颜色应用到行或单元格中</td>
+</tr>
+<tr>
+<td>.warning</td>
+<td>将Bootstrap中代表警告的颜色应用到行或单元格中</td>
+</tr>
+<tr>
+<td>.danger</td>
+<td>将Bootstrap中代表危险的颜色应用到行或单元格中</td>
+</tr>
+</tbody>
+</table>
+<p>其他的能定义表格类型的类</p>
+<table>
+<thead>
+<tr>
+<th>类</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>.table-bordered</td>
+<td>带边框</td>
+</tr>
+<tr>
+<td>.table-condensed</td>
+<td>精简表格，行内距减半，更加紧凑</td>
+</tr>
+<tr>
+<td>.table-responsive</td>
+<td>响应式表格，让表格水平滚动以适应小型设备，大型设备没区别</td>
+</tr>
+</tbody>
+</table>
 
                                 </div>
                     </article>
                     <!--  -->
                     
+                        <div class="next-post">
+                            <div class="next">下一篇</div>
+                            <a href="https://greyseid.github.io/post/xue-xi-bootstrap-dai-ma-ji-qi-ta-zi-ti-biao-shi/">
+                                <h3 class="post-title">
+                                    学习Bootstrap——代码及其他字体表示
+                                </h3>
+                            </a>
+                        </div>
+                        
                             <div id="disqus_thread"></div>
                             <div id="gitalk-container"></div>
                 </div>
@@ -143,46 +217,35 @@
                 <!-- right -->
                 <div id="sidebar" class="main-container-right">
                     
-                        <!-- toc -->
-                        
-    <div class="toc-card i-card ">
-        <div class="toc-title i-card-title">目录</div>
-        <div class="toc-content">
-            <ul class="markdownIt-TOC">
-<li>
-<ul>
-<li><a href="#%E7%89%B9%E6%80%A7">特性👇</a></li>
-</ul>
-</li>
-</ul>
+                                <!-- id-card -->
+                                
+    <div class="id_card i-card">
+        <div class="id_card-avatar" style="background-image: url(https://greyseid.github.io//images/avatar.png?v=1608466677780)">
+        </div>
+        <h1 class="id_card-title">
+            正义大厅
+        </h1>
+        <h2 class="id_card-description">
+            欢迎来到GREYSEID的自留地
+        </h2>
+        <!--  -->
+        <div class="id_card-sns">
+            <!-- github -->
+            
+                <a href="https://github.com/GREYSEID" target="_blank" rel="noopener noreferrer"><i
+                class="fa fa-github"></i></a>
+                
+                    <!-- twitter -->
+                    
+                            <!-- weibo -->
+                            
+                                    <!-- facebook -->
+                                    
 
         </div>
-        <script>
-            function locateCatelogList() {
-                /*获取文章目录集合,可通过:header过滤器*/
-                var alis = $('.post-content :header');
-                /*获取侧边栏目录列表集合**/
-                var sidebar_alis = $('.markdownIt-TOC a');
-                /*获取滚动条到顶部的距离*/
-                var scroll_height = $(window).scrollTop();
-                for (var i = 0; i < alis.length; i++) {
-                    /*获取锚点集合中的元素分别到顶点的距离*/
-                    var a_height = $(alis[i]).offset().top;
-                    if (a_height < scroll_height) {
-                        /*高亮显示*/
-                        sidebar_alis.removeClass('on');
-                        $(sidebar_alis[i]).addClass('on');
-                    }
-                }
-            }
-            $(function() {
-                /*绑定滚动事件 */
-                $(window).bind('scroll', locateCatelogList);
-            });
-        </script>
     </div>
     
-                            
+                                    
 
                 </div>
 

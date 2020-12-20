@@ -1,0 +1,396 @@
+<html>
+
+<head>
+    <meta charset="utf-8" />
+<meta name="description" content="" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>
+    Bootstrap | 正义大厅
+</title>
+<link rel="shortcut icon" href="https://greyseid.github.io//favicon.ico?v=1608466677780">
+<!-- <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous"> -->
+<link href="https://cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
+<link rel="stylesheet" href="https://greyseid.github.io//styles/main.css">
+<!-- js -->
+<script src="https://cdn.bootcss.com/jquery/3.4.1/jquery.min.js"></script>
+<script src="https://greyseid.github.io//media/js/jquery.sticky-sidebar.min.js"></script>
+<script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
+<script src="https://cdn.bootcss.com/moment.js/2.23.0/moment.min.js"></script>
+
+
+</head>
+
+<body>
+    <div class="main">
+        <div class="header">
+    <div class="nav">
+        <div class="logo">
+            <a href="https://greyseid.github.io/">
+                <img class="avatar" src="https://greyseid.github.io//images/avatar.png?v=1608466677780" alt="">
+            </a>
+            <div class="site-title">
+                <h1>
+                    正义大厅
+                </h1>
+            </div>
+        </div>
+        <span class="menu-btn fa fa-align-justify"></span>
+        <div class="menu-container">
+            <ul>
+                
+                    
+                            <li>
+                                <a href="/" class="menu">
+                                    首页
+                                </a>
+                            </li>
+                            
+                                
+                    
+                            <li>
+                                <a href="/archives" class="menu">
+                                    归档
+                                </a>
+                            </li>
+                            
+                                
+                    
+                            <li>
+                                <a href="/tags" class="menu">
+                                    标签
+                                </a>
+                            </li>
+                            
+                                
+                    
+                            <li>
+                                <a href="/post/about" class="menu">
+                                    关于
+                                </a>
+                            </li>
+                            
+                                
+            </ul>
+        </div>
+    </div>
+</div>
+
+<script>
+    $(document).ready(function() {
+        $(".menu-btn").click(function() {
+            $(".menu-container").slideToggle();
+        });
+        $(window).resize(function() {
+
+            if (window.matchMedia('(min-width: 960px)').matches) {
+                $(".menu-container").css('display', 'block')
+            } else {
+                $(".menu-container").css('display', 'none')
+            }
+
+        });
+    });
+</script>
+
+            <div id="main-content" class="post-container main-container">
+                <div id="content" class="main-container-left">
+                    
+    <div class="i-card">
+        <b>标签：#
+        Bootstrap</b>
+    </div>
+    
+        
+            <article class="post i-card">
+                <h2 class="post-title">
+                    <a href="https://greyseid.github.io/post/bootstrap-pai-ban/">
+                        学习Bootstrap——排版
+                    </a>
+                </h2>
+                <div class="post-info">
+                    <time class="post-time">2020-12-15</time>
+                    
+                        <a href="https://greyseid.github.io/tag/gyu-p-zce/" class="post-tag i-tag
+                            i-tag-other_2">
+            #Bootstrap
+        </a>
+                        
+                        <a href="https://greyseid.github.io/tag/AjqKAL42P/" class="post-tag i-tag
+                            i-tag-success">
+            #前端
+        </a>
+                        
+                </div>
+                <div class="post-article">
+                    
+                            <div class="post-content">
+                                
+                                        <div class="post-content-content">
+                                            
+标题
+强调
+缩写
+地址
+引用
+列表
+其他样式
+
+
+Bootstrap对一些字体相关的元素比如&amp;lt;small&amp;gt;、&amp;lt;strong&amp;gt;、&amp;lt;h1&amp;gt;等都设置了全新的样式，基本上不用使用class都能使用
+标题
+Bootstrap重新定义了&amp;lt;h1&amp;gt;到&amp;lt;h6&amp;gt;的样式
+
+如果使用内联子标题的话，可以使用&amp;lt;small&amp;gt;标签或者是使用.small
+使用class=&amp;quot;lead&amp;quot;将获得引导主体副本，是一个更大更粗字体更高行高的文本
+强调
+Bootstrap除了重构强调标签&amp;lt;small&amp;gt;、&amp;lt;strong&amp;gt;、&amp;lt;em&amp;gt;之外，还增加了一些强调文本的类，类的前缀都为text-****
+&amp;lt;small&amp;gt;本行内容是在标签内&amp;lt;/small&amp;gt;&amp;lt;br&amp;gt;
+&amp;lt;strong&amp;gt;本行内容是在标签内&amp;lt;/strong&amp;gt;&amp;lt;br&amp;gt;
+&amp;lt;em&amp;gt;本行内容是在标签内，并呈现为斜体&amp;lt;/em&amp;gt;&amp;lt;br&amp;gt;
+&amp;lt;p class=&amp;quot;text-left&amp;quot;&amp;gt;向左对齐文本&amp;lt;/p&amp;gt;
+&amp;lt;p class=&amp;quot;text-center&amp;quot;&amp;gt;居中对齐文本&amp;lt;/p&amp;gt;
+&amp;lt;p class=&amp;quot;text-right&amp;quot;&amp;gt;向右对齐文本&amp;lt;/p&amp;gt;
+&amp;lt;p class=&amp;quot;text-muted&amp;quot;&amp;gt;本行内容是减弱的&amp;lt;/p&amp;gt;
+&amp;lt;p class=&amp;quot;text-primary&amp;quot;&amp;gt;本行内容带有一个 primary class&amp;lt;/p&amp;gt;
+&amp;lt;p class=&amp;quot;text-success&amp;quot;&amp;gt;本行内容带有一个 success class&amp;lt;/p&amp;gt;
+&amp;lt;p class=&amp;quot;text-info&amp;quot;&amp;gt;本行内容带有一个 info class&amp;lt;/p&amp;gt;
+&amp;lt;p class=&amp;quot;text-warning&amp;quot;&amp;gt;本行内容带有一个 warning class&amp;lt;/p&amp;gt;
+&amp;lt;p class=&amp;quot;text-danger&amp;quot;&amp;gt;本行内容带有一个 danger class&amp;lt;/p&amp;gt;
+
+
+缩写
+html提供了&amp;lt;abbr&amp;gt;来用于缩写，只要将鼠标悬停，就能显示完整文本（tittle的文本），Bootstrap提供了.initialism类来使得显示更小的文本
+地址
+使用标签&amp;lt;address&amp;gt;来显示联系信息，Bootstrap重构了样式，因为&amp;lt;address&amp;gt;是块元素，所以换行要用&amp;lt;br&amp;gt;
+引用
+使用&amp;lt;blockquote&amp;gt;标签进行引用，效果就是左边加一条竖线，相当于引用，如果使用.pull-right，则会右对齐，不能使用.text-right，因为使用的时候，如果使用&amp;lt;small&amp;gt;标签，引用会有条横杠，pull-right横杠在文本右边，text-right在文本左边，而且竖线也不见了
+列表
+
+其他样式
+
+
+                                        </div>
+                                        
+                                            <a class="btn btn-text" href="https://greyseid.github.io/post/bootstrap-pai-ban/">Read More ~</a>
+                            </div>
+                </div>
+            </article>
+            
+            <article class="post i-card">
+                <h2 class="post-title">
+                    <a href="https://greyseid.github.io/post/xue-xi-bootstrap-css-gai-lan/">
+                        学习bootstrap——CSS概览
+                    </a>
+                </h2>
+                <div class="post-info">
+                    <time class="post-time">2020-12-14</time>
+                    
+                        <a href="https://greyseid.github.io/tag/gyu-p-zce/" class="post-tag i-tag
+                            i-tag-other_2">
+            #Bootstrap
+        </a>
+                        
+                        <a href="https://greyseid.github.io/tag/AjqKAL42P/" class="post-tag i-tag
+                            i-tag-other_2">
+            #前端
+        </a>
+                        
+                </div>
+                <div class="post-article">
+                    
+                            <div class="post-content">
+                                
+                                        <div class="post-content-content">
+                                            
+移动设备优先
+响应式图像
+全局显示、排版和链接
+
+基本的全局显示
+排版
+链接样式
+
+
+避免跨浏览器的不一致
+容器（Container）
+
+
+因为bootstrap使用了html5中的元素和css属性，所以需要加&amp;lt;!doctype html&amp;gt;来表明是html5
+移动设备优先
+我怀疑就是这个所以现在很多app其实加载的页面就是加载的网页，本质上app只是一个浏览器，比如知乎
+为了确保移动端看到的页面不会奇形怪状的，要在标签中提供元数据给浏览器解析，感觉应该是告诉浏览器有不同的分辨率的设备来获取页面
+&amp;lt;meta name=&amp;quot;viewport&amp;quot; content=&amp;quot;width=device-width, initial-scale=1.0&amp;quot;&amp;gt;
+device-width可以保证正确地加载在屏幕上，initial-scale设置为1.0表示以1:1的比例来显示
+也可以添加user-scalable=no禁用缩放，禁用缩放加1:1比例显示，使得如果使用app浏览网页不容易被人认出来
+&amp;lt;meta name=&amp;quot;viewport&amp;quot; content=&amp;quot;width=device-width, 
+                                     initial-scale=1.0, 
+                                     maximum-scale=1.0, 
+                                     user-scalable=no&amp;quot;&amp;gt;
+
+响应式图像
+&amp;lt;img src=&amp;quot;...&amp;quot; class=&amp;quot;img-responsive&amp;quot; alt=&amp;quot;响应式图像&amp;quot;&amp;gt;
+因为twitter要失适配移动端，毕竟算是一个社交软件，应该能让更多的人即使没有软件也能在手机上更好地使用，所以比较重视图片之类的
+.img-responsive {
+  display: block;
+  height: auto;
+  max-width: 100%;
+}
+
+图片按比例缩放，以块级元素显示
+如果需要让使用了 .img-responsive 类的图片水平居中，请使用 .center-block 类，不要用 .text-center
+全局显示、排版和链接
+基本的全局显示
+body使用margin:0;来移除body外边距
+排版
+使用 @font-family-base、 @font-size-base 和 @line-height-base 属性作为排版样式
+链接样式
+使用属性@link-color设置全局链接颜色
+避免跨浏览器的不一致
+bootstrap使用Normalize.css来建立跨浏览器的一致性
+容器（Container）
+bootstrap3的container class用于包裹页面上的内容，相当于new Vue({})
+&amp;lt;div class=&amp;quot;container&amp;quot;&amp;gt;
+  ...
+&amp;lt;/div&amp;gt;
+
+bootstrap中的container
+.container {
+   padding-right: 15px;
+   padding-left: 15px;
+   margin-right: auto;
+   margin-left: auto;
+}
+
+由于内边距是固定宽度，默认情况下容器不可嵌套
+.container:before,
+.container:after {
+  display: table;
+  content: &amp;quot; &amp;quot;;
+}
+
+这会产生伪元素。设置 display 为 table，会创建一个匿名的 table-cell 和一个新的块格式化上下文。:before 伪元素防止上边距崩塌，:after 伪元素清除浮动。
+如果 conteneditable 属性出现在 HTML 中，由于一些 Opera bug，围绕上述元素创建一个空格。这可以通过使用 content: &amp;quot; &amp;quot; 来修复
+.container:after {
+  clear: both;
+}
+
+它创建了一个伪元素，并确保了所有的容器包含所有的浮动元素。
+Bootstrap 3 CSS 有一个申请响应的媒体查询，在不同的媒体查询阈值范围内都为 container 设置了max-width，用以匹配网格系统。
+@media (min-width: 768px) {
+   .container {
+      width: 750px;
+}
+
+
+                                        </div>
+                                        
+                                            <a class="btn btn-text" href="https://greyseid.github.io/post/xue-xi-bootstrap-css-gai-lan/">Read More ~</a>
+                            </div>
+                </div>
+            </article>
+            
+            <article class="post i-card">
+                <h2 class="post-title">
+                    <a href="https://greyseid.github.io/post/xue-xi-bootstrap/">
+                        学习bootstrap
+                    </a>
+                </h2>
+                <div class="post-info">
+                    <time class="post-time">2020-12-14</time>
+                    
+                        <a href="https://greyseid.github.io/tag/gyu-p-zce/" class="post-tag i-tag
+                            i-tag-warning">
+            #Bootstrap
+        </a>
+                        
+                        <a href="https://greyseid.github.io/tag/AjqKAL42P/" class="post-tag i-tag
+                            i-tag-other_3">
+            #前端
+        </a>
+                        
+                </div>
+                <div class="post-article">
+                    
+                            <div class="post-content">
+                                
+                                        <div class="post-content-content">
+                                            因为bootstrap使用了html5中的元素和css属性，所以需要加&amp;lt;!doctype html&amp;gt;来表明是html5
+移动设备优先
+我怀疑就是这个所以现在很多app其实加载的页面就是加载的网页，本质上app只是一个浏览器，比如知乎
+为了确保移动端看到的页面不会奇形怪状的，要在标签中提供元数据给浏览器解析，感觉应该是告诉浏览器有不同的分辨率的设备来获取页面
+&amp;lt;meta name=&amp;quot;viewport&amp;quot; content=&amp;quot;width=device-width, initial-scale=1.0&amp;quot;&amp;gt;
+device-width可以保证正确地加载在屏幕上，initial-scale设置为1.0表示以1:1的比例来显示
+也可以添加user-scalable=no禁用缩放，禁用缩放加1:1比例显示，使得如果使用app浏览网页不容易被人认出来
+
+                                        </div>
+                                        
+                                            <a class="btn btn-text" href="https://greyseid.github.io/post/xue-xi-bootstrap/">Read More ~</a>
+                            </div>
+                </div>
+            </article>
+            
+                <!-- 翻页 -->
+                
+                </div>
+                <!--  -->
+                <div class="main-container-middle"></div>
+                <!--  -->
+                <div id="sidebar" class="main-container-right">
+
+                    <!-- 个人信息 -->
+                    
+    <div class="id_card i-card">
+        <div class="id_card-avatar" style="background-image: url(https://greyseid.github.io//images/avatar.png?v=1608466677780)">
+        </div>
+        <h1 class="id_card-title">
+            正义大厅
+        </h1>
+        <h2 class="id_card-description">
+            欢迎来到GREYSEID的自留地
+        </h2>
+        <!--  -->
+        <div class="id_card-sns">
+            <!-- github -->
+            
+                <a href="https://github.com/GREYSEID" target="_blank" rel="noopener noreferrer"><i
+                class="fa fa-github"></i></a>
+                
+                    <!-- twitter -->
+                    
+                            <!-- weibo -->
+                            
+                                    <!-- facebook -->
+                                    
+
+        </div>
+    </div>
+    
+
+                        <!-- 公告栏 -->
+                        
+
+                </div>
+            </div>
+
+
+
+            <div class="site-footer">
+  Powered by <a href="https://github.com/getgridea/gridea" target="_blank">Gridea</a> | 
+  <a class="rss" href="https://greyseid.github.io//atom.xml" target="_blank">RSS</a>
+</div>
+
+<script>
+  hljs.initHighlightingOnLoad()
+</script>
+
+    </div>
+    <script>
+        $('#sidebar').stickySidebar({
+            topSpacing: 80,
+            // bottomSpacing: 60
+        });
+    </script>
+</body>
+
+</html>

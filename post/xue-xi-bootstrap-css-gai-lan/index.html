@@ -5,7 +5,7 @@
 <meta name="description" content="" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>
-    正则表达式 | 正义大厅
+    学习bootstrap——CSS概览 | 正义大厅
 </title>
 <link rel="shortcut icon" href="https://greyseid.github.io//favicon.ico?v=1608466677780">
 <!-- <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous"> -->
@@ -99,165 +99,118 @@
                 <div id="content" class="main-container-left">
                     <article class="post i-card">
                         <h2 class="post-title">
-                            正则表达式
+                            学习bootstrap——CSS概览
                         </h2>
                         <div class="post-info">
-                            <time class="post-time">2020-11-24</time>
+                            <time class="post-time">2020-12-14</time>
                             
-                                <a href="https://greyseid.github.io/tag/UmmQ4L2qI/" class="post-tag i-tag
-                            i-tag-primary">
-                            #JavaScript
+                                <a href="https://greyseid.github.io/tag/gyu-p-zce/" class="post-tag i-tag
+                            i-tag-success">
+                            #Bootstrap
                         </a>
                                 
                                 <a href="https://greyseid.github.io/tag/AjqKAL42P/" class="post-tag i-tag
-                            i-tag-other_4">
+                            i-tag-error">
                             #前端
                         </a>
                                 
                         </div>
                         
-                            <div class="post-feature-image" style="background-image: url('https://greyseid.github.io//post-images/zheng-ze-biao-da-shi.jpg')"></div>
-                            
                                 <div class="post-content">
                                     <p><ul class="markdownIt-TOC">
-<li><a href="#%E4%BB%8B%E7%BB%8D">介绍</a></li>
-<li><a href="#%E4%BD%BF%E7%94%A8%E5%AD%97%E7%AC%A6%E4%B8%B2%E6%96%B9%E6%B3%95">使用字符串方法</a></li>
-<li><a href="#%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F%E4%BF%AE%E9%A5%B0%E7%AC%A6">正则表达式修饰符</a></li>
-<li><a href="#%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F%E6%A8%A1%E5%BC%8F">正则表达式模式</a></li>
-<li><a href="#%E4%BD%BF%E7%94%A8regexp%E5%AF%B9%E8%B1%A1">使用RegExp对象</a></li>
-<li><a href="#%E4%BD%BF%E7%94%A8test">使用test()</a></li>
-<li><a href="#%E4%BD%BF%E7%94%A8exec">使用exec()</a></li>
+<li><a href="#%E7%A7%BB%E5%8A%A8%E8%AE%BE%E5%A4%87%E4%BC%98%E5%85%88">移动设备优先</a></li>
+<li><a href="#%E5%93%8D%E5%BA%94%E5%BC%8F%E5%9B%BE%E5%83%8F">响应式图像</a></li>
+<li><a href="#%E5%85%A8%E5%B1%80%E6%98%BE%E7%A4%BA-%E6%8E%92%E7%89%88%E5%92%8C%E9%93%BE%E6%8E%A5">全局显示、排版和链接</a>
+<ul>
+<li><a href="#%E5%9F%BA%E6%9C%AC%E7%9A%84%E5%85%A8%E5%B1%80%E6%98%BE%E7%A4%BA">基本的全局显示</a></li>
+<li><a href="#%E6%8E%92%E7%89%88">排版</a></li>
+<li><a href="#%E9%93%BE%E6%8E%A5%E6%A0%B7%E5%BC%8F">链接样式</a></li>
+</ul>
+</li>
+<li><a href="#%E9%81%BF%E5%85%8D%E8%B7%A8%E6%B5%8F%E8%A7%88%E5%99%A8%E7%9A%84%E4%B8%8D%E4%B8%80%E8%87%B4">避免跨浏览器的不一致</a></li>
+<li><a href="#%E5%AE%B9%E5%99%A8container">容器（Container）</a></li>
 </ul>
 </p>
-<h1 id="介绍">介绍</h1>
-<p>正则表达式是一个有字符序列形成的搜索模式<br>
-当你在文本中搜索数据时，可以用搜索模式来描述你要查询的内容<br>
-语法<br>
-<code>/正则表达式主体/修饰符(可选)</code></p>
-<h1 id="使用字符串方法">使用字符串方法</h1>
-<p><code>search()</code>方法用于检索字符串中指定的子字符串，也可以用来检索与正则表达式相匹配的子字符串，并返回子字符串的起始位置<br>
-<code>replace()</code>方法用于在字符串中用一些字符替换另一些字符，或替换一个与正则表达式相匹配的子串</p>
-<pre><code class="language-javascript">var str=&quot;Visit Runoob!&quot;;
-var n=str.search(/Runoob/i);
-//6
-var n=str.search(&quot;Runoob&quot;);//6
-
-var str=&quot;请访问 Microsoft!&quot;;
-var txt=str.replace(/microsoft/i,&quot;Runoob&quot;);
-var txt=str.replace(&quot;Microsoft&quot;,&quot;Runoob&quot;);//请访问 Runoob!
+<p>因为bootstrap使用了html5中的元素和css属性，所以需要加&lt;!doctype html&gt;来表明是html5</p>
+<h1 id="移动设备优先">移动设备优先</h1>
+<p>我怀疑就是这个所以现在很多app其实加载的页面就是加载的网页，本质上app只是一个浏览器，比如知乎<br>
+为了确保移动端看到的页面不会奇形怪状的，要在<head>标签中提供<meta>元数据给浏览器解析，感觉应该是告诉浏览器有不同的分辨率的设备来获取页面<br>
+<code>&lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1.0&quot;&gt;</code><br>
+device-width可以保证正确地加载在屏幕上，initial-scale设置为1.0表示以1:1的比例来显示<br>
+也可以添加user-scalable=no禁用缩放，禁用缩放加1:1比例显示，使得如果使用app浏览网页不容易被人认出来</p>
+<pre><code class="language-javascript">&lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, 
+                                     initial-scale=1.0, 
+                                     maximum-scale=1.0, 
+                                     user-scalable=no&quot;&gt;
 </code></pre>
-<h1 id="正则表达式修饰符">正则表达式修饰符</h1>
-<table>
-<thead>
-<tr>
-<th>修饰符</th>
-<th>描述</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>i</td>
-<td>执行对大小写不敏感的匹配</td>
-</tr>
-<tr>
-<td>g</td>
-<td>执行全局匹配，查找所有匹配而非在找到第一个匹配后停止</td>
-</tr>
-<tr>
-<td>m</td>
-<td>执行多行匹配</td>
-</tr>
-</tbody>
-</table>
-<h1 id="正则表达式模式">正则表达式模式</h1>
-<p>方括号用于查找某个范围内的字符</p>
-<table>
-<thead>
-<tr>
-<th>表达式</th>
-<th>描述</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>[abc]</td>
-<td>查找方括号之间的任何字符</td>
-</tr>
-<tr>
-<td>[0-9]</td>
-<td>查找任何0至9的数字</td>
-</tr>
-<tr>
-<td>(x|y)</td>
-<td>查找任何以|分隔的选项</td>
-</tr>
-</tbody>
-</table>
-<p>元字符是拥有特殊含义的字符</p>
-<table>
-<thead>
-<tr>
-<th>元字符</th>
-<th>描述</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>\d</td>
-<td>查找数字</td>
-</tr>
-<tr>
-<td>\s</td>
-<td>查找空白字符</td>
-</tr>
-<tr>
-<td>\b</td>
-<td>匹配单词边界</td>
-</tr>
-<tr>
-<td>\uxxxx</td>
-<td>查找以十六进制数xxxx规定的Unicode字符</td>
-</tr>
-</tbody>
-</table>
-<p>量词</p>
-<table>
-<thead>
-<tr>
-<th>量词</th>
-<th>描述</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>n+</td>
-<td>匹配任何包含至少一个n的字符串</td>
-</tr>
-<tr>
-<td>n*</td>
-<td>匹配任何包含0个或多个n的字符串</td>
-</tr>
-<tr>
-<td>n?</td>
-<td>匹配任何包含0个或一个n的字符串</td>
-</tr>
-</tbody>
-</table>
-<h1 id="使用regexp对象">使用RegExp对象</h1>
-<p>在 JavaScript 中，RegExp 对象是一个预定义了属性和方法的正则表达式对象</p>
-<h1 id="使用test">使用test()</h1>
-<p><code>test()</code>方法是一个正则表达式方法，用于检测一个字符串是否匹配某个模式，如果字符串中含有匹配的文本，则返回true，否则返回false</p>
-<pre><code class="language-javascript">/e/.test(&quot;The best things in my life is money&quot;);//true
+<h1 id="响应式图像">响应式图像</h1>
+<p><code>&lt;img src=&quot;...&quot; class=&quot;img-responsive&quot; alt=&quot;响应式图像&quot;&gt;</code><br>
+因为twitter要失适配移动端，毕竟算是一个社交软件，应该能让更多的人即使没有软件也能在手机上更好地使用，所以比较重视图片之类的</p>
+<pre><code class="language-javscript">.img-responsive {
+  display: block;
+  height: auto;
+  max-width: 100%;
+}
 </code></pre>
-<h1 id="使用exec">使用exec()</h1>
-<p><code>exec()</code>方法是一个正则表达式方法，用于检索字符串中的正则表达式的匹配，返回一个数组，其中存放匹配的结果，如果未找到匹配，则返回null</p>
-<pre><code class="language-javascript">/e/.exec(&quot;The best things in my life is money&quot;);//e
+<p>图片按比例缩放，以块级元素显示<br>
+如果需要让使用了 .img-responsive 类的图片水平居中，请使用 .center-block 类，不要用 .text-center</p>
+<h1 id="全局显示-排版和链接">全局显示、排版和链接</h1>
+<h2 id="基本的全局显示">基本的全局显示</h2>
+<p>body使用margin:0;来移除body外边距</p>
+<h2 id="排版">排版</h2>
+<p>使用 @font-family-base、 @font-size-base 和 @line-height-base 属性作为排版样式</p>
+<h2 id="链接样式">链接样式</h2>
+<p>使用属性@link-color设置全局链接颜色</p>
+<h1 id="避免跨浏览器的不一致">避免跨浏览器的不一致</h1>
+<p>bootstrap使用Normalize.css来建立跨浏览器的一致性</p>
+<h1 id="容器container">容器（Container）</h1>
+<p>bootstrap3的container class用于包裹页面上的内容，相当于new Vue({})</p>
+<pre><code class="language-javascript">&lt;div class=&quot;container&quot;&gt;
+  ...
+&lt;/div&gt;
+</code></pre>
+<p>bootstrap中的container</p>
+<pre><code class="language-javascript">.container {
+   padding-right: 15px;
+   padding-left: 15px;
+   margin-right: auto;
+   margin-left: auto;
+}
+</code></pre>
+<p>由于内边距是固定宽度，默认情况下容器不可嵌套</p>
+<pre><code class="language-javascript">.container:before,
+.container:after {
+  display: table;
+  content: &quot; &quot;;
+}
+</code></pre>
+<p>这会产生伪元素。设置 display 为 table，会创建一个匿名的 table-cell 和一个新的块格式化上下文。:before 伪元素防止上边距崩塌，:after 伪元素清除浮动。<br>
+如果 conteneditable 属性出现在 HTML 中，由于一些 Opera bug，围绕上述元素创建一个空格。这可以通过使用 content: &quot; &quot; 来修复</p>
+<pre><code class="language-javascript">.container:after {
+  clear: both;
+}
+</code></pre>
+<p>它创建了一个伪元素，并确保了所有的容器包含所有的浮动元素。<br>
+Bootstrap 3 CSS 有一个申请响应的媒体查询，在不同的媒体查询阈值范围内都为 container 设置了max-width，用以匹配网格系统。</p>
+<pre><code class="language-javascript">@media (min-width: 768px) {
+   .container {
+      width: 750px;
+}
 </code></pre>
 
                                 </div>
                     </article>
                     <!--  -->
                     
+                        <div class="next-post">
+                            <div class="next">下一篇</div>
+                            <a href="https://greyseid.github.io/post/xue-xi-bootstrap/">
+                                <h3 class="post-title">
+                                    学习bootstrap
+                                </h3>
+                            </a>
+                        </div>
+                        
                             <div id="disqus_thread"></div>
                             <div id="gitalk-container"></div>
                 </div>
@@ -272,13 +225,17 @@ var txt=str.replace(&quot;Microsoft&quot;,&quot;Runoob&quot;);//请访问 Runoob
         <div class="toc-title i-card-title">目录</div>
         <div class="toc-content">
             <ul class="markdownIt-TOC">
-<li><a href="#%E4%BB%8B%E7%BB%8D">介绍</a></li>
-<li><a href="#%E4%BD%BF%E7%94%A8%E5%AD%97%E7%AC%A6%E4%B8%B2%E6%96%B9%E6%B3%95">使用字符串方法</a></li>
-<li><a href="#%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F%E4%BF%AE%E9%A5%B0%E7%AC%A6">正则表达式修饰符</a></li>
-<li><a href="#%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F%E6%A8%A1%E5%BC%8F">正则表达式模式</a></li>
-<li><a href="#%E4%BD%BF%E7%94%A8regexp%E5%AF%B9%E8%B1%A1">使用RegExp对象</a></li>
-<li><a href="#%E4%BD%BF%E7%94%A8test">使用test()</a></li>
-<li><a href="#%E4%BD%BF%E7%94%A8exec">使用exec()</a></li>
+<li><a href="#%E7%A7%BB%E5%8A%A8%E8%AE%BE%E5%A4%87%E4%BC%98%E5%85%88">移动设备优先</a></li>
+<li><a href="#%E5%93%8D%E5%BA%94%E5%BC%8F%E5%9B%BE%E5%83%8F">响应式图像</a></li>
+<li><a href="#%E5%85%A8%E5%B1%80%E6%98%BE%E7%A4%BA-%E6%8E%92%E7%89%88%E5%92%8C%E9%93%BE%E6%8E%A5">全局显示、排版和链接</a>
+<ul>
+<li><a href="#%E5%9F%BA%E6%9C%AC%E7%9A%84%E5%85%A8%E5%B1%80%E6%98%BE%E7%A4%BA">基本的全局显示</a></li>
+<li><a href="#%E6%8E%92%E7%89%88">排版</a></li>
+<li><a href="#%E9%93%BE%E6%8E%A5%E6%A0%B7%E5%BC%8F">链接样式</a></li>
+</ul>
+</li>
+<li><a href="#%E9%81%BF%E5%85%8D%E8%B7%A8%E6%B5%8F%E8%A7%88%E5%99%A8%E7%9A%84%E4%B8%8D%E4%B8%80%E8%87%B4">避免跨浏览器的不一致</a></li>
+<li><a href="#%E5%AE%B9%E5%99%A8container">容器（Container）</a></li>
 </ul>
 
         </div>
