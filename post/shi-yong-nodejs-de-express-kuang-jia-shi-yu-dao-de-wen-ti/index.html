@@ -1,0 +1,270 @@
+<html>
+
+<head>
+    <meta charset="utf-8" />
+<meta name="description" content="" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>
+    使用nodejs的express框架时遇到的问题 | 正义大厅
+</title>
+<link rel="shortcut icon" href="https://greyseid.github.io//favicon.ico?v=1618930416730">
+<!-- <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous"> -->
+<link href="https://cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
+<link rel="stylesheet" href="https://greyseid.github.io//styles/main.css">
+<!-- js -->
+<script src="https://cdn.bootcss.com/jquery/3.4.1/jquery.min.js"></script>
+<script src="https://greyseid.github.io//media/js/jquery.sticky-sidebar.min.js"></script>
+<script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
+<script src="https://cdn.bootcss.com/moment.js/2.23.0/moment.min.js"></script>
+
+
+        
+</head>
+
+<body>
+    <div class="main">
+        <div class="header">
+    <div class="nav">
+        <div class="logo">
+            <a href="https://greyseid.github.io/">
+                <img class="avatar" src="https://greyseid.github.io//images/avatar.png?v=1618930416730" alt="">
+            </a>
+            <div class="site-title">
+                <h1>
+                    正义大厅
+                </h1>
+            </div>
+        </div>
+        <span class="menu-btn fa fa-align-justify"></span>
+        <div class="menu-container">
+            <ul>
+                
+                    
+                            <li>
+                                <a href="/" class="menu">
+                                    首页
+                                </a>
+                            </li>
+                            
+                                
+                    
+                            <li>
+                                <a href="/archives" class="menu">
+                                    归档
+                                </a>
+                            </li>
+                            
+                                
+                    
+                            <li>
+                                <a href="/tags" class="menu">
+                                    标签
+                                </a>
+                            </li>
+                            
+                                
+                    
+                            <li>
+                                <a href="/post/about" class="menu">
+                                    关于
+                                </a>
+                            </li>
+                            
+                                
+            </ul>
+        </div>
+    </div>
+</div>
+
+<script>
+    $(document).ready(function() {
+        $(".menu-btn").click(function() {
+            $(".menu-container").slideToggle();
+        });
+        $(window).resize(function() {
+
+            if (window.matchMedia('(min-width: 960px)').matches) {
+                $(".menu-container").css('display', 'block')
+            } else {
+                $(".menu-container").css('display', 'none')
+            }
+
+        });
+    });
+</script>
+
+            <div id="main-content" class="post-detail main-container">
+                <!-- left -->
+                <div id="content" class="main-container-left">
+                    <article class="post i-card">
+                        <h2 class="post-title">
+                            使用nodejs的express框架时遇到的问题
+                        </h2>
+                        <div class="post-info">
+                            <time class="post-time">2020-12-18</time>
+                            
+                        </div>
+                        
+                                <div class="post-content">
+                                    <pre><code class="language-javascript">//express
+const express=require('express');
+const app=express();
+app.get('/',(req,res,next)=&gt;{next()});
+app.use('/',(req,res,next)=&gt;{next()});
+app.use('/admin',(req,res,next)=&gt;{next()});
+app.use((req,res)=&gt;{});
+</code></pre>
+<p>get，use的next()是不会跨的，get的next不会指向use<br>
+get就是只匹配根目录，但是use的话就是匹配'/'开头的目录，也就是说客户端访问在根目录的所有文件，都要经过<code>app.use('/',()=&gt;)</code>，然后next()再寻找下一个，可是get就会精准匹配，不会所有都匹配的</p>
+<p>异步是不能捕获到错误的，需要使用next把错误抛出</p>
+<p>webstorm报错，使用时遇到了expresss.Router()未定义，是由于这个是在动态运行时添加的，并没有在express模块中，webstorm静态分析无法使用而报错，可通过安装@types/express解决<br>
+光标选中require('express')中的express，然后Alt+Enter，在弹出的窗口中选择Install TypeScript definitions for better type information，安装完成即可</p>
+<p>下载body-parser来解决express的post参数的获取问题</p>
+<p>role是HTML5的标签属性，可以用于标识一个普通的标签，使之语义化，方便浏览器对其具体功能进行识别。简单的说，role是为了给一些特定的浏览工具，比如盲文浏览工具识别</p>
+<p><code>app.use(bodyParser.urlencoded({extened:false}))</code><br>
+app.use是接受方法的，bodyParser调用了一个方法，返回了一个方法给app.use调用，而且方法接收的参数能在返回的方法中使用</p>
+<p>https://www.bilibili.com/video/BV1m54y1976z<br>
+这个bv号可能是一个express路由参数，而不是一个实际的页面之类的<br>
+不传递参数是匹配不到路由的，传递参数才有路由<br>
+传递多个参数/:id/:name/:age<br>
+req.params获取路由参数的对象形式</p>
+<p>使用path模块来适配不同系统对文件路径的处理，比如unix是/，window是\</p>
+<p><code>__dirname</code>总是指向被执行 js 文件的绝对路径<br>
+<code>./</code> 会返回你执行 node 命令的路径，例如你的工作路径</p>
+<p>安装mysql还是使用传统加密吧，新加密太新了</p>
+<p>搞错了，别信：express的render方法传值的时候只能传对象字面量，直接传对象变量，比如a，b之类的是不行的</p>
+<p>使用数据库返回的结果的形式是<br>
+[<br>
+RowDataPacket { useraccount: '123撒', userpassword: '222' },<br>
+RowDataPacket { useraccount: '123撒啊', userpassword: '222' }<br>
+]<br>
+这样的一个对象，需要额外注意<br>
+可以使用json的方法进行处理</p>
+<pre><code class="language-javascript">var dataString = JSON.stringify(results);
+var data = JSON.parse(dataString);
+</code></pre>
+<p>转换为<br>
+[<br>
+{ useraccount: '123撒', userpassword: '222' },<br>
+{ useraccount: '123撒啊', userpassword: '222' }<br>
+]<br>
+形式，其实都差不多<br>
+都是用a[n].xxx形式来获取数据都差不多</p>
+<p>使用ajax需要注意跨域问题，需要进行转码<br>
+<code>app.use(cors());//为了解决跨域问题</code></p>
+<p>每次服务重新启动后，页面都还是要刷新一下，不然不能响应到新的页面</p>
+<p>回调函数这种异步操作是不能用try/catch来捕获错误的，但是回调函数的参数一般有err，data，有一个是一定有数据的，所以还是能从数据中判断出错误出来</p>
+<p>使用token的话可能需要使用一个axios拦截器去全局请求头放入token？headers: {'Authorization': token}</p>
+<p>使用jwt时，发来两个请求，刚好过期了，产生新的token，旧的无法使用，那有一个请求是不能用的，这时候就需要弄一个数据库存放旧的token，设置一个过期时间，遇到旧的就查询，有新的就能使用了</p>
+<p>要设置一个静态文件目录才能读取到静态文件比如js图片之类的<br>
+vue.js放在body里面</p>
+<p>axios发来的数据，用post接收但是却用res.query获取数据，而不是res.body<br>
+使用axios({<br>
+param:<br>
+})<br>
+的时候，用param就是使用get的形式来传参数就是?id=这种<br>
+要使用data<br>
+使用axios.post(,)的时候参数不能为json形式，用字符串形式可以</p>
+<p>axios中的post，参数一定要是formdata格式的</p>
+<p>axios的拦截器需要在实例中添加，模块还是要创建一个实例的方法这样来用吧<br>
+也可以全局配置，但进行实例化添加是为了更加地个性化<br>
+全局配置也是要在模块中创建一个axios实例的方法导出</p>
+<p>ES6标准发布后，module成为标准，标准的使用是以export指令导出接口，以import引入模块，但是在我们一贯的node模块中，我们采用的是CommonJS规范，使用require引入模块，使用module.exports导出接口。</p>
+<p>export导出方法不要加括号，好像是导出结果了</p>
+<p>mysql中，int是2的16次方，integer是2的32次方</p>
+<p>input标签要求只输入数字可以用正则表达式，也可以用vue的v-model</p>
+<p>bootstrap由于使用了float:left的浮动方式，所以vertical-align不起作用</p>
+<p>translate是看自己自身元素的长度</p>
+<p>left根据父元素的长度来判定%</p>
+<p>calc运算符前后都需要保留一个空格，例如：width: calc(100% - 10px)</p>
+<p>生成一个浏览器指纹作为浏览器的标识来应用在设备登录中</p>
+<p>在nodejs中，只有在require里面./ ../才代表着文件所在的当前目录和上级目录，在其他地方代表着脚本运行的当前目录和上级目录</p>
+<p>vue中使用jquery时，有时候会失灵</p>
+<p>v-show不能直接用数组</p>
+<p>使用vue的v-on后jquery失效了</p>
+<p>???mysql默认不区分大小写，要用binary，区分了？？？</p>
+<p>mysql使用的时候，超过几个小时不使用会自动断开连接</p>
+<p>用edge渲染vue有问题</p>
+<p>请求发送到/administrator/punishment时，虽然没有设置jwt，但还是能接收到jwt</p>
+
+                                </div>
+                    </article>
+                    <!--  -->
+                    
+                        <div class="next-post">
+                            <div class="next">下一篇</div>
+                            <a href="https://greyseid.github.io/post/xue-xi-bootstrap-biao-ge/">
+                                <h3 class="post-title">
+                                    学习Bootstrap——表格
+                                </h3>
+                            </a>
+                        </div>
+                        
+                            <div id="disqus_thread"></div>
+                            <div id="gitalk-container"></div>
+                </div>
+                <!-- middle -->
+                <div class="main-container-middle"></div>
+                <!-- right -->
+                <div id="sidebar" class="main-container-right">
+                    
+                                <!-- id-card -->
+                                
+    <div class="id_card i-card">
+        <div class="id_card-avatar" style="background-image: url(https://greyseid.github.io//images/avatar.png?v=1618930416730)">
+        </div>
+        <h1 class="id_card-title">
+            正义大厅
+        </h1>
+        <h2 class="id_card-description">
+            欢迎来到GREYSEID的自留地
+        </h2>
+        <!--  -->
+        <div class="id_card-sns">
+            <!-- github -->
+            
+                <a href="https://github.com/GREYSEID" target="_blank" rel="noopener noreferrer"><i
+                class="fa fa-github"></i></a>
+                
+                    <!-- twitter -->
+                    
+                            <!-- weibo -->
+                            
+                                    <!-- facebook -->
+                                    
+
+        </div>
+    </div>
+    
+                                    
+
+                </div>
+
+
+
+
+            </div>
+
+
+            <div class="site-footer">
+  Powered by <a href="https://github.com/getgridea/gridea" target="_blank">Gridea</a> | 
+  <a class="rss" href="https://greyseid.github.io//atom.xml" target="_blank">RSS</a>
+</div>
+
+<script>
+  hljs.initHighlightingOnLoad()
+</script>
+
+
+    </div>
+    <script>
+        $('#sidebar').stickySidebar({
+            topSpacing: 80,
+            // bottomSpacing: 60
+        });
+    </script>
+    
+</body>
+
+</html>
